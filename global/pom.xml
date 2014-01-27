@@ -39,7 +39,7 @@
 		
 		<cyk.artifact.repository.id>CYKREPO</cyk.artifact.repository.id>
 		<cyk.artifact.repository.name>CYK Internal Maven Repository</cyk.artifact.repository.name>
-		<cyk.artifact.repository.url>file:///H:\Repositories\artifacts\maven</cyk.artifact.repository.url>
+		<cyk.artifact.repository.url>file://${user.home}\.m2\_internal\_cyk</cyk.artifact.repository.url>
 		
 	</properties>
 	
@@ -84,10 +84,21 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupid>org.apache.maven.plugins</groupid>
-				<artifactid>maven-surefire-plugin</artifactid>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${maven.surefire.version}</version>
 			</plugin>
+			
+			<!--plugin>
+		        <artifactId>maven-deploy-plugin</artifactId>
+		        <version>2.8.1</version>
+		        <configuration>
+		            <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository>
+		        </configuration>
+		    </plugin-->
+		    
+
+			
 		</plugins>
 	</build>
 	
@@ -207,25 +218,6 @@
 					<artifactId>glassfish-embedded-all</artifactId>
 					<version>3.1.2</version>
 					<scope>provided</scope>
-				</dependency>
-			</dependencies>
-		</profile>
-
-		<profile>
-			<id>arquillian-jbossas-managed</id>
-			<dependencies>
-				<dependency>
-					<groupId>org.jboss.spec</groupId>
-					<artifactId>jboss-javaee-6.0</artifactId>
-					<version>1.0.0.Final</version>
-					<type>pom</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.jboss.as</groupId>
-					<artifactId>jboss-as-arquillian-container-managed</artifactId>
-					<version>7.1.1.Final</version>
-					<scope>test</scope>
 				</dependency>
 			</dependencies>
 		</profile>
