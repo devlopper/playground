@@ -1,14 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.cyk.pom</groupId>
-  <artifactId>global</artifactId>
-  <version>gp.0.0.1</version>
-  <packaging>pom</packaging>
+	<groupId>org.cyk.pom</groupId>
+	<artifactId>global</artifactId>
+	<version>gp.0.0.1</version>
+	<packaging>pom</packaging>
 
-  <name>CYK JEE Global Pom</name>
-  <url>http://www.cykcorp.org</url>
+	<name>CYK JEE Global Pom</name>
+	<url>http://www.cykcorp.org</url>
 
 	<properties>
 		<!-- Explicitly declaring the source encoding eliminates the following 
@@ -19,10 +19,10 @@
 		<version.lombokproject>1.12.2</version.lombokproject>
 		<version.ejb>3.1</version.ejb>
 		<version.junit>4.11</version.junit>
-		
+
 		<javaee.version>7.0</javaee.version>
 		<ejbVersion>3.2</ejbVersion>
-		
+
 		<!-- JBoss dependency versions -->
 		<version.org.jboss.as>7.1.1.Final</version.org.jboss.as>
 		<version.org.jboss.as.plugins.maven.plugin>7.3.Final</version.org.jboss.as.plugins.maven.plugin>
@@ -36,45 +36,48 @@
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.surefire.version>2.3</maven.surefire.version>
-		
-		<cyk.artifact.repository.id>CYKREPO</cyk.artifact.repository.id>
-		<cyk.artifact.repository.name>CYK Internal Maven Repository</cyk.artifact.repository.name>
-		<cyk.artifact.repository.url>file://${user.home}\.m2\_internal\_cyk</cyk.artifact.repository.url>
-		
+
+		<!-- Local Repository -->
+		<cyk.artifact.repository.local.id>localrep</cyk.artifact.repository.local.id>
+		<cyk.artifact.repository.local.name>CYK Local Artifact Repository</cyk.artifact.repository.local.name>
+		<cyk.artifact.repository.local.url>file://${user.home}\.m2\_local\_cyk</cyk.artifact.repository.local.url>
+
+		<!-- Remote Repository -->
+		<cyk.artifact.repository.remote.id>remoterep</cyk.artifact.repository.remote.id>
+		<cyk.artifact.repository.remote.name>CYK Remote Artifact Repository</cyk.artifact.repository.remote.name>
+		<cyk.artifact.repository.remote.url>https://github.com/devlopper/_repository.artifact.org.cyk/raw/master</cyk.artifact.repository.remote.url>
+
 	</properties>
-	
+
 	<distributionManagement>
-	    <repository>
-	        <id>${cyk.artifact.repository.id}</id>
-	        <name>${cyk.artifact.repository.name}</name>
-	        <url>${cyk.artifact.repository.url}</url>
-	    </repository>
-	</distributionManagement>
-	
-	<repositories>
 		<repository>
-			<id>${cyk.artifact.repository.id}</id>
-	        <name>${cyk.artifact.repository.name}</name>
-	        <url>${cyk.artifact.repository.url}</url>
+			<id>${cyk.artifact.repository.local.id}</id>
+			<name>${cyk.artifact.repository.local.name}</name>
+			<url>${cyk.artifact.repository.local.url}</url>
 		</repository>
-	</repositories>	
-	
+	</distributionManagement>
+
+	<repositories>
+		<!--repository>
+			<id>${cyk.artifact.repository.id}</id>
+			<name>${cyk.artifact.repository.name}</name>
+			<url>${cyk.artifact.repository.url}</url>
+		</repository-->
+		<!--repository>
+			<id>${cyk.artifact.repository.remote.id}</id>
+			<name>${cyk.artifact.repository.remote.name}</name>
+			<url>${cyk.artifact.repository.remote.url}</url>
+		</repository-->
+	</repositories>
+
 	<build>
-		
-		<!--
-		<resources>
-			<resource>
-				<directory>src/main/java/META-INF</directory>
-				<filtering>false</filtering>
-				<excludes>
-					<exclude>**/*.xml</exclude>
-				</excludes>
-			</resource>
-		</resources>
-	    -->
+
+		<!-- <resources> <resource> <directory>src/main/java/META-INF</directory> 
+			<filtering>false</filtering> <excludes> <exclude>**/*.xml</exclude> </excludes> 
+			</resource> </resources> -->
 		<plugins>
-			<!-- Compiler plugin enforces Java version compatibility and activates annotation 
-				processors -->
+			<!-- Compiler plugin enforces Java version compatibility and activates 
+				annotation processors -->
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>${version.compiler.plugin}</version>
@@ -88,91 +91,92 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${maven.surefire.version}</version>
 			</plugin>
-			
-			<!--plugin>
-		        <artifactId>maven-deploy-plugin</artifactId>
-		        <version>2.8.1</version>
-		        <configuration>
-		            <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository>
-		        </configuration>
-		    </plugin-->
-		    
 
-			
+			<!--plugin> <artifactId>maven-deploy-plugin</artifactId> <version>2.8.1</version> 
+				<configuration> <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository> 
+				</configuration> </plugin -->
+
+
+
 		</plugins>
 	</build>
-	
-	<dependencyManagement>
-		<dependencies>
 
-			<!-- Java Enterprise Edition API -->
-			<dependency>
-				<groupId>javax</groupId>
-				<artifactId>javaee-api</artifactId>
-				<version>${javaee.version}</version>
-				<scope>provided</scope>
-			</dependency> 
-	
-			<!-- Code Utilities -->	    
-		    <dependency>
-				<groupId>org.projectlombok</groupId>
-				<artifactId>lombok</artifactId>
-				<version>${version.lombokproject}</version>
-				<scope>provided</scope>
-			</dependency>
-	
-			<!-- Apache Commons -->
-			<dependency>
-				<groupId>org.apache.commons</groupId>
-				<artifactId>commons-lang3</artifactId>
-				<version>3.0</version>
-			</dependency>
-			<dependency>
-				<groupId>commons-io</groupId>
-				<artifactId>commons-io</artifactId>
-				<version>1.4</version>
-			</dependency>
-			
-			<dependency>
-				<groupId>commons-logging</groupId>
-				<artifactId>commons-logging</artifactId>
-				<version>1.1.1</version>
-			</dependency>
-			
-			<!-- Test -->
-			<dependency>
-				<groupId>org.jboss.arquillian</groupId>
-				<artifactId>arquillian-bom</artifactId>
-				<version>1.1.1.Final</version>
-				<scope>import</scope>
-				<type>pom</type>
-			</dependency>
-					     
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>4.8.1</version>
-				<scope>test</scope>
-			</dependency>
-	
-			<dependency>
-				<groupId>org.jboss.arquillian.junit</groupId>
-				<artifactId>arquillian-junit-container</artifactId>
-				<scope>test</scope>
-			</dependency>
-			
-			<!-- Validation Implementation -->
-			<dependency>
-				<groupId>org.hibernate</groupId>
-				<artifactId>hibernate-validator</artifactId>
-				<version>5.0.0.Final</version>
-				<scope>test</scope>
-			</dependency>			
-			
-		</dependencies>
-	</dependencyManagement>
-	
+	<dependencies>
+
+		<!-- Java Enterprise Edition API -->
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>${javaee.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Code Utilities -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${version.lombokproject}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Apache Commons -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
+		<!-- Test -->
+		<dependency>
+			<groupId>org.jboss.arquillian</groupId>
+			<artifactId>arquillian-bom</artifactId>
+			<version>1.1.1.Final</version>
+			<scope>import</scope>
+			<type>pom</type>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.arquillian.junit</groupId>
+			<artifactId>arquillian-junit-container</artifactId>
+			<version>1.1.2.Final</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Validation Implementation -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.0.0.Final</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
 	<profiles>
+		
+		<profile>
+			<id>development-environment</id>
+			
+		</profile>
+		
 		<profile>
 			<id>arquillian-weld-ee-embedded</id>
 			<dependencies>
@@ -223,5 +227,5 @@
 		</profile>
 
 	</profiles>
-	
+
 </project>
