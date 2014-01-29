@@ -101,6 +101,18 @@
 		</plugins>
 	</build>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.jboss.arquillian</groupId>
+                <artifactId>arquillian-bom</artifactId>
+                <version>1.1.1.Final</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
 	<dependencies>
 
 		<!-- Java Enterprise Edition API -->
@@ -138,13 +150,6 @@
 		</dependency>
 
 		<!-- Test -->
-		<dependency>
-			<groupId>org.jboss.arquillian</groupId>
-			<artifactId>arquillian-bom</artifactId>
-			<version>1.1.1.Final</version>
-			<scope>import</scope>
-			<type>pom</type>
-		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
@@ -156,7 +161,6 @@
 		<dependency>
 			<groupId>org.jboss.arquillian.junit</groupId>
 			<artifactId>arquillian-junit-container</artifactId>
-			<version>1.1.2.Final</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -172,10 +176,10 @@
 
 	<profiles>
 		
-		<profile>
+		<!--profile>
 			<id>development-environment</id>
 			
-		</profile>
+		</profile-->
 		
 		<profile>
 			<id>arquillian-weld-ee-embedded</id>
