@@ -58,16 +58,10 @@
 	</distributionManagement>
 
 	<repositories>
-		<!--repository>
-			<id>${cyk.artifact.repository.id}</id>
-			<name>${cyk.artifact.repository.name}</name>
-			<url>${cyk.artifact.repository.url}</url>
-		</repository-->
-		<!--repository>
-			<id>${cyk.artifact.repository.remote.id}</id>
-			<name>${cyk.artifact.repository.remote.name}</name>
-			<url>${cyk.artifact.repository.remote.url}</url>
-		</repository-->
+		<!--repository> <id>${cyk.artifact.repository.id}</id> <name>${cyk.artifact.repository.name}</name> 
+			<url>${cyk.artifact.repository.url}</url> </repository -->
+		<!--repository> <id>${cyk.artifact.repository.remote.id}</id> <name>${cyk.artifact.repository.remote.name}</name> 
+			<url>${cyk.artifact.repository.remote.url}</url> </repository -->
 	</repositories>
 
 	<build>
@@ -101,17 +95,17 @@
 		</plugins>
 	</build>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.jboss.arquillian</groupId>
-                <artifactId>arquillian-bom</artifactId>
-                <version>1.1.1.Final</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.jboss.arquillian</groupId>
+				<artifactId>arquillian-bom</artifactId>
+				<version>1.1.1.Final</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<dependencies>
 
@@ -148,7 +142,7 @@
 			<artifactId>commons-logging</artifactId>
 			<version>1.1.1</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.cyk.utility</groupId>
 			<artifactId>common</artifactId>
@@ -181,12 +175,51 @@
 	</dependencies>
 
 	<profiles>
-		
-		<!--profile>
-			<id>development-environment</id>
-			
-		</profile-->
-		
+
+		<!--profile> <id>development-environment</id> </profile -->
+
+		<profile>
+			<id>attach-sources</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+						<version>2.2.1</version>
+						<executions>
+							<execution>
+								<id>attach-sources</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>attach-javadocs</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>2.9.1</version>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
 		<profile>
 			<id>arquillian-weld-ee-embedded</id>
 			<dependencies>
@@ -264,6 +297,30 @@
 					</plugin>
 				</plugins>
 			</build>
+		</profile>
+
+		<profile>
+			<id>arquillian-jbossas-managed</id>
+			<dependencies>
+				<dependency>
+					<groupId>org.jboss.spec</groupId>
+					<artifactId>jboss-javaee-6.0</artifactId>
+					<version>1.0.0.Final</version>
+					<type>pom</type>
+					<scope>provided</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.jboss.as</groupId>
+					<artifactId>jboss-as-arquillian-container-managed</artifactId>
+					<version>7.1.1.Final</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.jboss.arquillian.protocol</groupId>
+					<artifactId>arquillian-protocol-servlet</artifactId>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
 		</profile>
 
 	</profiles>
