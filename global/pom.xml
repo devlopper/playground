@@ -9,12 +9,21 @@
 
 	<name>CYK JEE Global Pom</name>
 	<url>http://www.cykcorp.org</url>
+	
+		<pluginRepositories> 
+        <pluginRepository>
+            <id>maven.java.net</id>
+            <name>Java.net Repository for Maven</name>
+            <url>https://maven.java.net/content/groups/promoted/</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>maven2-repository.dev.java.net</id>
+           <name>Java.net Repository for Maven</name>
+            <url>http://download.java.net/maven/glassfish/</url>
+        </pluginRepository>
+    </pluginRepositories>
 
 	<properties>
-		<!-- Explicitly declaring the source encoding eliminates the following 
-			message: -->
-		<!-- [WARNING] Using platform encoding (UTF-8 actually) to copy filtered 
-			resources, i.e. build is platform dependent! -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<version.lombokproject>1.12.2</version.lombokproject>
 		<version.ejb>3.1</version.ejb>
@@ -300,6 +309,85 @@
 		</profile>
 
 		<profile>
+			<id>arquillian-glassfish-embedded-cr4</id>
+			<dependencies>
+				<dependency>
+					<groupId>org.jboss.arquillian.container</groupId>
+					<artifactId>arquillian-glassfish-embedded-3.1</artifactId>
+					<version>1.0.0.CR4</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.glassfish.main.extras</groupId>
+					<artifactId>glassfish-embedded-all</artifactId>
+					<version>4.0</version>
+					<scope>provided</scope>
+				</dependency>
+				<dependency>
+		            <groupId>javax</groupId>
+		            <artifactId>javaee-api</artifactId>
+		            <version>7.0</version>
+		            <scope>provided</scope>
+		        </dependency>
+			</dependencies>
+			<build>
+				<testResources>
+					<testResource>
+						<directory>src/test/resources</directory>
+					</testResource>
+					<testResource>
+						<directory>src/test/resources-glassfish-embedded</directory>
+					</testResource>
+				</testResources>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>${maven.surefire.version}</version>
+						<configuration>
+							<systemPropertyVariables>
+								<java.util.logging.config.file>
+									${project.build.testOutputDirectory}/logging.properties
+								</java.util.logging.config.file>
+								<derby.stream.error.file>
+									${project.build.directory}/derby.log
+								</derby.stream.error.file>
+							</systemPropertyVariables>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		
+		<profile>
+		    <id>arquillian-glassfish-managed-3.1</id>
+		    <dependencies>
+		        <dependency>
+		            <groupId>org.jboss.arquillian.container</groupId>
+		            <artifactId>arquillian-glassfish-managed-3.1</artifactId>
+		            <version>1.0.0.CR3</version>
+		            <scope>test</scope>
+		        </dependency>
+		        <dependency>
+		            <groupId>javax</groupId>
+		            <artifactId>javaee-api</artifactId>
+		            <version>6.0</version>
+		            <scope>provided</scope>
+		        </dependency>
+		    </dependencies>
+		    <build>
+		        <testResources>
+		            <testResource>
+		                <directory>src/test/resources</directory>
+		            </testResource>
+		            <testResource>
+		                <directory>src/test/resources-glassfish-managed</directory>
+		            </testResource>
+		        </testResources>
+		    </build>
+		</profile>
+
+		<!--profile>
 			<id>arquillian-jbossas-managed</id>
 			<dependencies>
 				<dependency>
@@ -321,7 +409,7 @@
 					<scope>test</scope>
 				</dependency>
 			</dependencies>
-		</profile>
+		</profile-->
 
 	</profiles>
 
