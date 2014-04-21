@@ -19,12 +19,16 @@
 		<!-- Test -->
 		<version.derby>10.10.1.1</version.derby>
 		<version.junit>4.11</version.junit>
+		<version.graphene.webdriver>2.0.1.Final</version.graphene.webdriver>
 		<version.mockito>1.9.5</version.mockito>
 		<version.arquillian>1.1.2.Final</version.arquillian>
+		<version.arquillian.drone>1.2.0.Final</version.arquillian.drone>
+		<version.arquillian.selenium>2.35.0</version.arquillian.selenium>
 		<version.arquillian.glassfish>1.0.0.CR4</version.arquillian.glassfish>
 		<version.arquillian.jboss>7.2.0.Final</version.arquillian.jboss>
 		<version.jacoco>0.5.7.201204190339</version.jacoco>
-
+		<browser>phantomjs</browser> <!-- PhantomJS will be our default browser if no profile is specified-->
+		
 		<!-- JEE Application Server -->
 		<!--GlassFish -->
 		<version.glassfish>4.0</version.glassfish>
@@ -72,6 +76,12 @@
 	</distributionManagement>
 
 	<build>
+		<testResources>
+	        <testResource>
+	            <directory>src/test/resources</directory>
+	            <filtering>true</filtering>
+	        </testResource> 
+	    </testResources>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -138,6 +148,20 @@
 				<scope>import</scope>
 				<type>pom</type>
 			</dependency>
+			<dependency>
+				<groupId>org.jboss.arquillian.extension</groupId>
+				<artifactId>arquillian-drone-bom</artifactId>
+				<version>${version.arquillian.drone}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.arquillian.selenium</groupId>
+				<artifactId>selenium-bom</artifactId>
+				<version>${version.arquillian.selenium}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -199,6 +223,13 @@
 		<dependency>
 			<groupId>org.jboss.arquillian.junit</groupId>
 			<artifactId>arquillian-junit-container</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.arquillian.graphene</groupId>
+			<artifactId>graphene-webdriver</artifactId>
+			<version>${version.graphene.webdriver}</version>
+			<type>pom</type>
 			<scope>test</scope>
 		</dependency>
 
@@ -301,6 +332,19 @@
 			</build>
 		</profile>
 
+<profile>
+       <id>firefox</id>
+       <properties>
+          <browser>firefox</browser>
+       </properties>
+    </profile>
+    <profile>
+       <id>chrome</id>
+       <properties>
+           <browser>chrome</browser>
+       </properties>
+    </profile>
+
 		<profile>
 			<id>arquillian-weld-ee-embedded</id>
 			<dependencies>
@@ -382,6 +426,30 @@
 			</build>
 		</profile>
 
+		<profile>
+    <id>arquillian-jbossas-managed</id>
+    <dependencies>
+        <dependency>
+            <groupId>org.jboss.spec</groupId>
+            <artifactId>jboss-javaee-6.0</artifactId>
+            <version>1.0.0.Final</version>
+            <type>pom</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.as</groupId>
+            <artifactId>jboss-as-arquillian-container-managed</artifactId>
+            <version>7.1.1.Final</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.arquillian.protocol</groupId>
+            <artifactId>arquillian-protocol-servlet</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</profile>
+
 	</profiles>
 
 	<repositories>
@@ -397,7 +465,5 @@
 			<url>https://maven.java.net/content/groups/public</url>
 		</repository>
 	</repositories>
-
-
 
 </project>
