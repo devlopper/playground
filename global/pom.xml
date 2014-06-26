@@ -17,8 +17,9 @@
 		<version.java>1.7</version.java>
 		<version.javaee>7.0</version.javaee>
 		<!-- Test -->
-		<version.derby>10.10.1.1</version.derby>
 		<version.junit>4.11</version.junit>
+		<version.derby>10.10.1.1</version.derby>
+		<version.mysql>5.1.30</version.mysql>
 		<version.graphene.webdriver>2.0.1.Final</version.graphene.webdriver>
 		<version.mockito>1.9.5</version.mockito>
 		<version.arquillian>1.1.2.Final</version.arquillian>
@@ -73,6 +74,13 @@
 			<name>${cyk.artifact.repository.local.name}</name>
 			<url>${cyk.artifact.repository.local.url}</url>
 		</repository>
+		<!--
+		<relocation>
+			<groupId>xml-apis</groupId>
+			<artifactId>xml-apis</artifactId>
+			<version>1.0.b2</version>
+		</relocation>
+		-->
 	</distributionManagement>
 
 	<build>
@@ -136,6 +144,9 @@
 					</execution>
 				</executions>
 			</plugin>
+
+			
+		
 		</plugins>
 	</build>
 
@@ -182,6 +193,19 @@
 			<version>${version.lombokproject}</version>
 			<scope>provided</scope>
 		</dependency>
+		
+		<!-- Conflict xml-apis must be solved-->
+		<dependency>
+	         <groupId>org.reflections</groupId>
+	         <artifactId>reflections</artifactId>
+	         <version>0.9.9-RC1</version>
+	         <exclusions>
+	         	<exclusion>
+	         		<groupId>xml-apis</groupId>
+	         		<artifactId>xml-apis</artifactId>
+	         	</exclusion>
+	         </exclusions>
+	     </dependency>
 
 		<!-- Apache Commons -->
 		<dependency>
@@ -205,6 +229,13 @@
 			<groupId>org.cyk.utility</groupId>
 			<artifactId>common</artifactId>
 			<version>0.0.1</version>
+		</dependency>
+		
+		<!-- Templating engine -->
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>2.3.20</version>
 		</dependency>
 
 		<!-- Test -->
@@ -232,12 +263,25 @@
 			<type>pom</type>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+		  <groupId>org.jboss.shrinkwrap.resolver</groupId>
+		  <artifactId>shrinkwrap-resolver-impl-maven</artifactId>
+		  <scope>test</scope>
+		</dependency>
 
 		<!-- Validation Implementation -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>5.0.0.Final</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- databases -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${version.mysql}</version>
 			<scope>test</scope>
 		</dependency>
 
