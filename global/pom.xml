@@ -50,10 +50,19 @@
 		<version.maven.surefire.plugin>2.3</version.maven.surefire.plugin>
 		<version.maven.failsafe.plugin>2.17</version.maven.failsafe.plugin>
 		<version.maven.compiler.plugin>3.1</version.maven.compiler.plugin>
+		
+		<!-- Signing -->
+		<keystore.path>cert/temp.keystore</keystore.path>
+	    <keystore.type>JKS</keystore.type>
+	    <keystore.alias>dev</keystore.alias>
+	    <keystore.password>dev_password</keystore.password>
+	    <keystore.store.password>${keystore.password}</keystore.store.password>
+	    <keystore.key.password>${keystore.password}</keystore.key.password>
 
 		<!-- Misc -->
 		<version.jrebel>1.1.5</version.jrebel>
 		<version.lombokproject>1.12.2</version.lombokproject>
+		<version.logging.slf4j>1.7.7</version.logging.slf4j>
 
 		<!-- Repositories -->
 		<!-- Local Repository -->
@@ -105,9 +114,10 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${version.maven.surefire.plugin}</version>
 				<configuration>
-					<forkCount>5</forkCount>
+					<forkCount>1</forkCount>
 					<reuseForks>true</reuseForks>
-					<argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+					<argLine>-Xms800m -Xmx800m -XX:MaxPermSize=500m</argLine>
+					<!--argLine>-Xmx1024m -XX:MaxPermSize=512m</argLine-->
 				</configuration>
 				<executions>
 					<execution>
@@ -145,8 +155,36 @@
 				</executions>
 			</plugin>
 
-			
-		
+			<!--plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jarsigner-plugin</artifactId>
+				<version>1.2</version>
+				<executions>
+	                <execution>
+	                    <id>sign</id>
+	                    <goals>
+	                        <goal>sign</goal>
+	                    </goals>
+	                </execution>
+	            </executions>
+	            
+				<configuration>
+					<storetype>${keystore.type}</storetype>
+					<keystore>${keystore.path}</keystore>
+					<alias>${keystore.alias}</alias>
+					<storepass>${keystore.store.password}</storepass>
+					<keypass>${keystore.key.password}</keypass>
+				</configuration>
+				
+				<configuration>
+	                <keystore>keystore</keystore>
+	                <alias>keyalias</alias>
+	                <storepass>storepass</storepass>
+	                <keypass>keypass</keypass>
+	            </configuration>
+				
+			</plugin-->
+
 		</plugins>
 	</build>
 
@@ -214,6 +252,11 @@
 			<version>3.0</version>
 		</dependency>
 		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-math3</artifactId>
+			<version>3.0</version>
+		</dependency>
+		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>1.4</version>
@@ -237,6 +280,24 @@
 			<artifactId>freemarker</artifactId>
 			<version>2.3.20</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.3</version>
+		</dependency>
+		
+		<!-- Logging -->
+		<!--dependency>
+	        <groupId>org.slf4j</groupId>
+	        <artifactId>slf4j-api</artifactId>
+	        <version>${version.logging.slf4j}</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>org.slf4j</groupId>
+	        <artifactId>slf4j-simple</artifactId>
+	        <version>${version.logging.slf4j}</version>
+	    </dependency-->
 
 		<!-- Test -->
 		<dependency>
@@ -283,6 +344,11 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${version.mysql}</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>2.3.2</version>
 		</dependency>
 
 	</dependencies>
@@ -376,19 +442,19 @@
 			</build>
 		</profile>
 
-<profile>
-       <id>firefox</id>
-       <properties>
-          <browser>firefox</browser>
-       </properties>
-    </profile>
-    <profile>
-       <id>chrome</id>
-       <properties>
-           <browser>chrome</browser>
-       </properties>
-    </profile>
-
+		<profile>
+			<id>firefox</id>
+			<properties>
+				<browser>firefox</browser>
+			</properties>
+		</profile>
+		<profile>
+			<id>chrome</id>
+			<properties>
+				<browser>chrome</browser>
+			</properties>
+		</profile>
+	
 		<profile>
 			<id>arquillian-weld-ee-embedded</id>
 			<dependencies>
@@ -419,15 +485,15 @@
 				</dependency>
 			</dependencies>
 		</profile>
-
+	
 		<profile>
 			<id>glassfish4-embedded</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<dependencies>
-				<!--This has most of the needed dependencies : Derby, JPA, EJB, Java 
-					EE 7... -->
+				<!--This has most of the needed dependencies : Derby, JPA, EJB, Java EE 
+					7... -->
 				<dependency>
 					<groupId>org.glassfish.main.extras</groupId>
 					<artifactId>glassfish-embedded-all</artifactId>
@@ -469,31 +535,42 @@
 				</plugins>
 			</build>
 		</profile>
+	
+		<profile>
+			<id>arquillian-jbossas-managed</id>
+			<dependencies>
+				<dependency>
+					<groupId>org.jboss.spec</groupId>
+					<artifactId>jboss-javaee-6.0</artifactId>
+					<version>1.0.0.Final</version>
+					<type>pom</type>
+					<scope>provided</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.jboss.as</groupId>
+					<artifactId>jboss-as-arquillian-container-managed</artifactId>
+					<version>7.1.1.Final</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.jboss.arquillian.protocol</groupId>
+					<artifactId>arquillian-protocol-servlet</artifactId>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+		</profile>
 
 		<profile>
-    <id>arquillian-jbossas-managed</id>
-    <dependencies>
-        <dependency>
-            <groupId>org.jboss.spec</groupId>
-            <artifactId>jboss-javaee-6.0</artifactId>
-            <version>1.0.0.Final</version>
-            <type>pom</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.as</groupId>
-            <artifactId>jboss-as-arquillian-container-managed</artifactId>
-            <version>7.1.1.Final</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.arquillian.protocol</groupId>
-            <artifactId>arquillian-protocol-servlet</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-</profile>
-
+	      <id>codesigning</id>
+	      <properties>
+	        <keystore.path>/opt/prod/prod.keystore</keystore.path> 
+	        <keystore.alias>prod</keystore.alias>
+	        <keystore.type>JKS</keystore.type>
+	        <keystore.store.password>${keystore.password}</keystore.store.password>
+	        <keystore.key.password>${keystore.password}</keystore.key.password>
+	      </properties>
+	    </profile>
+		
 	</profiles>
 
 	<repositories>
