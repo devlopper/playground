@@ -1,12 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-	<name>CYK JEE Global Pom</name>
+	<name>CYK Test Global Pom</name>
 	<url>http://www.cykcorp.org</url>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.cyk.pom</groupId>
-	<artifactId>global</artifactId>
-	<version>gp.0.0.1</version>
+	<artifactId>test</artifactId>
+	<version>test.0.0.1</version>
 	<packaging>pom</packaging>
 
 	<properties>
@@ -266,19 +266,6 @@
 			<artifactId>commons-logging</artifactId>
 			<version>1.1.1</version>
 		</dependency>
-
-		<!-- cyk -->
-		<dependency>
-			<groupId>org.cyk.utility</groupId>
-			<artifactId>common</artifactId>
-			<version>0.0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.cyk.utility</groupId>
-			<artifactId>test</artifactId>
-			<version>0.0.1</version>
-			<scope>test</scope>
-		</dependency>
 		
 		<!-- Templating engine -->
 		<dependency>
@@ -316,12 +303,11 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${version.junit}</version>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.arquillian.junit</groupId>
 			<artifactId>arquillian-junit-container</artifactId>
-			<scope>test</scope>
+			
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.arquillian.graphene</groupId>
