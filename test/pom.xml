@@ -27,6 +27,7 @@
 		<version.arquillian.selenium>2.35.0</version.arquillian.selenium>
 		<version.arquillian.glassfish>1.0.0.CR4</version.arquillian.glassfish>
 		<version.arquillian.jboss>7.2.0.Final</version.arquillian.jboss>
+		<version.arquillian.tomee>1.7.1</version.arquillian.tomee>
 		<version.jacoco>0.5.7.201204190339</version.jacoco>
 		<browser>phantomjs</browser> <!-- PhantomJS will be our default browser if no profile is specified-->
 		
@@ -475,6 +476,31 @@
 					<version>1.6.4</version>
 					<scope>test</scope>
 				</dependency>
+				<dependency>
+				  <groupId>org.apache.openejb</groupId>
+				  <artifactId>arquillian-tomee-embedded</artifactId>
+				  <version>${version.arquillian.tomee}</version>
+				  <scope>test</scope>
+				</dependency>
+				<dependency>
+				  <groupId>org.apache.openejb</groupId>
+				  <artifactId>tomee-embedded</artifactId>
+				  <version>${version.arquillian.tomee}</version>
+				  <scope>test</scope>
+				</dependency>
+				<!--Required for WebServices and RESTful WebServices-->
+				<dependency>
+				  <groupId>org.apache.openejb</groupId>
+				  <artifactId>tomee-webservices</artifactId>
+				  <version>${version.arquillian.tomee}</version>
+				  <scope>test</scope>
+				</dependency>
+				<dependency>
+				  <groupId>org.apache.openejb</groupId>
+				  <artifactId>tomee-jaxrs</artifactId>
+				  <version>${version.arquillian.tomee}</version>
+				  <scope>test</scope>
+				</dependency>
 			</dependencies>
 		</profile>
 	
@@ -524,6 +550,16 @@
 							</systemPropertyVariables>
 						</configuration>
 					</plugin>
+					<plugin>
+				      <groupId>org.apache.maven.plugins</groupId>
+				      <artifactId>maven-surefire-plugin</artifactId>
+				      <configuration>
+				        <systemPropertyVariables>
+				          <tomee.httpPort>-1</tomee.httpPort>
+				          <tomee.stopPort>-1</tomee.stopPort>
+				        </systemPropertyVariables>
+				      </configuration>
+				    </plugin>
 				</plugins>
 			</build>
 		</profile>

@@ -62,7 +62,8 @@
 		<!-- Misc -->
 		<version.jrebel>1.1.5</version.jrebel>
 		<version.lombokproject>1.12.2</version.lombokproject>
-		<version.logging.slf4j>1.7.7</version.logging.slf4j>
+		<version.logging.slf4j>1.7.12</version.logging.slf4j>
+		<version.logging.slf4j.log4j>1.7.12</version.logging.slf4j.log4j>
 
 		<!-- Repositories -->
 		<!-- Local Repository -->
@@ -294,17 +295,19 @@
 		</dependency>
 		
 		<!-- Logging -->
-		<!--dependency>
+		<dependency>
 	        <groupId>org.slf4j</groupId>
 	        <artifactId>slf4j-api</artifactId>
 	        <version>${version.logging.slf4j}</version>
 	    </dependency>
 	    <dependency>
-	        <groupId>org.slf4j</groupId>
-	        <artifactId>slf4j-simple</artifactId>
-	        <version>${version.logging.slf4j}</version>
-	    </dependency-->
-
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${version.logging.slf4j.log4j}</version>
+		</dependency>
+		
+		
+	    
 		<!-- Test -->
 		<dependency>
 			<groupId>org.mockito</groupId>
@@ -355,8 +358,9 @@
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
 			<version>2.3.2</version>
+			<scope>test</scope>
 		</dependency>
-
+ 
 	</dependencies>
 
 	<profiles>
@@ -482,11 +486,17 @@
 					<artifactId>weld-core</artifactId>
 					<version>1.1.5.Final</version>
 					<scope>test</scope>
-				</dependency>
+				</dependency>				
 				<dependency>
+			        <groupId>org.slf4j</groupId>
+			        <artifactId>slf4j-api</artifactId>
+			        <version>${version.logging.slf4j}</version>
+			        <scope>test</scope>
+			    </dependency>
+			    <dependency>
 					<groupId>org.slf4j</groupId>
-					<artifactId>slf4j-simple</artifactId>
-					<version>1.6.4</version>
+					<artifactId>slf4j-log4j12</artifactId>
+					<version>${version.logging.slf4j.log4j}</version>
 					<scope>test</scope>
 				</dependency>
 			</dependencies>
