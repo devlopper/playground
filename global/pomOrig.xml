@@ -1,12 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-	<name>CYK Test Global Pom</name>
+	<name>CYK JEE Global Pom</name>
 	<url>http://www.cykcorp.org</url>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.cyk.pom</groupId>
-	<artifactId>test</artifactId>
-	<version>test.0.0.1</version>
+	<artifactId>global</artifactId>
+	<version>gp.0.0.1</version>
 	<packaging>pom</packaging>
 
 	<properties>
@@ -22,13 +22,11 @@
 		<version.mysql>5.1.30</version.mysql>
 		<version.graphene.webdriver>2.0.1.Final</version.graphene.webdriver>
 		<version.mockito>1.9.5</version.mockito>
-		<version.hamcrest>1.3</version.hamcrest>
 		<version.arquillian>1.1.2.Final</version.arquillian>
 		<version.arquillian.drone>1.2.0.Final</version.arquillian.drone>
 		<version.arquillian.selenium>2.35.0</version.arquillian.selenium>
 		<version.arquillian.glassfish>1.0.0.CR4</version.arquillian.glassfish>
 		<version.arquillian.jboss>7.2.0.Final</version.arquillian.jboss>
-		<version.arquillian.tomee>1.7.1</version.arquillian.tomee>
 		<version.jacoco>0.5.7.201204190339</version.jacoco>
 		<browser>phantomjs</browser> <!-- PhantomJS will be our default browser if no profile is specified-->
 		
@@ -63,8 +61,9 @@
 
 		<!-- Misc -->
 		<version.jrebel>1.1.5</version.jrebel>
-		<version.lombokproject>1.12.2</version.lombokproject>
-		<version.logging.slf4j>1.7.7</version.logging.slf4j>
+		<version.lombokproject>1.16.4</version.lombokproject>
+		<version.logging.slf4j>1.7.12</version.logging.slf4j>
+		<version.logging.slf4j.log4j>1.7.12</version.logging.slf4j.log4j>
 
 		<!-- Repositories -->
 		<!-- Local Repository -->
@@ -268,6 +267,26 @@
 			<artifactId>commons-logging</artifactId>
 			<version>1.1.1</version>
 		</dependency>
+
+		<!-- cyk -->
+		<dependency>
+			<groupId>org.cyk.utility</groupId>
+			<artifactId>common</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.cyk.utility</groupId>
+			<artifactId>test</artifactId>
+			<version>0.0.1</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- Templating engine -->
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>2.3.20</version>
+		</dependency>
 		
 		<dependency>
 			<groupId>joda-time</groupId>
@@ -275,38 +294,49 @@
 			<version>2.3</version>
 		</dependency>
 		
+		<!-- Logging -->
+		<dependency>
+	        <groupId>org.slf4j</groupId>
+	        <artifactId>slf4j-api</artifactId>
+	        <version>${version.logging.slf4j}</version>
+	    </dependency>
+	    <dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${version.logging.slf4j.log4j}</version>
+		</dependency>
+		
+		
+	    
 		<!-- Test -->
 		<dependency>
 			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
+			<artifactId>mockito-all</artifactId>
 			<version>${version.mockito}</version>
-		</dependency> 
-		
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${version.junit}</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.arquillian.junit</groupId>
 			<artifactId>arquillian-junit-container</artifactId>
-			
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.arquillian.graphene</groupId>
 			<artifactId>graphene-webdriver</artifactId>
 			<version>${version.graphene.webdriver}</version>
 			<type>pom</type>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 		  <groupId>org.jboss.shrinkwrap.resolver</groupId>
 		  <artifactId>shrinkwrap-resolver-impl-maven</artifactId>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-all</artifactId>
-			<version>${version.hamcrest}</version>
+		  <scope>test</scope>
 		</dependency>
 
 		<!-- Validation Implementation -->
@@ -314,6 +344,7 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>5.0.0.Final</version>
+			<scope>test</scope>
 		</dependency>
 		
 		<!-- databases -->
@@ -321,13 +352,15 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${version.mysql}</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
 			<version>2.3.2</version>
+			<scope>test</scope>
 		</dependency>
-
+ 
 	</dependencies>
 
 	<profiles>
@@ -453,37 +486,18 @@
 					<artifactId>weld-core</artifactId>
 					<version>1.1.5.Final</version>
 					<scope>test</scope>
-				</dependency>
+				</dependency>				
 				<dependency>
+			        <groupId>org.slf4j</groupId>
+			        <artifactId>slf4j-api</artifactId>
+			        <version>${version.logging.slf4j}</version>
+			        <scope>test</scope>
+			    </dependency>
+			    <dependency>
 					<groupId>org.slf4j</groupId>
-					<artifactId>slf4j-simple</artifactId>
-					<version>1.6.4</version>
+					<artifactId>slf4j-log4j12</artifactId>
+					<version>${version.logging.slf4j.log4j}</version>
 					<scope>test</scope>
-				</dependency>
-				<dependency>
-				  <groupId>org.apache.openejb</groupId>
-				  <artifactId>arquillian-tomee-embedded</artifactId>
-				  <version>${version.arquillian.tomee}</version>
-				  <scope>test</scope>
-				</dependency>
-				<dependency>
-				  <groupId>org.apache.openejb</groupId>
-				  <artifactId>tomee-embedded</artifactId>
-				  <version>${version.arquillian.tomee}</version>
-				  <scope>test</scope>
-				</dependency>
-				<!--Required for WebServices and RESTful WebServices-->
-				<dependency>
-				  <groupId>org.apache.openejb</groupId>
-				  <artifactId>tomee-webservices</artifactId>
-				  <version>${version.arquillian.tomee}</version>
-				  <scope>test</scope>
-				</dependency>
-				<dependency>
-				  <groupId>org.apache.openejb</groupId>
-				  <artifactId>tomee-jaxrs</artifactId>
-				  <version>${version.arquillian.tomee}</version>
-				  <scope>test</scope>
 				</dependency>
 			</dependencies>
 		</profile>
@@ -534,16 +548,6 @@
 							</systemPropertyVariables>
 						</configuration>
 					</plugin>
-					<!--plugin>
-				      <groupId>org.apache.maven.plugins</groupId>
-				      <artifactId>maven-surefire-plugin</artifactId>
-				      <configuration>
-				        <systemPropertyVariables>
-				          <tomee.httpPort>-1</tomee.httpPort>
-				          <tomee.stopPort>-1</tomee.stopPort>
-				        </systemPropertyVariables>
-				      </configuration>
-				    </plugin-->
 				</plugins>
 			</build>
 		</profile>
