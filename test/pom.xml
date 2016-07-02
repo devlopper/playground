@@ -63,7 +63,7 @@
 
 		<!-- Misc -->
 		<version.jrebel>1.1.5</version.jrebel>
-		<version.lombokproject>1.12.2</version.lombokproject>
+		<version.lombokproject>1.16.8</version.lombokproject>
 		<version.logging.slf4j>1.7.7</version.logging.slf4j>
 
 		<!-- Repositories -->
