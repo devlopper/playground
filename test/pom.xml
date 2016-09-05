@@ -292,12 +292,12 @@
 			<artifactId>arquillian-junit-container</artifactId>
 			
 		</dependency>
-		<dependency>
+		<!--dependency>
 			<groupId>org.jboss.arquillian.graphene</groupId>
 			<artifactId>graphene-webdriver</artifactId>
 			<version>${version.graphene.webdriver}</version>
 			<type>pom</type>
-		</dependency>
+		</dependency-->
 		<dependency>
 		  <groupId>org.jboss.shrinkwrap.resolver</groupId>
 		  <artifactId>shrinkwrap-resolver-impl-maven</artifactId>
