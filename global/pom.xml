@@ -24,7 +24,6 @@
 		<version.graphene.webdriver>2.0.1.Final</version.graphene.webdriver>
 		<version.arquillian>1.1.2.Final</version.arquillian>
 		<version.arquillian.drone>1.2.0.Final</version.arquillian.drone>
-		<version.arquillian.selenium>2.35.0</version.arquillian.selenium>
 		<version.arquillian.glassfish>1.0.0.CR4</version.arquillian.glassfish>
 		<version.arquillian.jboss>7.2.0.Final</version.arquillian.jboss>
 		<version.jacoco>0.5.7.201204190339</version.jacoco>
@@ -188,13 +187,6 @@
 				<groupId>org.jboss.arquillian.extension</groupId>
 				<artifactId>arquillian-drone-bom</artifactId>
 				<version>${version.arquillian.drone}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.jboss.arquillian.selenium</groupId>
-				<artifactId>selenium-bom</artifactId>
-				<version>${version.arquillian.selenium}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
