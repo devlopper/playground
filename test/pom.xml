@@ -314,6 +314,11 @@
 		    <artifactId>htmlunit-driver</artifactId>
 		    <version>2.23</version>
 		</dependency>
+		<dependency>
+		    <groupId>org.eclipse.jetty.websocket</groupId>
+		    <artifactId>websocket-client</artifactId>
+		    <version>9.2.18.v20160721</version>
+		</dependency>
 		
 		<dependency>
 			<groupId>org.hamcrest</groupId>
