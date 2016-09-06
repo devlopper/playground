@@ -298,15 +298,21 @@
 			<version>${version.graphene.webdriver}</version>
 			<type>pom</type>
 		</dependency-->
-		<dependency>
+		<!--dependency>
 		  <groupId>org.jboss.shrinkwrap.resolver</groupId>
 		  <artifactId>shrinkwrap-resolver-impl-maven</artifactId>
-		</dependency>
+		</dependency-->
 		
+		<!-- Web -->
 		<dependency>
 		    <groupId>org.seleniumhq.selenium</groupId>
 		    <artifactId>selenium-java</artifactId>
 		    <version>2.53.1</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.seleniumhq.selenium</groupId>
+		    <artifactId>htmlunit-driver</artifactId>
+		    <version>2.23</version>
 		</dependency>
 		
 		<dependency>
