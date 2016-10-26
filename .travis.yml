@@ -3,5 +3,6 @@ sudo: false
 script: 
   - cd global
   - mvn clean install -DskipTests=true -Dmaven.test.skip=true
+  - cd ..
   - cd test
   - mvn clean install -DskipTests=true -Dmaven.test.skip=true
