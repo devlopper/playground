@@ -1,0 +1,5 @@
+language: java
+sudo: false
+script: 
+  - cd _pom
+  - mvn clean install -DskipTests=true -Dmaven.test.skip=true
