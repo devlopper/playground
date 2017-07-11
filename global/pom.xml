@@ -40,7 +40,7 @@
 		<version.org.jboss.spec.jboss.javaee>3.0.0.Final</version.org.jboss.spec.jboss.javaee>
 
 		<!-- other plugin versions -->
-		<version.compiler.plugin>3.1</version.compiler.plugin>
+		<version.compiler.plugin>3.6.1</version.compiler.plugin>
 		<maven.ejb.plugin>2.3</maven.ejb.plugin>
 
 		<!--Maven Plugins & co -->
@@ -124,10 +124,22 @@
 				<configuration>
 					<source>${version.maven.compiler.source}</source>
 					<target>${version.maven.compiler.target}</target>
-					<fork>true</fork>
-					<meminitial>512m</meminitial>
-          			<maxmem>1048m</maxmem>
+					<!--fork>true</fork>
+					<meminitial>8192m</meminitial>
+          			<maxmem>8192m</maxmem-->
 				</configuration>
+				<!--executions>
+	                <execution>
+	                    <id>default-testCompile</id>
+	                    <phase>test-compile</phase>
+	                    <goals>
+	                        <goal>testCompile</goal>
+	                    </goals>
+	                    <configuration>
+	                        <skip>true</skip>
+	                    </configuration>
+	                </execution>
+	            </executions-->
 			</plugin>
 
 			<plugin>
@@ -385,7 +397,7 @@
 			</build>
 		</profile>
 		
-		<profile>
+		<!--profile>
 			<id>test-unit</id>
 			<build>
 				<plugins>
@@ -411,7 +423,7 @@
 					</plugin>
 				</plugins>
 			</build>
-		</profile>
+		</profile-->
 
 		<profile>
 			<id>no-integration-tests</id>
