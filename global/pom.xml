@@ -124,9 +124,7 @@
 				<configuration>
 					<source>${version.maven.compiler.source}</source>
 					<target>${version.maven.compiler.target}</target>
-					<!--fork>true</fork>
-					<meminitial>8192m</meminitial>
-          			<maxmem>8192m</maxmem-->
+					<useIncrementalCompilation>false</useIncrementalCompilation>
 				</configuration>
 				<!--executions>
 	                <execution>
