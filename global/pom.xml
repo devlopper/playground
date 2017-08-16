@@ -61,8 +61,8 @@
 		<!-- Misc -->
 		<version.jrebel>1.1.5</version.jrebel>
 		<version.lombokproject>1.16.8</version.lombokproject>
-		<version.logging.slf4j>1.7.12</version.logging.slf4j>
-		<version.logging.slf4j.log4j>1.7.12</version.logging.slf4j.log4j>
+		<version.logging.slf4j>1.7.25</version.logging.slf4j>
+		<version.logging.slf4j.log4j>1.7.25</version.logging.slf4j.log4j>
 
 		<!-- Repositories -->
 		<!-- Local Repository -->
