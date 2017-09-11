@@ -217,6 +217,13 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!-- Validation Implementation -->
+		<!--dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.3.5.Final</version>
+		</dependency-->
+
 		<!-- Code Utilities -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -275,7 +282,6 @@
 			<version>1.9.3</version>
 		</dependency>
 		
-
 		<!-- cyk -->
 		<dependency>
 			<groupId>org.cyk.utility</groupId>
