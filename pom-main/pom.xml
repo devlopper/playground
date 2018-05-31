@@ -28,7 +28,15 @@
 
 		<!-- Test -->
 		<junit.version>4.8.1</junit.version>
+		
 	</properties>
+
+	<distributionManagement>
+		<repository>
+			<id>distribution.management.url</id>
+			<url>${distribution.management.url}</url>
+		</repository>
+	</distributionManagement>
 
 	<build>
 		<plugins>
