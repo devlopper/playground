@@ -3,15 +3,15 @@
 
 	<parent>
 		<groupId>org.cyk.pom.base</groupId>
-		<artifactId>pom-base</artifactId>
+		<artifactId>pom-test</artifactId>
 		<version>0.0.1</version>
 	</parent>
 
-	<name>CYK Project object model for Main</name>
+	<name>CYK Project object model for Test</name>
 	<url>http://www.cykcorp.org</url>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.cyk.pom.main</groupId>
-	<artifactId>pom-main</artifactId>
+	<groupId>org.cyk.pom.test</groupId>
+	<artifactId>pom-test</artifactId>
 	<version>0.0.1</version>
 	<packaging>pom</packaging>
 
