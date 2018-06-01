@@ -1,0 +1,86 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<groupId>org.cyk.pom.spring</groupId>
+		<artifactId>pom-spring</artifactId>
+		<version>pom.spring.0.0.1</version>
+	</parent>
+
+	<name>CYK project object model for spring boot</name>
+	<url>http://www.cykcorp.org</url>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.cyk.pom.spring.boot</groupId>
+	<artifactId>pom-spring-boot</artifactId>
+	<version>pom.spring.boot.0.0.1</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<spring-boot-dependencies.version>2.0.2.RELEASE</spring-boot-dependencies.version>
+		<spring-boot-maven-plugin.version>2.0.2.RELEASE</spring-boot-maven-plugin.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot-dependencies.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<version>${spring-boot-maven-plugin.version}</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>repackage</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>package.as.microservices</id>
+			
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+				<finalName>${project.artifactId}-${project.version}</finalName>
+			</build>
+
+			<dependencies>
+				<!-- Web server  -->
+				<dependency>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</dependency>
+			</dependencies>
+
+		</profile>
+	</profiles>
+
+</project>

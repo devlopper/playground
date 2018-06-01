@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-	<name>CYK base project object model</name>
+	<name>CYK project object model</name>
 	<url>http://www.cykcorp.org</url>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.cyk.pom.base</groupId>
@@ -25,16 +25,10 @@
 		<!-- Web archive -->
 		<failOnMissingWebXml>false</failOnMissingWebXml>
 
-		<!-- JBoss -->
-		<wildfly.swarm.version>1.0.0.Final</wildfly.swarm.version>
-
-		<!-- Spring -->
-		<spring-boot-dependencies.version>2.0.2.RELEASE</spring-boot-dependencies.version>
-		<spring-boot-maven-plugin.version>2.0.2.RELEASE</spring-boot-maven-plugin.version>
 		<!-- ********************************************************************************** -->
 
 		<!-- Test -->
-		<junit.version>4.8.1</junit.version>
+		<junit.version>4.12</junit.version>
 
 	</properties>
 
@@ -55,30 +49,6 @@
 				<scope>provided</scope>
 			</dependency>
 
-			<!-- Wildfly -->
-			<dependency>
-				<groupId>org.wildfly.swarm</groupId>
-				<artifactId>bom</artifactId>
-				<version>${wildfly.swarm.version}</version>
-				<scope>import</scope>
-				<type>pom</type>
-			</dependency>
-
-			<dependency>
-				<groupId>org.wildfly.swarm</groupId>
-				<artifactId>undertow</artifactId>
-				<version>${wildfly.swarm.version}</version>
-			</dependency>
-
-			<!-- Spring -->
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-dependencies</artifactId>
-				<version>${spring-boot-dependencies.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-
 			<!-- Testing -->
 			<dependency>
 				<groupId>junit</groupId>
@@ -89,36 +59,6 @@
 	</dependencyManagement>
 
 	<build>
-		<pluginManagement>
-			<plugins>
-				<!-- Wildfly -->
-				<plugin>
-					<groupId>org.wildfly.swarm</groupId>
-					<artifactId>wildfly-swarm-plugin</artifactId>
-					<version>${wildfly.swarm.version}</version>
-					<executions>
-						<execution>
-							<goals>
-								<goal>package</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-				<!-- Spring -->
-				<plugin>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-maven-plugin</artifactId>
-					<version>${spring-boot-maven-plugin.version}</version>
-					<executions>
-						<execution>
-							<goals>
-								<goal>repackage</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -139,49 +79,9 @@
 		</dependency>
 	</dependencies>
 
-	<profiles>
-		<profile>
-			<id>package.microservices.wildfly.swarm</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.wildfly.swarm</groupId>
-						<artifactId>wildfly-swarm-plugin</artifactId>
-					</plugin>
-				</plugins>
-			</build>
-
-			<dependencies>
-				<dependency>
-					<groupId>org.wildfly.swarm</groupId>
-					<artifactId>undertow</artifactId>
-				</dependency>
-			</dependencies>
-
-		</profile>
-
-		<profile>
-			<id>package.microservices.spring.boot</id>
-
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.springframework.boot</groupId>
-						<artifactId>spring-boot-maven-plugin</artifactId>
-					</plugin>
-				</plugins>
-			</build>
-
-			<dependencies>
-
-				<dependency>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-tomcat</artifactId>
-				</dependency>
-
-			</dependencies>
-
-		</profile>
-	</profiles>
-
+	<modules>
+		<module>../pom-jee</module> 
+		<module>../pom-spring</module>
+	</modules> 
+	
 </project>
