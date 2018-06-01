@@ -16,7 +16,7 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<wildfly.swarm.version>1.0.0.Final</wildfly.swarm.version>
+		<wildfly.swarm.bom.version>2018.5.0</wildfly.swarm.bom.version>
 	</properties>
 
 	<dependencyManagement>
@@ -24,7 +24,7 @@
 			<dependency>
 				<groupId>org.wildfly.swarm</groupId>
 				<artifactId>bom</artifactId>
-				<version>${wildfly.swarm.version}</version>
+				<version>${wildfly.swarm.bom.version}</version>
 				<scope>import</scope>
 				<type>pom</type>
 			</dependency>
@@ -33,7 +33,7 @@
 			<dependency>
 				<groupId>org.wildfly.swarm</groupId>
 				<artifactId>undertow</artifactId>
-				<version>${wildfly.swarm.version}</version>
+				<version>${wildfly.swarm.bom.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -45,7 +45,7 @@
 				<plugin>
 					<groupId>org.wildfly.swarm</groupId>
 					<artifactId>wildfly-swarm-plugin</artifactId>
-					<version>${wildfly.swarm.version}</version>
+					<version>${wildfly.swarm.bom.version}</version>
 					<executions>
 						<execution>
 							<goals>
