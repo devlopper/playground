@@ -6,29 +6,36 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.cyk.pom.base</groupId>
 	<artifactId>pom-base</artifactId>
-	<version>0.0.1</version>
+	<version>pom.base.0.0.1</version>
 	<packaging>pom</packaging>
 
 	<properties>
 		<!-- Project -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
 		<!-- Java -->
 		<java.ee.api.version>7.0</java.ee.api.version>
+
 		<!-- Maven -->
 		<maven.compiler.plugin.configuration.source>1.8</maven.compiler.plugin.configuration.source>
 		<maven.compiler.plugin.configuration.target>1.8</maven.compiler.plugin.configuration.target>
 		<maven.compiler.plugin.version>3.7.0</maven.compiler.plugin.version>
+
 		<!-- Web archive -->
 		<failOnMissingWebXml>false</failOnMissingWebXml>
-		<!-- JBoss -->
-		<version.wildfly.swarm>1.0.0.Final</version.wildfly.swarm>
 
+		<!-- JBoss -->
+		<wildfly.swarm.version>1.0.0.Final</wildfly.swarm.version>
+
+		<!-- Spring -->
+		<spring-boot-dependencies.version>2.0.2.RELEASE</spring-boot-dependencies.version>
+		<spring-boot-maven-plugin.version>2.0.2.RELEASE</spring-boot-maven-plugin.version>
 		<!-- ********************************************************************************** -->
 
 		<!-- Test -->
 		<junit.version>4.8.1</junit.version>
-		
+
 	</properties>
 
 	<distributionManagement>
@@ -38,7 +45,80 @@
 		</repository>
 	</distributionManagement>
 
+	<dependencyManagement>
+		<dependencies>
+			<!-- Java EE 7 -->
+			<dependency>
+				<groupId>javax</groupId>
+				<artifactId>javaee-api</artifactId>
+				<version>${java.ee.api.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- Wildfly -->
+			<dependency>
+				<groupId>org.wildfly.swarm</groupId>
+				<artifactId>bom</artifactId>
+				<version>${wildfly.swarm.version}</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+
+			<dependency>
+				<groupId>org.wildfly.swarm</groupId>
+				<artifactId>undertow</artifactId>
+				<version>${wildfly.swarm.version}</version>
+			</dependency>
+
+			<!-- Spring -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot-dependencies.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- Testing -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<build>
+		<pluginManagement>
+			<plugins>
+				<!-- Wildfly -->
+				<plugin>
+					<groupId>org.wildfly.swarm</groupId>
+					<artifactId>wildfly-swarm-plugin</artifactId>
+					<version>${wildfly.swarm.version}</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>package</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<!-- Spring -->
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<version>${spring-boot-maven-plugin.version}</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>repackage</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -51,5 +131,57 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>package.microservices.wildfly.swarm</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.wildfly.swarm</groupId>
+						<artifactId>wildfly-swarm-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+
+			<dependencies>
+				<dependency>
+					<groupId>org.wildfly.swarm</groupId>
+					<artifactId>undertow</artifactId>
+				</dependency>
+			</dependencies>
+
+		</profile>
+
+		<profile>
+			<id>package.microservices.spring.boot</id>
+
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+
+			<dependencies>
+
+				<dependency>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</dependency>
+
+			</dependencies>
+
+		</profile>
+	</profiles>
 
 </project>
