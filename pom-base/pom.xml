@@ -24,7 +24,13 @@
 
 		<!-- Web archive -->
 		<failOnMissingWebXml>false</failOnMissingWebXml>
-
+		
+		<!-- Tools -->
+		<lombok.version>1.16.14</lombok.version> <!-- Getter and setter -->
+		<mapstruct.version>1.2.0.Final</mapstruct.version> <!-- mapping between object -->
+		<mapstruct.processor.version>1.2.0.Final</mapstruct.processor.version>
+		<!-- Lombok and mapstruct version must be compatible -->
+		
 		<!-- ********************************************************************************** -->
 
 		<!-- Test -->
@@ -49,6 +55,15 @@
 				<scope>provided</scope>
 			</dependency>
 
+			<!-- Tools -->
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+
 			<!-- Testing -->
 			<dependency>
 				<groupId>junit</groupId>
@@ -67,6 +82,13 @@
 				<configuration>
 					<source>${maven.compiler.plugin.configuration.source}</source>
 					<target>${maven.compiler.plugin.configuration.target}</target>
+					<!--annotationProcessorPaths>
+	                    <path>
+	                        <groupId>org.mapstruct</groupId>
+	                        <artifactId>mapstruct-processor</artifactId>
+	                        <version>${mapstruct.processor.version}</version>
+	                    </path>
+	                </annotationProcessorPaths-->
 				</configuration>
 			</plugin>
 		</plugins>
@@ -74,14 +96,33 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+	        <groupId>org.mapstruct</groupId>
+	        <artifactId>mapstruct-jdk8</artifactId>
+	        <version>${mapstruct.version}</version>
+	    </dependency>
+	    
+	    <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>${mapstruct.processor.version}</version>
+            <scope>provided</scope>
+		</dependency>
+		
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 		</dependency>
 	</dependencies>
 
 	<modules>
-		<module>../pom-jee</module> 
+		<module>../pom-jee</module>
 		<module>../pom-spring</module>
-	</modules> 
-	
+	</modules>
+
 </project>
