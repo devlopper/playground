@@ -122,7 +122,10 @@
 
 	<modules>
 		<module>../pom-jee</module>
+		<module>../pom-jee-server</module>
+		<module>../pom-jee-client</module>
 		<module>../pom-spring</module>
+		<module>../pom-maven-archetype</module>
 	</modules>
 
 </project>

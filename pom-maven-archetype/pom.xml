@@ -1,0 +1,56 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<groupId>org.cyk.pom.base</groupId>
+		<artifactId>pom-base</artifactId>
+		<version>pom.base.0.0.1</version>
+	</parent>
+
+	<name>project object model for maven archetype</name>
+	<url>http://www.cykcorp.org</url>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.cyk.pom.maven</groupId>
+	<artifactId>maven-archetype</artifactId>
+	<version>pom.maven.archetype.0.0.1</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<archetype-packaging.version>3.0.1</archetype-packaging.version>
+		<maven-archetype-plugin.version>3.0.1</maven-archetype-plugin.version>
+		<maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
+	</properties>
+
+	<build>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.archetype</groupId>
+				<artifactId>archetype-packaging</artifactId>
+				<version>${archetype-packaging.version}</version>
+			</extension>
+		</extensions>
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-archetype-plugin</artifactId>
+					<version>${maven-archetype-plugin.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven-resources-plugin.version}</version>
+				<configuration>
+					<includeEmptyDirs>true</includeEmptyDirs>
+				</configuration>
+			</plugin>
+		</plugins>
+
+
+	</build>
+
+</project>
