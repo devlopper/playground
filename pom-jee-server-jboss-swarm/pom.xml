@@ -2,41 +2,37 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<parent>
-		<groupId>org.cyk.pom.jee</groupId>
-		<artifactId>pom-jee</artifactId>
-		<version>pom.jee.0.0.1</version>
+		<groupId>org.cyk.pom.jee.server.jboss</groupId>
+		<artifactId>pom-jee-server-jboss</artifactId>
+		<version>pom.jee.server.jboss.0.0.1</version>
 	</parent>
 
-	<name>JBoss project object model</name>
+	<name>JBoss Swarm project object model</name>
 	<url>http://www.cykcorp.org</url>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.cyk.pom.jboss</groupId>
-	<artifactId>pom-jboss</artifactId>
-	<version>pom.jboss.0.0.1</version>
+	<groupId>org.cyk.pom.jee.server.jboss.swarm</groupId>
+	<artifactId>pom-jee-server-jboss-swarm</artifactId>
+	<version>pom.jee.server.jboss.swarm.0.0.1</version>
 	<packaging>pom</packaging>
 
 	<properties>
-		<wildfly.swarm.bom.version>2018.5.0</wildfly.swarm.bom.version>
+		<wildfly.swarm.bom.version>2017.2.0</wildfly.swarm.bom.version>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
+			<!-- Wildfly Swarm Bill Of Materials -->
 			<dependency>
 				<groupId>org.wildfly.swarm</groupId>
-				<artifactId>bom</artifactId>
+				<artifactId>bom-all</artifactId>
 				<version>${wildfly.swarm.bom.version}</version>
 				<scope>import</scope>
 				<type>pom</type>
 			</dependency>
-			
-			<!-- Web server -->
-			<dependency>
-				<groupId>org.wildfly.swarm</groupId>
-				<artifactId>undertow</artifactId>
-				<version>${wildfly.swarm.bom.version}</version>
-			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
+
 
 	<build>
 		<pluginManagement>
@@ -58,10 +54,18 @@
 		</pluginManagement>
 	</build>
 
+	<dependencies>
+		<dependency>
+			<groupId>org.wildfly.swarm</groupId>
+			<artifactId>arquillian</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
 	<profiles>
 		<profile>
 			<id>package.as.microservices</id>
-			
+
 			<build>
 				<plugins>
 					<plugin>
@@ -73,7 +77,7 @@
 			</build>
 
 			<dependencies>
-				<!-- Web server  -->
+				<!-- Web server -->
 				<dependency>
 					<groupId>org.wildfly.swarm</groupId>
 					<artifactId>undertow</artifactId>

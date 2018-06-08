@@ -7,7 +7,7 @@
 		<version>pom.jee.client.0.0.1</version>
 	</parent>
 
-	<name>CYK client project object model based on jboss</name>
+	<name>JBoss client project object model</name>
 	<url>http://www.cykcorp.org</url>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.cyk.pom.jee.client.jboss</groupId>

@@ -7,7 +7,7 @@
 		<version>pom.jee.0.0.1</version>
 	</parent>
 
-	<name>CYK client project object model based on jee</name>
+	<name>JEE client project object model</name>
 	<url>http://www.cykcorp.org</url>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.cyk.pom.jee.client</groupId>

@@ -7,7 +7,7 @@
 		<version>pom.spring.0.0.1</version>
 	</parent>
 
-	<name>CYK project object model for spring boot</name>
+	<name>Spring boot project object model</name>
 	<url>http://www.cykcorp.org</url>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.cyk.pom.spring.boot</groupId>
