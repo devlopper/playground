@@ -86,4 +86,11 @@
 		</profile>
 	</profiles>
 
+	<repositories>
+	    <repository>
+	        <id>cyk</id>
+	        <url>https://rawgit.com/devlopper/artifact.maven/master</url>
+	    </repository>
+	</repositories>
+
 </project>
