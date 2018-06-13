@@ -42,5 +42,9 @@
 			<artifactId>resteasy-jaxb-provider</artifactId>
 		</dependency>
 	</dependencies>
+	
+	<modules>
+		<module>../pom-jee-client-jboss-swarm</module> 
+	</modules>
 
 </project>

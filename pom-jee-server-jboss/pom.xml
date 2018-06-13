@@ -7,7 +7,7 @@
 		<version>pom.jee.server.0.0.1</version>
 	</parent>
 
-	<name>JBoss Server project object model</name>
+	<name>JBoss server project object model</name>
 	<url>http://www.cykcorp.org</url>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.cyk.pom.jee.server.jboss</groupId>
@@ -17,24 +17,9 @@
 
 	<properties>
 		<!-- Testing -->
-		<!--arquillian.bom.version>1.1.5.Final</arquillian.bom.version-->
-		<arquillian.bom.version>1.1.12.Final</arquillian.bom.version>
 		<wildfly.version>8.2.1.Final</wildfly.version>
 		<h2.version>1.4.193</h2.version>
 	</properties>
-
-	<dependencyManagement>
-		<dependencies>
-			<!-- Arquillian BOM (Bill Of Materials). -->
-			<dependency>
-				<groupId>org.jboss.arquillian</groupId>
-				<artifactId>arquillian-bom</artifactId>
-				<version>${arquillian.bom.version}</version>
-				<scope>import</scope>
-				<type>pom</type>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 
 	<build>
 		<pluginManagement>
@@ -82,18 +67,11 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.jboss.arquillian.junit</groupId>
-			<artifactId>arquillian-junit-container</artifactId>
-			<scope>test</scope>
-		</dependency>
-		
-		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<version>${h2.version}</version>
 			<scope>test</scope>
 		</dependency>
-
 	</dependencies>
 
 	<profiles>

@@ -24,12 +24,14 @@
 
 		<!-- Web archive -->
 		<failOnMissingWebXml>false</failOnMissingWebXml>
-		
+
 		<!-- Tools -->
 		<lombok.version>1.16.14</lombok.version> <!-- Getter and setter -->
 		<mapstruct.version>1.2.0.Final</mapstruct.version> <!-- mapping between object -->
 		<mapstruct.processor.version>1.2.0.Final</mapstruct.processor.version>
 		<!-- Lombok and mapstruct version must be compatible -->
+		
+		<apache.commons-lang3.version>3.7</apache.commons-lang3.version>
 		
 		<!-- ********************************************************************************** -->
 
@@ -63,12 +65,12 @@
 				<scope>provided</scope>
 			</dependency>
 
-
 			<!-- Testing -->
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>${junit.version}</version>
+				<scope>test</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -82,13 +84,9 @@
 				<configuration>
 					<source>${maven.compiler.plugin.configuration.source}</source>
 					<target>${maven.compiler.plugin.configuration.target}</target>
-					<!--annotationProcessorPaths>
-	                    <path>
-	                        <groupId>org.mapstruct</groupId>
-	                        <artifactId>mapstruct-processor</artifactId>
-	                        <version>${mapstruct.processor.version}</version>
-	                    </path>
-	                </annotationProcessorPaths-->
+					<!--annotationProcessorPaths> <path> <groupId>org.mapstruct</groupId> 
+						<artifactId>mapstruct-processor</artifactId> <version>${mapstruct.processor.version}</version> 
+						</path> </annotationProcessorPaths -->
 				</configuration>
 			</plugin>
 		</plugins>
@@ -100,31 +98,39 @@
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
-	        <groupId>org.mapstruct</groupId>
-	        <artifactId>mapstruct-jdk8</artifactId>
-	        <version>${mapstruct.version}</version>
-	    </dependency>
-	    
-	    <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct-processor</artifactId>
-            <version>${mapstruct.processor.version}</version>
-            <scope>provided</scope>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct-jdk8</artifactId>
+			<version>${mapstruct.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct-processor</artifactId>
+			<version>${mapstruct.processor.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${apache.commons-lang3.version}</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 		</dependency>
+
 	</dependencies>
 
 	<modules>
+		<!-- JEE -->
 		<module>../pom-jee</module>
-		<module>../pom-jee-server</module>
-		<module>../pom-jee-client</module>
+		<!-- Spring -->
 		<module>../pom-spring</module>
+		<!-- Others -->
 		<module>../pom-maven-archetype</module>
 	</modules>
 
