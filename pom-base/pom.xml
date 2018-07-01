@@ -37,7 +37,13 @@
 
 		<!-- Test -->
 		<junit.version>4.12</junit.version>
-
+		
+		<!-- Assertion -->
+		<assertj-core.version>3.10.0</assertj-core.version>
+		
+		<!-- Logging -->
+		<log4j-core.version>2.8.2</log4j-core.version>
+		<log4j-api.version>2.8.2</log4j-api.version>
 	</properties>
 
 	<distributionManagement>
@@ -118,11 +124,35 @@
 			<version>${apache.commons-lang3.version}</version>
 		</dependency>
 		
+		<!-- Test -->
+		
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 		</dependency>
-
+		
+		<!-- Assertion -->
+		
+		<dependency>
+		    <groupId>org.assertj</groupId>
+		    <artifactId>assertj-core</artifactId>
+		    <version>${assertj-core.version}</version>
+		</dependency>
+		
+		<!-- Logging -->
+		
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>${log4j-api.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${log4j-core.version}</version>
+		</dependency>
+		
 	</dependencies>
 
 	<modules>
