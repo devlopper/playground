@@ -1,0 +1,22 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<groupId>org.cyk.pom.jee</groupId>
+		<artifactId>pom-jee</artifactId>
+		<version>pom.jee.0.0.1</version>
+	</parent>
+
+	<name>JEE server representation test project object model</name>
+	<url>http://www.cykcorp.org</url>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.cyk.pom.jee.server.representation.test</groupId>
+	<artifactId>pom-jee-server-representation-test</artifactId>
+	<version>0.0.1</version>
+	<packaging>pom</packaging>
+	
+	<modules>
+		<module>../pom-jee-server-representation-test-jboss</module> 
+	</modules> 
+	
+</project>

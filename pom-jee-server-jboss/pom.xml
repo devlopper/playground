@@ -130,6 +130,20 @@
 				</plugins>
 			</build>
 		</profile>
+		
+		<profile>
+			<id>jdbc-h2</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>com.h2database</groupId>
+					<artifactId>h2</artifactId>
+					<version>${h2.version}</version>
+				</dependency>
+			</dependencies>
+		</profile>
 	</profiles>
 	
 	<modules>
