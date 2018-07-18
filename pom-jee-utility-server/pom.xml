@@ -17,6 +17,8 @@
 	
 	<modules>
 		<module>../pom-jee-utility-server-persistence</module> 
+		<module>../pom-jee-utility-server-business</module> 
+		<module>../pom-jee-utility-server-representation</module> 
 	</modules> 
 	
 </project>
