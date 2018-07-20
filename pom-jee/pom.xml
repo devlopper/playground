@@ -114,7 +114,7 @@
 		<module>../pom-jee-server-representation-main</module>
 		<module>../pom-jee-server-representation-test</module>
 		<module>../pom-jee-client</module>
-		<module>../pom-jee-utility</module>
+		<module>../pom-jee-utility-__kernel__</module>
 	</modules>
 
 </project>
