@@ -10,7 +10,7 @@
 	<name>JEE utility kernel project object model</name>
 	<url>http://www.cykcorp.org</url>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.cyk.pom.jee.utility-__kernel__</groupId>
+	<groupId>org.cyk.pom.jee.utility.__kernel__</groupId>
 	<artifactId>pom-jee-utility-__kernel__</artifactId>
 	<version>pom.jee.utility.__kernel__.0.0.1</version>
 	<packaging>pom</packaging>
