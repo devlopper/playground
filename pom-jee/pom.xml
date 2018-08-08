@@ -19,7 +19,7 @@
 		<!-- Testing -->
 		<!--arquillian.bom.version>1.1.5.Final</arquillian.bom.version -->
 		<arquillian.bom.version>1.1.12.Final</arquillian.bom.version>
-		
+		<com.h2database.h2.version>1.4.197</com.h2database.h2.version>
 		
 	</properties>
 
@@ -104,6 +104,21 @@
 					<artifactId>h2</artifactId>
 					<version>1.4.197</version>
 					<scope>test</scope>
+				</dependency>
+			</dependencies>
+		</profile>
+		
+		<profile>
+			<id>com.h2database.h2</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<dependencies>
+				<dependency>
+					<groupId>com.h2database</groupId>
+					<artifactId>h2</artifactId>
+					<version>${com.h2database.h2.version}</version>
 				</dependency>
 			</dependencies>
 		</profile>

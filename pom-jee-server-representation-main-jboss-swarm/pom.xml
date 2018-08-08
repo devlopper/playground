@@ -12,7 +12,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.cyk.pom.jee.server.representation.main.jboss.swarm</groupId>
 	<artifactId>pom-jee-server-representation-main-jboss-swarm</artifactId>
-	<version>0.0.1</version>
+	<version>pom.jee.server.representation.main.jboss.swarm.0.0.1</version>
 	<packaging>pom</packaging>
 	
 	<properties>
