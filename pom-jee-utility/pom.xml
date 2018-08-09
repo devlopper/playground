@@ -14,6 +14,10 @@
 	<artifactId>pom-jee-utility</artifactId>
 	<version>pom.jee.utility.0.0.1</version>
 	<packaging>pom</packaging>
+
+	<properties>
+		<org.wildfly.swarm.wildfly-swarm-plugin.version>2017.2.0</org.wildfly.swarm.wildfly-swarm-plugin.version>
+	</properties>
 	
 	<modules>
 		<module>../pom-jee-utility-server</module> 

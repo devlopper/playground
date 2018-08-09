@@ -24,6 +24,7 @@
 					<plugin>
 						<groupId>org.wildfly.swarm</groupId>
 						<artifactId>wildfly-swarm-plugin</artifactId>
+						<version>${org.wildfly.swarm.wildfly-swarm-plugin.version}</version>
 					</plugin>
 				</plugins>
 				<finalName>${project.artifactId}-${project.version}</finalName>
