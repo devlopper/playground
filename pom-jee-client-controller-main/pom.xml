@@ -7,17 +7,16 @@
 		<version>pom.jee.0.0.1</version>
 	</parent>
 
-	<name>JEE client project object model</name>
+	<name>JEE client controller main project object model</name>
 	<url>http://www.cykcorp.org</url>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.cyk.pom.jee.client</groupId>
-	<artifactId>pom-jee-client</artifactId>
-	<version>pom.jee.client.0.0.1</version>
+	<groupId>org.cyk.pom.jee.client.controller.main</groupId>
+	<artifactId>pom-jee-client-controller-main</artifactId>
+	<version>0.0.1</version>
 	<packaging>pom</packaging>
 	
 	<modules>
-		<module>../pom-jee-client-jboss</module> 
-		<module>../pom-jee-client-controller-main</module>
+		<module>../pom-jee-client-controller-web-main</module> 
 	</modules> 
 	
 </project>

@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<groupId>org.cyk.pom.jee.client.controller.web.jsf.primefaces.main.jboss</groupId>
+		<artifactId>pom-jee-client-controller-web-jsf-primefaces-main-jboss</artifactId>
+		<version>0.0.1</version>
+	</parent>
+
+	<name>JEE client primefaces controller jboss swarm main project object model</name>
+	<url>http://www.cykcorp.org</url>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.cyk.pom.jee.client.controller.web.jsf.primefaces.main.jboss.swarm</groupId>
+	<artifactId>pom-jee-client-controller-web-jsf-primefaces-main-jboss-swarm</artifactId>
+	<version>0.0.1</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<wildfly.swarm.bom.version>2017.2.0</wildfly.swarm.bom.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- Wildfly Swarm Bill Of Materials -->
+			<dependency>
+				<groupId>org.wildfly.swarm</groupId>
+				<artifactId>bom-all</artifactId>
+				<version>${wildfly.swarm.bom.version}</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
+	<dependencies>
+		<dependency>
+			<groupId>org.wildfly.swarm</groupId>
+			<artifactId>jsf</artifactId>
+		</dependency>
+	</dependencies>
+
+</project>

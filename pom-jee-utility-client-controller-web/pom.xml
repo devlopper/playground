@@ -15,6 +15,10 @@
 	<version>pom.jee.utility.client.controller.web.0.0.1</version>
 	<packaging>pom</packaging>
 	
+	<properties>
+		<!--version.prettyfaces>3.0.0.Alpha4</version.prettyfaces-->
+	</properties>
+	
 	<modules>
 		<module>../pom-jee-utility-client-controller-web-jsf</module> 
 	</modules> 
