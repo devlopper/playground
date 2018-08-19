@@ -38,6 +38,16 @@
 			<groupId>org.wildfly.swarm</groupId>
 			<artifactId>jsf</artifactId>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.wildfly.swarm</groupId>
+			<artifactId>jaxrs</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.wildfly.swarm</groupId>
+			<artifactId>cdi</artifactId>
+		</dependency>
 	</dependencies>
 
 </project>
