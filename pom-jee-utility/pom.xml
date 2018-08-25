@@ -16,6 +16,7 @@
 	<packaging>pom</packaging>
 
 	<properties>
+		<org.wildfly.swarm.bom-all.version>2017.2.0</org.wildfly.swarm.bom-all.version>	
 		<org.wildfly.swarm.wildfly-swarm-plugin.version>2017.2.0</org.wildfly.swarm.wildfly-swarm-plugin.version>
 	</properties>
 	
