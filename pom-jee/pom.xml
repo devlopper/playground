@@ -147,6 +147,13 @@
 						</exclusion>
 					</exclusions>
 				</dependency>
+				
+				<!--dependency>
+				  <groupId>org.wildfly.arquillian</groupId>
+				  <artifactId>wildfly-arquillian-container-managed</artifactId>
+				  <version>2.1.1.Final</version>
+				  <scope>test</scope>
+				</dependency-->
 			</dependencies>
 		</profile>
 
