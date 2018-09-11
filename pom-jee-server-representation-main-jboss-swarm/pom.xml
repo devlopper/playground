@@ -16,16 +16,15 @@
 	<packaging>pom</packaging>
 	
 	<properties>
-		<wildfly.swarm.bom.version>2017.2.0</wildfly.swarm.bom.version>
+		<org.wildfly.swarm.bom-all.version>2017.2.0</org.wildfly.swarm.bom-all.version>
 	</properties>
-
+	
 	<dependencyManagement>
 		<dependencies>
-			<!-- Wildfly Swarm Bill Of Materials -->
 			<dependency>
 				<groupId>org.wildfly.swarm</groupId>
 				<artifactId>bom-all</artifactId>
-				<version>${wildfly.swarm.bom.version}</version>
+				<version>${org.wildfly.swarm.bom-all.version}</version>
 				<scope>import</scope>
 				<type>pom</type>
 			</dependency>
