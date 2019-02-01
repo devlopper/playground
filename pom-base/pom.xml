@@ -48,6 +48,12 @@
 		<log4j-core.version>2.8.2</log4j-core.version>
 		<log4j-api.version>2.8.2</log4j-api.version>
 		<log4j-slf4j-impl.version>2.8.2</log4j-slf4j-impl.version>
+		
+		<!-- JDBC Driver -->
+		<com.h2database.h2.version>1.4.197</com.h2database.h2.version>
+		<mysql.mysql-connector-java.version>5.1.47</mysql.mysql-connector-java.version>
+		<com.oracle.ojdbc6.version>11.2.0.4</com.oracle.ojdbc6.version>
+		
 	</properties>
 
 	<distributionManagement>
@@ -225,9 +231,6 @@
 		
 		<profile>
 			<id>jdbc.h2</id>
-			<properties>
-				<com.h2database.h2.version>1.4.197</com.h2database.h2.version>
-			</properties>
 			<dependencies>
 				<dependency>
 					<groupId>com.h2database</groupId>
@@ -239,9 +242,6 @@
 		
 		<profile>
 			<id>jdbc.mysql</id>
-			<properties>
-				<mysql.mysql-connector-java.version>5.1.47</mysql.mysql-connector-java.version>
-			</properties>
 			<dependencies>
 				<dependency>
 					<groupId>mysql</groupId>
@@ -253,9 +253,6 @@
 		
 		<profile>
 			<id>jdbc.oracle</id>
-			<properties>
-				<com.oracle.ojdbc6.version>11.2.0.4</com.oracle.ojdbc6.version>
-			</properties>
 			<dependencies>
 				<dependency>
 				    <groupId>com.oracle</groupId>
