@@ -318,6 +318,29 @@
 			</build>
 		</profile>
 		
+		<!-- Hibernate -->
+		
+		<profile>
+			<id>hibernate.hbm2ddl.auto.create</id>
+			<properties>
+				<hibernate.hbm2ddl.auto>create</hibernate.hbm2ddl.auto>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>hibernate.hbm2ddl.auto.update</id>
+			<properties>
+				<hibernate.hbm2ddl.auto>update</hibernate.hbm2ddl.auto>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>hibernate.hbm2ddl.auto.validate</id>
+			<properties>
+				<hibernate.hbm2ddl.auto>validate</hibernate.hbm2ddl.auto>
+			</properties>
+		</profile>
+		
 		<!-- Microprofile -->
 		
 		<profile>
