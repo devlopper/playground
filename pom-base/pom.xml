@@ -54,6 +54,9 @@
 		<mysql.mysql-connector-java.version>5.1.47</mysql.mysql-connector-java.version>
 		<com.oracle.ojdbc6.version>11.2.0.4</com.oracle.ojdbc6.version>
 		
+		<!-- Data source -->
+		<data.source.host.internet.address>127.0.0.1</data.source.host.internet.address>
+		
 	</properties>
 
 	<distributionManagement>
