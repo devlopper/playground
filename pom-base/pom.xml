@@ -218,18 +218,7 @@
 	</modules>
 	
 	<profiles>
-		<!-- Data source -->
-		
-		<profile>
-			<id>data.source.h2.memory</id>
-			<properties>
-				<data.source.className>org.h2.jdbcx.JdbcDataSource</data.source.className>
-				<data.source.url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</data.source.url>
-				<data.source.user>sa</data.source.user>
-				<data.source.password>sa</data.source.password>
-			</properties>
-		</profile>
-		
+
 		<!-- Database connectivity driver -->
 		
 		<profile>
@@ -263,6 +252,36 @@
 				    <version>${com.oracle.ojdbc6.version}</version>
 				</dependency>
 			</dependencies>
+		</profile>
+		
+		<!-- Data source -->
+		
+		<profile>
+			<id>data.source</id>
+			<properties>
+				<data.source.user>development</data.source.user>
+				<data.source.password>development</data.source.password>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>data.source.oracle</id>
+			<properties>
+				<data.source.driver.name>oracle</data.source.driver.name>
+				<data.source.className>oracle.jdbc.pool.OracleDataSource</data.source.className>
+				<data.source.url>jdbc:oracle:thin:@${data.source.host.internet.address}:1521:xe</data.source.url>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>data.source.h2</id>
+			<properties>
+				<data.source.driver.name>h2</data.source.driver.name>
+				<data.source.className>org.h2.jdbcx.JdbcDataSource</data.source.className>
+				<data.source.url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</data.source.url>
+				<data.source.user>sa</data.source.user>
+				<data.source.password>sa</data.source.password>
+			</properties>
 		</profile>
 		
 		<!-- Application Server -->
