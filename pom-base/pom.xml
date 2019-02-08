@@ -337,6 +337,7 @@
 					</resource>
 				</resources>
 				
+				<finalName>${microprofile.archive.name}</finalName>
 			</build>
 		</profile>
 		
@@ -523,6 +524,8 @@
 				    </plugin>
 				    
 				</plugins>
+				
+				<finalName>${microprofile.archive.name}</finalName>
 			</build>
 			
 			<dependencyManagement>
