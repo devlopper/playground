@@ -371,6 +371,7 @@
 				<org.wildfly.swarm.wildfly-swarm-plugin.version>2017.2.0</org.wildfly.swarm.wildfly-swarm-plugin.version>
 				<org.wildfly.swarm.bom-all.version>2017.2.0</org.wildfly.swarm.bom-all.version>
 				<packaging_profile_identifier>packaging/microprofile/jboss/wildfly/swarm</packaging_profile_identifier>
+				<microprofile.archive.name>${project.artifactId}</microprofile.archive.name>
 			</properties>
 			
 			<build>
@@ -415,8 +416,7 @@
 						<groupId>org.wildfly.swarm</groupId>
 						<artifactId>wildfly-swarm-plugin</artifactId>
 					</plugin>
-					
-					
+										
 					<plugin>
 				        <groupId>org.apache.maven.plugins</groupId>
 				        <artifactId>maven-war-plugin</artifactId>
@@ -437,7 +437,7 @@
 				    
 				</plugins>
 				
-				<finalName>${project.artifactId}-${project.version}</finalName>
+				<finalName>${microprofile.archive.name}</finalName>
 			</build>
 			
 			<dependencyManagement>
