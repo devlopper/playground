@@ -20,4 +20,18 @@
 		<module>../pom-jee-client-controller-main</module>
 	</modules> 
 	
+	<!-- User Interface Theme -->
+	<profiles>
+		<profile>
+			<id>user.interface.theme.primefaces.atlantis</id>
+			<dependencies>
+				<dependency>
+		            <groupId>org.primefaces.themes</groupId>
+		            <artifactId>atlantis</artifactId>
+		            <version>1.0.1</version>
+		        </dependency>
+			</dependencies>
+		</profile>
+	</profiles>
+	
 </project>
