@@ -16,17 +16,15 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<org.omnifaces-omnifaces.version>3.2</org.omnifaces-omnifaces.version>
+		<org.omnifaces-omnifaces.version>2.7</org.omnifaces-omnifaces.version>
 	</properties>
 	
 	<dependencies>
-		<!--
 		<dependency>
 			<groupId>org.omnifaces</groupId>
 			<artifactId>omnifaces</artifactId>
 			<version>${org.omnifaces-omnifaces.version}</version>
 		</dependency>
-		-->
 	</dependencies>
 	
 	<modules>
