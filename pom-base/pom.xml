@@ -57,6 +57,9 @@
 		<!-- Data source -->
 		<data.source.host.internet.address>127.0.0.1</data.source.host.internet.address>
 		
+		<!-- Dependency injection -->
+		<org.jboss.weld.se-weld-se-core>3.1.0.Final</org.jboss.weld.se-weld-se-core>
+		
 	</properties>
 
 	<distributionManagement>
@@ -206,6 +209,15 @@
 		    <version>${log4j-slf4j-impl.version}</version>
 		</dependency-->
 		
+		<!-- Dependency injection -->
+		<!--
+		<dependency>
+		    <groupId>org.jboss.weld.se</groupId>
+		    <artifactId>weld-se-core</artifactId>
+		    <version>${org.jboss.weld.se-weld-se-core}</version>
+		    <scope>provided</scope>
+		</dependency>
+		-->
 	</dependencies>
 
 	<modules>
@@ -218,7 +230,18 @@
 	</modules>
 	
 	<profiles>
-
+		<!-- Dependency Injection -->
+		<profile>
+			<id>dependency.injection.weld.se.jboss</id>
+			<dependencies>
+				<dependency>
+				    <groupId>org.jboss.weld.se</groupId>
+				    <artifactId>weld-se-core</artifactId>
+				    <version>${org.jboss.weld.se-weld-se-core}</version>
+				</dependency>
+			</dependencies>
+		</profile>
+		
 		<!-- Database connectivity driver -->
 		
 		<profile>
