@@ -242,6 +242,29 @@
 			</dependencies>
 		</profile>
 		
+		<!-- Database management system -->
+		
+		<profile>
+			<id>data.base.management.system</id>
+			<properties>
+				<data.base.management.system.host>localhost</data.base.management.system.host>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>data.base.management.system.mysql</id>
+			<properties>
+				<data.base.management.system.port>3306</data.base.management.system.port>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>data.base.management.system.oracle</id>
+			<properties>
+				<data.base.management.system.port>1521</data.base.management.system.port>
+			</properties>
+		</profile>
+		
 		<!-- Database connectivity driver -->
 		
 		<profile>
@@ -304,6 +327,15 @@
 				<data.source.url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</data.source.url>
 				<data.source.user>sa</data.source.user>
 				<data.source.password>sa</data.source.password>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>data.source.mysql</id>
+			<properties>
+				<data.source.driver.name>mysql</data.source.driver.name>
+				<data.source.className>com.mysql.jdbc.jdbc2.optional.MysqlXADataSource</data.source.className>
+				<data.source.url>jdbc:mysql://${data.base.management.system.host}:${data.base.management.system.port}/${data.source.schema.name}</data.source.url>
 			</properties>
 		</profile>
 		
