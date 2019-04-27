@@ -23,29 +23,23 @@
 	<!-- User Interface Theme -->
 	<profiles>
 		<profile>
-			<id>user.interface.theme.primefaces.atlantis</id>
+			<id>user.interface.theme.web.jsf.primefaces.atlantis</id>
 			<dependencies>
 				<dependency>
-		            <groupId>org.primefaces.themes</groupId>
-		            <artifactId>atlantis</artifactId>
-		            <version>1.0.1</version>
+		            <groupId>org.cyk.jee.user.interface.theme.web.jsf.primefaces.atlantis</groupId>
+					<artifactId>jee-user-interface-theme-web-jsf-primefaces-atlantis</artifactId>
+    				<version>0.0.1</version>
 		        </dependency>
 			</dependencies>
 		</profile>
 		
 		<profile>
-			<id>user.interface.theme.adminfaces</id>
+			<id>user.interface.theme.web.jsf.primefaces.adminfaces</id>
 			<dependencies>
 				<dependency>
-		            <groupId>com.github.adminfaces</groupId>
-    				<artifactId>admin-template</artifactId>
-    				<version>1.0.0</version>
-    				<exclusions>
-    					<exclusion>
-		                    <groupId>org.primefaces</groupId>
-		                    <artifactId>primefaces</artifactId>
-		                </exclusion>
-    				</exclusions>
+		            <groupId>org.cyk.jee.user.interface.theme.web.jsf.primefaces.adminfaces</groupId>
+					<artifactId>jee-user-interface-theme-web-jsf-primefaces-adminfaces</artifactId>
+    				<version>0.0.1</version>
 		        </dependency>
 			</dependencies>
 		</profile>
