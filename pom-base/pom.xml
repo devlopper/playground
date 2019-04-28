@@ -364,6 +364,9 @@
 				                     </includes>
 				                </resource>
 				            </webResources>
+				            <commands>
+		                        <command>/subsystem=logging/logger=org.cyk:write-attribute(name=level,value=DEBUG)</command>
+		                    </commands>
 				        </configuration>
 				    </plugin>
 				    

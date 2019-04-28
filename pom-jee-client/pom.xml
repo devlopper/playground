@@ -20,10 +20,23 @@
 		<module>../pom-jee-client-controller-main</module>
 	</modules> 
 	
-	<!-- User Interface Theme -->
 	<profiles>
 		<profile>
+			<id>user.interface.theme.web.jsf.primefaces</id>
+			<properties>
+				<web.context.parameter.theme.class.value>org.cyk.utility.client.controller.web.jsf.primefaces.theme.ThemeDesktopDefault</web.context.parameter.theme.class.value>
+				<web.context.parameter.theme.identifier.name>primefaces.THEME</web.context.parameter.theme.identifier.name>
+				<web.context.parameter.theme.identifier.value>omega</web.context.parameter.theme.identifier.value>
+			</properties>
+		</profile>
+		
+		<!-- User Interface Theme -->
+		<profile>
 			<id>user.interface.theme.web.jsf.primefaces.atlantis</id>
+			<properties>
+				<web.context.parameter.theme.class.value>org.cyk.user.interface_.theme.web.jsf.primefaces.atlantis.DesktopDefault</web.context.parameter.theme.class.value>
+				<web.context.parameter.theme.identifier.value>atlantis-blue</web.context.parameter.theme.identifier.value>
+			</properties>
 			<dependencies>
 				<dependency>
 		            <groupId>org.cyk.jee.user.interface.theme.web.jsf.primefaces.atlantis</groupId>
@@ -35,6 +48,10 @@
 		
 		<profile>
 			<id>user.interface.theme.web.jsf.primefaces.adminfaces</id>
+			<properties>
+				<web.context.parameter.theme.class.value>org.cyk.user.interface_.theme.web.jsf.primefaces.adminfaces.DesktopDefault</web.context.parameter.theme.class.value>
+				<web.context.parameter.theme.identifier.value>admin</web.context.parameter.theme.identifier.value>
+			</properties>
 			<dependencies>
 				<dependency>
 		            <groupId>org.cyk.jee.user.interface.theme.web.jsf.primefaces.adminfaces</groupId>
