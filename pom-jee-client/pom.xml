@@ -22,20 +22,40 @@
 	
 	<profiles>
 		<profile>
-			<id>user.interface.theme.web.jsf.primefaces</id>
+			<id>user.interface.theme</id>
+		</profile>
+		
+		<profile>
+			<id>user.interface.theme.web</id>
 			<properties>
-				<web.context.parameter.theme.class.value>org.cyk.utility.client.controller.web.jsf.primefaces.theme.ThemeDesktopDefault</web.context.parameter.theme.class.value>
-				<web.context.parameter.theme.identifier.name>primefaces.THEME</web.context.parameter.theme.identifier.name>
-				<web.context.parameter.theme.identifier.value>omega</web.context.parameter.theme.identifier.value>
+				<cyk.context.parameter.theme.favicon.file.folder>image</cyk.context.parameter.theme.favicon.file.folder>
+				<cyk.context.parameter.theme.favicon.file.name.prefix>favicon</cyk.context.parameter.theme.favicon.file.name.prefix>
+				<cyk.context.parameter.theme.favicon.file.name.extension>png</cyk.context.parameter.theme.favicon.file.name.extension>
+				
+				<cyk.context.parameter.theme.logo.file.folder>image</cyk.context.parameter.theme.logo.file.folder>
+				<cyk.context.parameter.theme.logo.file.name>logo.png</cyk.context.parameter.theme.logo.file.name>
+				<cyk.context.parameter.theme.logo.file.name.prefix>logo</cyk.context.parameter.theme.logo.file.name.prefix>
+				<cyk.context.parameter.theme.logo.file.name.extension>png</cyk.context.parameter.theme.logo.file.name.extension>
 			</properties>
 		</profile>
 		
-		<!-- User Interface Theme -->
+		<profile>
+			<id>user.interface.theme.web.jsf</id>
+		</profile>
+		
+		<profile>
+			<id>user.interface.theme.web.jsf.primefaces</id>
+			<properties>
+				<cyk.context.parameter.theme.class.name>org.cyk.utility.client.controller.web.jsf.primefaces.theme.ThemeDesktopDefault</cyk.context.parameter.theme.class.name>
+				<cyk.context.parameter.theme.primefaces>omega</cyk.context.parameter.theme.primefaces>
+			</properties>
+		</profile>
+		
 		<profile>
 			<id>user.interface.theme.web.jsf.primefaces.atlantis</id>
 			<properties>
-				<web.context.parameter.theme.class.value>org.cyk.user.interface_.theme.web.jsf.primefaces.atlantis.DesktopDefault</web.context.parameter.theme.class.value>
-				<web.context.parameter.theme.identifier.value>atlantis-blue</web.context.parameter.theme.identifier.value>
+				<cyk.context.parameter.theme.class.name>org.cyk.user.interface_.theme.web.jsf.primefaces.atlantis.DesktopDefault</cyk.context.parameter.theme.class.name>
+				<cyk.context.parameter.theme.primefaces>atlantis-blue</cyk.context.parameter.theme.primefaces>
 			</properties>
 			<dependencies>
 				<dependency>
@@ -49,8 +69,8 @@
 		<profile>
 			<id>user.interface.theme.web.jsf.primefaces.adminfaces</id>
 			<properties>
-				<web.context.parameter.theme.class.value>org.cyk.user.interface_.theme.web.jsf.primefaces.adminfaces.DesktopDefault</web.context.parameter.theme.class.value>
-				<web.context.parameter.theme.identifier.value>admin</web.context.parameter.theme.identifier.value>
+				<cyk.context.parameter.theme.class.name>org.cyk.user.interface_.theme.web.jsf.primefaces.adminfaces.DesktopDefault</cyk.context.parameter.theme.class.name>
+				<cyk.context.parameter.theme.primefaces>admin</cyk.context.parameter.theme.primefaces>
 			</properties>
 			<dependencies>
 				<dependency>
