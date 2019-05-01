@@ -15,11 +15,6 @@
 	<version>pom.jee.client.0.0.1</version>
 	<packaging>pom</packaging>
 	
-	<modules>
-		<module>../pom-jee-client-jboss</module> 
-		<module>../pom-jee-client-controller-main</module>
-	</modules> 
-	
 	<profiles>
 		<profile>
 			<id>user.interface.theme</id>

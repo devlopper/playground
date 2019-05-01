@@ -22,7 +22,8 @@
 		<org.wildfly.wildfly-arquillian-container-remote.version>8.2.1.Final</org.wildfly.wildfly-arquillian-container-remote.version>		
 		
 		<!--arquillian.bom.version>1.1.5.Final</arquillian.bom.version -->
-		<arquillian.bom.version>1.4.1.Final</arquillian.bom.version>
+		<!-- arquillian.bom.version>1.4.1.Final</arquillian.bom.version> -->
+		<org.jboss.arquillian.arquillian-bom.version>1.4.1.Final</org.jboss.arquillian.arquillian-bom.version>
 		<com.h2database.h2.version>1.4.197</com.h2database.h2.version>
 		
 	</properties>
@@ -33,7 +34,7 @@
 			<dependency>
 				<groupId>org.jboss.arquillian</groupId>
 				<artifactId>arquillian-bom</artifactId>
-				<version>${arquillian.bom.version}</version>
+				<version>${org.jboss.arquillian.arquillian-bom.version}</version>
 				<scope>import</scope>
 				<type>pom</type>
 			</dependency>
@@ -348,7 +349,7 @@
 	</profiles>
 	
 	<modules>
-		
+	
 		<module>../pom-jee-server</module>
 		
 		<!--
