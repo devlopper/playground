@@ -14,39 +14,39 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<!-- Java -->
-		<java.ee.api.version>7.0</java.ee.api.version>
-
 		<!-- Maven -->
-		<maven.compiler.plugin.configuration.source>1.8</maven.compiler.plugin.configuration.source>
-		<maven.compiler.plugin.configuration.target>1.8</maven.compiler.plugin.configuration.target>
-		<maven.compiler.plugin.version>3.7.0</maven.compiler.plugin.version>
-		<maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
+		<maven.compiler.plugin.configuration.source>11</maven.compiler.plugin.configuration.source>
+		<maven.compiler.plugin.configuration.target>11</maven.compiler.plugin.configuration.target>
+		<maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
+		<maven-surefire-plugin.version>3.0.0-M3</maven-surefire-plugin.version>
 		
 		<!-- Web archive -->
 		<failOnMissingWebXml>false</failOnMissingWebXml>
 
 		<!-- Tools -->
-		<lombok.version>1.16.14</lombok.version> <!-- Getter and setter -->
-		<mapstruct.version>1.2.0.Final</mapstruct.version> <!-- mapping between object -->
-		<mapstruct.processor.version>1.2.0.Final</mapstruct.processor.version>
+		<lombok.version>1.18.6</lombok.version> <!-- Getter and setter -->
+		<mapstruct.version>1.3.0.Final</mapstruct.version> <!-- mapping between object -->
+		<mapstruct.processor.version>1.3.0.Final</mapstruct.processor.version>
 		<!-- Lombok and mapstruct version must be compatible -->
 		
-		<apache.commons-lang3.version>3.7</apache.commons-lang3.version>
+		<apache.commons-lang3.version>3.9</apache.commons-lang3.version>
 		
 		<!-- ********************************************************************************** -->
 
 		<!-- Test -->
+		<!--
 		<junit.version>4.12</junit.version>
+		-->
+		<junit.version>4.13-beta-2</junit.version>
 		<org.mockito.mockito-all.version>1.10.19</org.mockito.mockito-all.version>
 		
 		<!-- Assertion -->
-		<assertj-core.version>3.10.0</assertj-core.version>
+		<assertj-core.version>3.12.2</assertj-core.version>
 		
 		<!-- Logging -->
 		<slf4j-api.version>1.7.25</slf4j-api.version>
-		<log4j-core.version>2.8.2</log4j-core.version>
-		<log4j-api.version>2.8.2</log4j-api.version>
+		<log4j-core.version>2.11.2</log4j-core.version>
+		<log4j-api.version>2.11.2</log4j-api.version>
 		<log4j-slf4j-impl.version>2.8.2</log4j-slf4j-impl.version>
 		
 		<!-- JDBC Driver -->
@@ -68,17 +68,30 @@
 			<url>${distribution.management.url}</url>
 		</repository>
 	</distributionManagement>
-
+	
 	<dependencyManagement>
 		<dependencies>
-			<!-- Java EE 7 -->
 			<dependency>
 				<groupId>javax</groupId>
 				<artifactId>javaee-api</artifactId>
-				<version>${java.ee.api.version}</version>
+				<version>8.0.1</version>
 				<scope>provided</scope>
 			</dependency>
-
+			
+			<dependency>
+			    <groupId>javax.annotation</groupId>
+			    <artifactId>javax.annotation-api</artifactId>
+			    <version>1.3.2</version>
+			    <scope>provided</scope>
+			</dependency>
+			
+			<dependency>
+			    <groupId>javax.xml.bind</groupId>
+			    <artifactId>jaxb-api</artifactId>
+			    <version>2.4.0-b180830.0359</version>
+			    <scope>provided</scope>
+			</dependency>
+			
 			<!-- Tools -->
 			<dependency>
 				<groupId>org.projectlombok</groupId>
@@ -98,7 +111,7 @@
 			<dependency>
 			    <groupId>org.mockito</groupId>
 			    <artifactId>mockito-all</artifactId>
-			    <version>${org.mockito.mockito-all.version}</version>
+			    <version>2.0.2-beta</version>
 			    <scope>test</scope>
 			</dependency>
 			
@@ -106,18 +119,159 @@
 	</dependencyManagement>
 
 	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+				    <groupId>org.codehaus.mojo</groupId>
+				    <artifactId>versions-maven-plugin</artifactId>
+				    <version>2.7</version>
+				    <configuration>
+				        <generateBackupPoms>false</generateBackupPoms>
+				    </configuration>
+				</plugin>
+	
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>3.1.0</version>
+				</plugin>
+				
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.8.0</version>
+					<configuration>
+						<release>11</release>
+					</configuration>
+				</plugin>
+				
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>3.0.0-M3</version>
+					<configuration>
+				        <argLine>
+				            --illegal-access=permit
+				        </argLine>
+				    </configuration>
+				</plugin>
+				
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-failsafe-plugin</artifactId>
+					<version>3.0.0-M3</version>
+					<configuration>
+				        <argLine>
+				            --illegal-access=permit
+				        </argLine>
+				    </configuration>
+				</plugin>
+				
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>3.0.0-M1</version>
+				</plugin>
+				
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>3.0.0-M1</version>
+				</plugin>
+				
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.7.1</version>
+				</plugin>			
+				
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>3.1.1</version>
+				</plugin>		
+				
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>3.1.0</version>
+				</plugin>			
+			</plugins>
+		</pluginManagement>
 		<plugins>
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-enforcer-plugin</artifactId>
+			    <version>3.0.0-M2</version>
+			    <executions>
+				    <execution>
+				        <id>enforce</id>
+				        <goals>
+				            <goal>enforce</goal>
+				        </goals>
+				        <configuration>
+				            <rules>
+				                <banDuplicatePomDependencyVersions/>
+				                <requireMavenVersion>
+								    <version>3.6.1</version>
+								</requireMavenVersion>
+								<requireJavaVersion>
+								    <version>11</version>
+								</requireJavaVersion>								
+				            </rules>
+				        </configuration>
+				    </execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+			    <groupId>org.codehaus.mojo</groupId>
+			    <artifactId>versions-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+			</plugin>
+			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven.compiler.plugin.version}</version>
-				<configuration>
-					<source>${maven.compiler.plugin.configuration.source}</source>
-					<target>${maven.compiler.plugin.configuration.target}</target>
-					<!--annotationProcessorPaths> <path> <groupId>org.mapstruct</groupId> 
-						<artifactId>mapstruct-processor</artifactId> <version>${mapstruct.processor.version}</version> 
-						</path> </annotationProcessorPaths -->
-				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
 			</plugin>
 			
 			<plugin>
@@ -145,7 +299,7 @@
 
 		<dependency>
 			<groupId>org.mapstruct</groupId>
-			<artifactId>mapstruct-jdk8</artifactId>
+			<artifactId>mapstruct</artifactId>
 			<version>${mapstruct.version}</version>
 		</dependency>
 
@@ -180,7 +334,7 @@
 		<dependency>
 		    <groupId>org.assertj</groupId>
 		    <artifactId>assertj-core</artifactId>
-		    <version>${assertj-core.version}</version>
+		    <version>3.12.2</version>
 		</dependency>
 		
 		<!-- Logging -->
@@ -188,19 +342,19 @@
 		<dependency>
 		    <groupId>org.slf4j</groupId>
 		    <artifactId>slf4j-api</artifactId>
-		    <version>${slf4j-api.version}</version>
+		    <version>1.8.0-beta4</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
-			<version>${log4j-api.version}</version>
+			<version>2.11.2</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
-			<version>${log4j-core.version}</version>
+			<version>2.11.2</version>
 		</dependency>
 		
 		<!--dependency>
@@ -222,11 +376,17 @@
 
 	<modules>
 		<!-- JEE -->
+		
 		<module>../pom-jee</module>
+		
 		<!-- Spring -->
+		<!--
 		<module>../pom-spring</module>
+		-->
 		<!-- Others -->
+		<!--
 		<module>../pom-maven-archetype</module>
+		-->
 	</modules>
 	
 	<profiles>
@@ -344,7 +504,6 @@
 		<profile>
 			<id>server.application.jboss.wildfly</id>
 			<properties>
-				<org.wildfly.plugins.wildfly-maven-plugin>2.0.0.Final</org.wildfly.plugins.wildfly-maven-plugin>
 				<packaging_profile_identifier>packaging/server/application/jboss/wildfly</packaging_profile_identifier>
 			</properties>
 			<build>
@@ -352,7 +511,7 @@
 					<plugin>
 				        <groupId>org.apache.maven.plugins</groupId>
 				        <artifactId>maven-war-plugin</artifactId>
-				        <version>2.0.2</version>
+				        <version>3.2.2</version>
 				        <configuration>
 				            <webResources>
 				                <resource>
@@ -373,7 +532,7 @@
 					<plugin>
 		                <groupId>org.wildfly.plugins</groupId>
 		                <artifactId>wildfly-maven-plugin</artifactId>
-		                <version>${org.wildfly.plugins.wildfly-maven-plugin}</version>
+		                <version>2.0.1.Final</version>
 		            </plugin>		            
 				</plugins>
 				
@@ -426,7 +585,6 @@
 		<profile>
 			<id>microprofile.jboss.wildfly.swarm</id>
 			<properties>
-				<org.wildfly.swarm.wildfly-swarm-plugin.version>2017.2.0</org.wildfly.swarm.wildfly-swarm-plugin.version>
 				<org.wildfly.swarm.bom-all.version>2017.2.0</org.wildfly.swarm.bom-all.version>
 				<packaging_profile_identifier>packaging/microprofile/jboss/wildfly/swarm</packaging_profile_identifier>
 				<microprofile.archive.name>${project.artifactId}</microprofile.archive.name>
@@ -439,7 +597,7 @@
 						<plugin>
 							<groupId>org.wildfly.swarm</groupId>
 							<artifactId>wildfly-swarm-plugin</artifactId>
-							<version>${org.wildfly.swarm.wildfly-swarm-plugin.version}</version>
+							<version>1.0.0.Alpha4</version>
 							<executions>
 								<execution>
 									<goals>
@@ -515,8 +673,7 @@
 		<profile>
 			<id>microprofile.jboss.wildfly.thorntail</id>
 			<properties>
-				<io.thorntail.bom.version>2.0.0.Final</io.thorntail.bom.version>
-				<io.thorntail.thorntail-maven-plugin.version>2.0.0.Final</io.thorntail.thorntail-maven-plugin.version>
+				<io.thorntail.thorntail-maven-plugin.version>2.4.0.Final</io.thorntail.thorntail-maven-plugin.version>
 				<packaging_profile_identifier>packaging/microprofile/jboss/wildfly/thorntail</packaging_profile_identifier>
 			</properties>
 			
@@ -526,7 +683,7 @@
 						<plugin>
   							<groupId>io.thorntail</groupId>
   							<artifactId>thorntail-maven-plugin</artifactId>
-  							<version>${io.thorntail.thorntail-maven-plugin.version}</version>
+  							<version>2.4.0.Final</version>
   							<executions>
     							<execution>
       								<goals>
