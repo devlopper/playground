@@ -354,9 +354,11 @@
 		
 	</profiles>
 	
-	<modules>		
+	<modules>
+		<!--		
 		<module>../pom-jee-server</module>
 		<module>../pom-jee-client</module>
+		-->
 		<module>../pom-jee-utility-__kernel__</module>
 	</modules>
 	
