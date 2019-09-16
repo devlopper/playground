@@ -1117,9 +1117,9 @@
 	
 	<modules>
 		<!-- JEE -->
-		<!--
+		
 		<module>../pom-jee</module>
-		-->
+		
 		<!-- Spring -->
 		<!--
 		<module>../pom-spring</module>

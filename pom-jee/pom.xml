@@ -16,13 +16,7 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<!-- Testing -->
-		<org.wildfly.swarm.bom-all.version>2017.2.0</org.wildfly.swarm.bom-all.version>
-		<org.wildfly.wildfly-arquillian-container-managed.version>8.2.1.Final</org.wildfly.wildfly-arquillian-container-managed.version>
-		<org.wildfly.wildfly-arquillian-container-remote.version>8.2.1.Final</org.wildfly.wildfly-arquillian-container-remote.version>		
-		
-		<!--arquillian.bom.version>1.1.5.Final</arquillian.bom.version -->
-		<!-- arquillian.bom.version>1.4.1.Final</arquillian.bom.version> -->
+		<org.wildfly.arquillian.wildfly-arquillian-container-managed.version>2.2.0.Final</org.wildfly.arquillian.wildfly-arquillian-container-managed.version>
 		<org.jboss.arquillian.arquillian-bom.version>1.4.1.Final</org.jboss.arquillian.arquillian-bom.version>
 		<com.h2database.h2.version>1.4.197</com.h2database.h2.version>		
 	</properties>
@@ -50,13 +44,11 @@
 		<dependency>
 		    <groupId>javax.annotation</groupId>
 		    <artifactId>javax.annotation-api</artifactId>
-		    <scope>provided</scope>
 		</dependency>
 		
 		<dependency>
 		    <groupId>javax.xml.bind</groupId>
 		    <artifactId>jaxb-api</artifactId>
-		    <scope>provided</scope>
 		</dependency>
 
 		<dependency>
@@ -64,14 +56,6 @@
 			<artifactId>arquillian-junit-container</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!--
-		<dependency>
-		    <groupId>org.jboss.weld.se</groupId>
-		    <artifactId>weld-se-core</artifactId>
-		    <version>${org.jboss.weld.se-weld-se-core}</version>
-		    <scope>test</scope>
-		</dependency>
-		-->
 	</dependencies>
 
 	<profiles>
@@ -155,28 +139,50 @@
 		
 		<!--___________________________________________________Managed__________________________-->
 		<profile>
-			<id>org.wildfly.wildfly-arquillian-container-managed</id>
+			<id>org.wildfly.arquillian.wildfly-arquillian-container-managed</id>
 			<dependencies>
 				<dependency>
-					<groupId>org.wildfly</groupId>
+					<groupId>org.wildfly.arquillian</groupId>
 					<artifactId>wildfly-arquillian-container-managed</artifactId>
-					<version>${org.wildfly.wildfly-arquillian-container-managed.version}</version>
-					<scope>test</scope>
-					<exclusions>
-						<exclusion>
-							<groupId>sun.jdk</groupId>
-							<artifactId>jconsole</artifactId>
-						</exclusion>
-					</exclusions>
+					<version>${org.wildfly.arquillian.wildfly-arquillian-container-managed.version}</version>
 				</dependency>
-				
-				<!--dependency>
-				  <groupId>org.wildfly.arquillian</groupId>
-				  <artifactId>wildfly-arquillian-container-managed</artifactId>
-				  <version>2.1.1.Final</version>
-				  <scope>test</scope>
-				</dependency-->
 			</dependencies>
+		</profile>
+		
+		<profile>
+			<properties>
+				<wildfly.version>17.0.1.Final</wildfly.version>
+			</properties>
+			<id>build.plugin.unpack.wildfly.17.0.1.Final</id>
+			<build>
+				<plugins>
+		            <plugin>
+		                <groupId>org.apache.maven.plugins</groupId>
+		                <artifactId>maven-dependency-plugin</artifactId>
+		                <executions>
+		                    <execution>
+		                        <id>unpack</id>
+		                        <phase>process-test-classes</phase>
+		                        <goals>
+		                            <goal>unpack</goal>
+		                        </goals>
+		                        <configuration>
+		                            <artifactItems>
+		                                <artifactItem>
+		                                    <groupId>org.wildfly</groupId>
+		                                    <artifactId>wildfly-dist</artifactId>
+		                                    <version>${wildfly.version}</version>
+		                                    <type>zip</type>
+		                                    <overWrite>false</overWrite>
+		                                    <outputDirectory>${project.build.directory}</outputDirectory>
+		                                </artifactItem>
+		                            </artifactItems>
+		                        </configuration>
+		                    </execution>
+		                </executions>
+		            </plugin>				
+				</plugins>
+			</build>
 		</profile>
 
 		<!--___________________________________________________Remote___________________________-->
@@ -345,20 +351,13 @@
 				</dependency>
 			</dependencies>
 		</profile>
+		
 	</profiles>
 	
-	<modules>
-	
+	<modules>		
 		<module>../pom-jee-server</module>
-		
-		<!--
-		<module>../pom-jee-server-representation-main</module>
-		<module>../pom-jee-server-representation-test</module>
-		-->
-		
-		<module>../pom-jee-utility-__kernel__</module>
 		<module>../pom-jee-client</module>
-		
+		<module>../pom-jee-utility-__kernel__</module>
 	</modules>
 	
 </project>
