@@ -6,77 +6,99 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.cyk.pom.base</groupId>
 	<artifactId>pom-base</artifactId>
-	<version>pom.base.0.0.1</version>
+	<version>pom.base.0.1.0</version>
 	<packaging>pom</packaging>
 
 	<properties>
-		<!-- Project -->
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<!-- Web archive -->
-		<failOnMissingWebXml>false</failOnMissingWebXml>
-		<!-- Versions -->
-		<!-- 	Java Enterprise Edition -->
-		<javax.javaee-api.version>8.0.1</javax.javaee-api.version>
-		<javax.annotation.javax.annotation-api.version>1.3.2</javax.annotation.javax.annotation-api.version>
-		<javax.xml.bind.jaxb-api.version>2.4.0-b180830.0359</javax.xml.bind.jaxb-api.version>
-		<!-- 	Tools -->
-		<org.projectlombok.lombok.version>1.18.6</org.projectlombok.lombok.version>
+		<!-- Custom -->
+		<character.encoding>UTF-8</character.encoding>
+		<java.standard.edition.version>11</java.standard.edition.version>
+		<java.enterprise.edition.version>8.0.1</java.enterprise.edition.version>
+		<org.junit.5.version>5.5.2</org.junit.5.version>
+		<org.apache.logging.log4j.version>2.12.1</org.apache.logging.log4j.version>
+		<!--<maven.version>3.6.1</maven.version>-->
+		<maven.version>3.5.0</maven.version>
+		<data.source.host.internet.address>127.0.0.1</data.source.host.internet.address>
+		
+		<!-- Configuration -->
+		<!-- 	Project -->
+		<project.build.sourceEncoding>${character.encoding}</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>${character.encoding}</project.reporting.outputEncoding>
+		<failOnMissingWebXml>false</failOnMissingWebXml>	
+		<!--    Maven  -->
+		<org.apache.maven.plugins.maven-compiler-plugin.configuration.source>${java.standard.edition.version}</org.apache.maven.plugins.maven-compiler-plugin.configuration.source>
+		<org.apache.maven.plugins.maven-compiler-plugin.configuration.target>${java.standard.edition.version}</org.apache.maven.plugins.maven-compiler-plugin.configuration.target>
+		<org.apache.maven.plugins.maven-compiler-plugin.configuration.release>${java.standard.edition.version}</org.apache.maven.plugins.maven-compiler-plugin.configuration.release>
+		<maven.compiler.plugin.configuration.source>${java.standard.edition.version}</maven.compiler.plugin.configuration.source>
+		<maven.compiler.plugin.configuration.target>${java.standard.edition.version}</maven.compiler.plugin.configuration.target>
+		
+		<!-- Version -->
 		<!-- 	Maven -->
 		<org.codehaus.mojo.versions-maven-plugin.version>2.7</org.codehaus.mojo.versions-maven-plugin.version>
-		
+		<org.codehaus.mojo.templating-maven-plugin.version>1.0.0</org.codehaus.mojo.templating-maven-plugin.version>
 		<org.apache.maven.plugins.maven-enforcer-plugin.version>3.0.0-M2</org.apache.maven.plugins.maven-enforcer-plugin.version>
-		<org.apache.maven.plugins.maven-enforcer-plugin.executions.execution.configuration.rules.requireMavenVersion.version>3.6.1</org.apache.maven.plugins.maven-enforcer-plugin.executions.execution.configuration.rules.requireMavenVersion.version>
-		<org.apache.maven.plugins.maven-enforcer-plugin.executions.execution.configuration.rules.requireJavaVersion.version>11</org.apache.maven.plugins.maven-enforcer-plugin.executions.execution.configuration.rules.requireJavaVersion.version>
-		
+		<org.apache.maven.plugins.maven-enforcer-plugin.executions.execution.configuration.rules.requireMavenVersion.version>${maven.version}</org.apache.maven.plugins.maven-enforcer-plugin.executions.execution.configuration.rules.requireMavenVersion.version>
+		<org.apache.maven.plugins.maven-enforcer-plugin.executions.execution.configuration.rules.requireJavaVersion.version>${java.standard.edition.version}</org.apache.maven.plugins.maven-enforcer-plugin.executions.execution.configuration.rules.requireJavaVersion.version>
 		<org.apache.maven.plugins.maven-clean-plugin.version>3.1.0</org.apache.maven.plugins.maven-clean-plugin.version>
+		<org.apache.maven.plugins.maven-resources-plugin.version>3.1.0</org.apache.maven.plugins.maven-resources-plugin.version>
 		<org.apache.maven.plugins.maven-compiler-plugin.version>3.8.0</org.apache.maven.plugins.maven-compiler-plugin.version>
-		<org.apache.maven.plugins.maven-compiler-plugin.configuration.release>11</org.apache.maven.plugins.maven-compiler-plugin.configuration.release>
-		<org.apache.maven.plugins.maven-install-plugin.version>3.0.0-M1</org.apache.maven.plugins.maven-install-plugin.version>
-		<org.apache.maven.plugins.maven-deploy-plugin.version>3.0.0-M1</org.apache.maven.plugins.maven-deploy-plugin.version>
+		<org.apache.maven.plugins.maven-compiler-plugin.configuration.source>${java.standard.edition.version}</org.apache.maven.plugins.maven-compiler-plugin.configuration.source>
+		<org.apache.maven.plugins.maven-compiler-plugin.configuration.target>${java.standard.edition.version}</org.apache.maven.plugins.maven-compiler-plugin.configuration.target>
 		<org.apache.maven.plugins.maven-surefire-plugin.version>3.0.0-M3</org.apache.maven.plugins.maven-surefire-plugin.version>
 		<org.apache.maven.plugins.maven-failsafe-plugin.version>3.0.0-M3</org.apache.maven.plugins.maven-failsafe-plugin.version>
-		<org.apache.maven.plugins.maven-site-plugin.version>3.7.1</org.apache.maven.plugins.maven-site-plugin.version>
+		<org.apache.maven.plugins.maven-install-plugin.version>3.0.0-M1</org.apache.maven.plugins.maven-install-plugin.version>
 		<org.apache.maven.plugins.maven-jar-plugin.version>3.1.1</org.apache.maven.plugins.maven-jar-plugin.version>
-		<org.apache.maven.plugins.maven-resources-plugin.version>3.1.0</org.apache.maven.plugins.maven-resources-plugin.version>
+		<org.apache.maven.plugins.maven-war-plugin.version>3.2.2</org.apache.maven.plugins.maven-war-plugin.version>
+		<org.apache.maven.plugins.maven-site-plugin.version>3.7.1</org.apache.maven.plugins.maven-site-plugin.version>
+		<org.apache.maven.plugins.maven-deploy-plugin.version>3.0.0-M1</org.apache.maven.plugins.maven-deploy-plugin.version>
 		
-		<org.codehaus.mojo.templating-maven-plugin.version>1.0.0</org.codehaus.mojo.templating-maven-plugin.version>
+		<!-- 	Java -->
+		<javax.javaee-api.version>${java.enterprise.edition.version}</javax.javaee-api.version>
+		<!-- 	Java Enterprise Edition -->
+		<javax.annotation.javax.annotation-api.version>1.3.2</javax.annotation.javax.annotation-api.version>
+		<javax.xml.bind.jaxb-api.version>2.4.0-b180830.0359</javax.xml.bind.jaxb-api.version>
 		
-		<maven.compiler.plugin.configuration.source>11</maven.compiler.plugin.configuration.source>
-		<maven.compiler.plugin.configuration.target>11</maven.compiler.plugin.configuration.target>
-		<maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
-		<maven-surefire-plugin.version>3.0.0-M3</maven-surefire-plugin.version>
-		
+		<!-- 	Others -->
+		<org.projectlombok.lombok.version>1.18.10</org.projectlombok.lombok.version> <!-- Getter and setter -->
 		<org.mapstruct.mapstruct.version>1.3.0.Final</org.mapstruct.mapstruct.version> <!-- mapping between object -->
 		<org.mapstruct.mapstruct-processor.version>1.3.0.Final</org.mapstruct.mapstruct-processor.version>
+		
+		<!-- <org.mapstruct.mapstruct-jdk8.version>1.2.0.Final</org.mapstruct.mapstruct-jdk8.version> --> <!-- mapping between object -->
+		<!-- <org.mapstruct.mapstruct-processor.version>1.2.0.Final</org.mapstruct.mapstruct-processor.version> -->
 		<!-- Lombok and mapstruct version must be compatible -->
-		
 		<org.apache.commons.commons-lang3.version>3.9</org.apache.commons.commons-lang3.version>
+		<junit.junit.version>4.13-beta-3</junit.junit.version>
+		<org.junit.jupiter.junit-jupiter-engine.version>${org.junit.5.version}</org.junit.jupiter.junit-jupiter-engine.version>
+		<org.junit.vintage.junit-vintage-engine.version>${org.junit.5.version}</org.junit.vintage.junit-vintage-engine.version>
+		<org.mockito.mockito-all.version>2.0.2-beta</org.mockito.mockito-all.version>
+		<org.assertj.assertj-core.version>3.13.2</org.assertj.assertj-core.version>
+		<org.jboss.weld.se.weld-se.version>3.0.0.Alpha1</org.jboss.weld.se.weld-se.version>
+		<org.jboss.weld.weld-junit5.version>2.0.0.Final</org.jboss.weld.weld-junit5.version>
 		
-		<!-- ********************************************************************************** -->
-
-		<!-- Test -->
-		<!--
-		<junit.version>4.12</junit.version>
-		-->
-		<junit.junit.version>4.13-beta-2</junit.junit.version>
-		<org.mockito.mockito-all.version>2.0.2-beta</org.mockito.mockito-all.version>		
-		<!-- Assertion -->
-		<org.assertj.assertj-core.version>3.12.2</org.assertj.assertj-core.version>		
-		<!-- Logging -->
-		<org.slf4j.slf4j-api.version>1.8.0-beta4</org.slf4j.slf4j-api.version>
-		<org.apache.logging.log4j.log4j-api.version>2.11.2</org.apache.logging.log4j.log4j-api.version>
-		<org.apache.logging.log4j.log4j-core.version>2.11.2</org.apache.logging.log4j.log4j-core.version>
-		<log4j-slf4j-impl.version>2.8.2</log4j-slf4j-impl.version>
-		<!-- JDBC Driver -->
+		<!-- 	Logging -->
+		<org.slf4j.slf4j-api.version>2.0.0-alpha0</org.slf4j.slf4j-api.version>
+		
+		<org.apache.logging.log4j.log4j-core.version>${org.apache.logging.log4j.version}</org.apache.logging.log4j.log4j-core.version>
+		<org.apache.logging.log4j.log4j-api.version>${org.apache.logging.log4j.version}</org.apache.logging.log4j.log4j-api.version>
+		<!-- 	Database connector driver -->
 		<com.h2database.h2.version>1.4.197</com.h2database.h2.version>
 		<mysql.mysql-connector-java.version>5.1.47</mysql.mysql-connector-java.version>
 		<com.oracle.ojdbc6.version>11.2.0.4</com.oracle.ojdbc6.version>
-		<!-- Data source -->
-		<data.source.host.internet.address>127.0.0.1</data.source.host.internet.address>		
-		<!-- Dependency injection -->
-		<org.jboss.weld.se-weld-se-core>3.1.0.Final</org.jboss.weld.se-weld-se-core>
+		<!-- 	Dependency injection -->
+		<org.jboss.weld.se.weld-se-core.version>3.1.0.Final</org.jboss.weld.se.weld-se-core.version>	
 		
+		<org.wildfly.plugins.wildfly-maven-plugin>2.0.1.Final</org.wildfly.plugins.wildfly-maven-plugin>
+		<io.thorntail.thorntail-maven-plugin.version>2.4.0.Final</io.thorntail.thorntail-maven-plugin.version>	
+		<io.thorntail.bom.version>2.4.0.Final</io.thorntail.bom.version>
+		<org.wildfly.swarm.wildfly-swarm-plugin.version>2017.2.0</org.wildfly.swarm.wildfly-swarm-plugin.version>
+		<!--org.wildfly.swarm.wildfly-swarm-plugin.version>2018.5.0</org.wildfly.swarm.wildfly-swarm-plugin.version-->
+		<!--org.wildfly.swarm.wildfly-swarm-plugin.version>1.0.0.Alpha4</org.wildfly.swarm.wildfly-swarm-plugin.version-->
+		<org.wildfly.swarm.bom-all.version>2017.2.0</org.wildfly.swarm.bom-all.version>
+		
+		<io.quarkus.quarkus-maven-plugin.version>0.16.1</io.quarkus.quarkus-maven-plugin.version>	
+		<io.quarkus.quarkus-bom.version>0.16.1</io.quarkus.quarkus-bom.version>
+		
+		<one.util.streamex.version>0.7.0</one.util.streamex.version>
 	</properties>
 
 	<distributionManagement>
@@ -88,6 +110,7 @@
 	
 	<dependencyManagement>
 		<dependencies>
+			<!-- Main -->
 			<dependency>
 				<groupId>javax</groupId>
 				<artifactId>javaee-api</artifactId>
@@ -110,17 +133,84 @@
 			</dependency>
 			
 			<dependency>
+				<groupId>org.mapstruct</groupId>
+				<artifactId>mapstruct</artifactId>
+				<version>${org.mapstruct.mapstruct.version}</version>
+			</dependency>
+			
+			<dependency>
 				<groupId>org.projectlombok</groupId>
 				<artifactId>lombok</artifactId>
 				<version>${org.projectlombok.lombok.version}</version>
 				<scope>provided</scope>
 			</dependency>
+			
+			<dependency>
+			    <groupId>org.slf4j</groupId>
+			    <artifactId>slf4j-api</artifactId>
+			    <version>${org.slf4j.slf4j-api.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-api</artifactId>
+				<version>${org.apache.logging.log4j.log4j-api.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-core</artifactId>
+				<version>${org.apache.logging.log4j.log4j-core.version}</version>
+			</dependency>
+			
+			<dependency> 
+			    <groupId>one.util</groupId> 
+			    <artifactId>streamex</artifactId> 
+			    <version>${one.util.streamex.version}</version> 
+			</dependency>
 
+			<!-- Test -->
+			
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>${junit.junit.version}</version>
 				<scope>test</scope>
+			</dependency>
+			
+			<dependency>
+		        <groupId>org.junit.jupiter</groupId>
+		        <artifactId>junit-jupiter-engine</artifactId>
+		        <version>${org.junit.jupiter.junit-jupiter-engine.version}</version>
+		        <scope>test</scope>
+		    </dependency>
+		    
+		    <dependency>
+		        <groupId>org.junit.vintage</groupId>
+		        <artifactId>junit-vintage-engine</artifactId>
+		        <version>${org.junit.vintage.junit-vintage-engine.version}</version>
+		        <scope>test</scope>
+		    </dependency>
+			
+			<dependency>
+			    <groupId>org.jboss.weld.se</groupId>
+			    <artifactId>weld-se</artifactId>
+			    <version>${org.jboss.weld.se.weld-se.version}</version>
+			    <scope>test</scope>
+			</dependency>
+			
+			<dependency>
+			    <groupId>org.jboss.weld</groupId>
+			    <artifactId>weld-junit5</artifactId>
+			    <version>${org.jboss.weld.weld-junit5.version}</version>
+			    <scope>test</scope>
+			</dependency>
+			
+			<dependency>
+			    <groupId>org.assertj</groupId>
+			    <artifactId>assertj-core</artifactId>
+			    <version>${org.assertj.assertj-core.version}</version>
+			    <scope>test</scope>
 			</dependency>
 			
 			<dependency>
@@ -153,10 +243,35 @@
 				
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${org.apache.maven.plugins.maven-resources-plugin.version}</version>
+				</plugin>	
+				
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>${org.apache.maven.plugins.maven-compiler-plugin.version}</version>
 					<configuration>
+						<source>${org.apache.maven.plugins.maven-compiler-plugin.configuration.source}</source>
+						<target>${org.apache.maven.plugins.maven-compiler-plugin.configuration.target}</target>
 						<release>${org.apache.maven.plugins.maven-compiler-plugin.configuration.release}</release>
+						<annotationProcessorPaths>
+		                    <path>
+		                        <groupId>org.mapstruct</groupId>
+		                        <artifactId>mapstruct-processor</artifactId>
+		                        <version>${org.mapstruct.mapstruct-processor.version}</version>
+		                    </path>
+		                    <path>
+	                            <groupId>org.projectlombok</groupId>
+	                            <artifactId>lombok</artifactId>
+	                            <version>${org.projectlombok.lombok.version}</version>
+	                        </path>
+		                </annotationProcessorPaths>
+		                <compilerArgs>
+		                	<compilerArg>
+		                		-Amapstruct.defaultComponentModel=cdi
+		                	</compilerArg>
+		                </compilerArgs>
 					</configuration>
 				</plugin>
 				
@@ -184,21 +299,9 @@
 				
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-deploy-plugin</artifactId>
-					<version>${org.apache.maven.plugins.maven-deploy-plugin.version}</version>
-				</plugin>
-				
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-install-plugin</artifactId>
 					<version>${org.apache.maven.plugins.maven-install-plugin.version}</version>
 				</plugin>
-				
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-site-plugin</artifactId>
-					<version>${org.apache.maven.plugins.maven-site-plugin.version}</version>
-				</plugin>			
 				
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -208,9 +311,21 @@
 				
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-resources-plugin</artifactId>
-					<version>${org.apache.maven.plugins.maven-resources-plugin.version}</version>
-				</plugin>			
+					<artifactId>maven-war-plugin</artifactId>
+					<version>${org.apache.maven.plugins.maven-war-plugin.version}</version>
+				</plugin>	
+				
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>${org.apache.maven.plugins.maven-site-plugin.version}</version>
+				</plugin>
+				
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>${org.apache.maven.plugins.maven-deploy-plugin.version}</version>
+				</plugin>		
 			</plugins>
 		</pluginManagement>
 		
@@ -252,32 +367,12 @@
 			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-deploy-plugin</artifactId>
-			</plugin>
-			
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-install-plugin</artifactId>
-			</plugin>
-			
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-site-plugin</artifactId>
-			</plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+			</plugin>	
 			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-			</plugin>
-			
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-			</plugin>
-			
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
 			</plugin>
 			
 			<plugin>
@@ -288,6 +383,31 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+			</plugin>	
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+			</plugin>	
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+			</plugin>			
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
 			</plugin>
 			
 			<plugin>
@@ -316,14 +436,6 @@
 		<dependency>
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
-			<version>${org.mapstruct.mapstruct.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.mapstruct</groupId>
-			<artifactId>mapstruct-processor</artifactId>
-			<version>${org.mapstruct.mapstruct-processor.version}</version>
-			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
@@ -333,55 +445,29 @@
 		</dependency>
 		
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
+	        <groupId>org.junit.jupiter</groupId>
+	        <artifactId>junit-jupiter-engine</artifactId>
+	    </dependency>
+	    
+	    <dependency>
+	        <groupId>org.junit.vintage</groupId>
+	        <artifactId>junit-vintage-engine</artifactId>
+	    </dependency>
+		
+		<dependency>
+		    <groupId>org.jboss.weld.se</groupId>
+		    <artifactId>weld-se</artifactId>
 		</dependency>
 		
 		<dependency>
-		    <groupId>org.mockito</groupId>
-		    <artifactId>mockito-all</artifactId>
+		    <groupId>org.jboss.weld</groupId>
+		    <artifactId>weld-junit5</artifactId>
 		</dependency>
 		
 		<dependency>
 		    <groupId>org.assertj</groupId>
 		    <artifactId>assertj-core</artifactId>
-		    <version>${org.assertj.assertj-core.version}</version>
 		</dependency>
-		
-		<!-- Logging -->
-		<dependency>
-		    <groupId>org.slf4j</groupId>
-		    <artifactId>slf4j-api</artifactId>
-		    <version>${org.slf4j.slf4j-api.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-api</artifactId>
-			<version>${org.apache.logging.log4j.log4j-api.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
-			<version>${org.apache.logging.log4j.log4j-core.version}</version>
-		</dependency>
-		
-		<!--dependency>
-		    <groupId>org.apache.logging.log4j</groupId>
-		    <artifactId>log4j-slf4j-impl</artifactId>
-		    <version>${log4j-slf4j-impl.version}</version>
-		</dependency-->
-		
-		<!-- Dependency injection -->
-		<!--
-		<dependency>
-		    <groupId>org.jboss.weld.se</groupId>
-		    <artifactId>weld-se-core</artifactId>
-		    <version>${org.jboss.weld.se-weld-se-core}</version>
-		    <scope>provided</scope>
-		</dependency>
-		-->
 	</dependencies>
 
 	<profiles>
@@ -392,13 +478,12 @@
 				<dependency>
 				    <groupId>org.jboss.weld.se</groupId>
 				    <artifactId>weld-se-core</artifactId>
-				    <version>${org.jboss.weld.se-weld-se-core}</version>
+				    <version>${org.jboss.weld.se.weld-se-core.version}</version>
 				</dependency>
 			</dependencies>
 		</profile>
 		
-		<!-- Database management system -->
-		
+		<!-- Database management system -->		
 		<profile>
 			<id>data.base.management.system</id>
 			<properties>
@@ -420,8 +505,7 @@
 			</properties>
 		</profile>
 		
-		<!-- Database connectivity driver -->
-		
+		<!-- Database connectivity driver -->		
 		<profile>
 			<id>jdbc.h2</id>
 			<dependencies>
@@ -455,8 +539,7 @@
 			</dependencies>
 		</profile>
 		
-		<!-- Data source -->
-		
+		<!-- Data source -->		
 		<profile>
 			<id>data.source</id>
 			<properties>
@@ -470,7 +553,9 @@
 			<properties>
 				<data.source.driver.name>oracle</data.source.driver.name>
 				<data.source.className>oracle.jdbc.pool.OracleDataSource</data.source.className>
-				<data.source.url>jdbc:oracle:thin:@${data.source.host.internet.address}:1521:xe</data.source.url>
+				<data.base.management.system.port>1521</data.base.management.system.port>
+				<data.base.management.system.sid>xe</data.base.management.system.sid>
+				<data.source.url>jdbc:oracle:thin:@${data.base.management.system.host}:${data.base.management.system.port}:${data.base.management.system.sid}</data.source.url>
 			</properties>
 		</profile>
 
@@ -494,8 +579,7 @@
 			</properties>
 		</profile>
 		
-		<!-- Application Server -->
-		
+		<!-- Application Server -->		
 		<profile>
 			<id>server.application.jboss.wildfly</id>
 			<properties>
@@ -506,7 +590,7 @@
 					<plugin>
 				        <groupId>org.apache.maven.plugins</groupId>
 				        <artifactId>maven-war-plugin</artifactId>
-				        <version>3.2.2</version>
+				        <version>2.0.2</version>
 				        <configuration>
 				            <webResources>
 				                <resource>
@@ -527,7 +611,7 @@
 					<plugin>
 		                <groupId>org.wildfly.plugins</groupId>
 		                <artifactId>wildfly-maven-plugin</artifactId>
-		                <version>2.0.1.Final</version>
+		                <version>${org.wildfly.plugins.wildfly-maven-plugin}</version>
 		            </plugin>		            
 				</plugins>
 				
@@ -552,8 +636,7 @@
 			</build>
 		</profile>
 		
-		<!-- Hibernate -->
-		
+		<!-- Hibernate -->		
 		<profile>
 			<id>hibernate.hbm2ddl.auto.create</id>
 			<properties>
@@ -575,12 +658,295 @@
 			</properties>
 		</profile>
 		
-		<!-- Microprofile -->
+		<!-- Deployment -->
+		<profile>
+			<id>deployment</id>
+			<properties>
+				<deployment.host>localhost</deployment.host>
+				<deployment.port>8080</deployment.port>
+				<deployment.context>/</deployment.context>
+			</properties>
+		</profile>
 		
+		<profile>
+			<id>deployment.embedded</id>
+			<properties>
+				
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>deployment.standalone</id>
+			<properties>
+				<deployment.standalone.port.offset>0</deployment.standalone.port.offset>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>deployment.client</id>
+			<properties>
+				<deployment.client.proxy.host>localhost</deployment.client.proxy.host>
+				<deployment.client.proxy.port>8080</deployment.client.proxy.port>
+				<deployment.client.proxy.context>/</deployment.client.proxy.context>
+				<cyk.parameter.proxy.uniform.resource.identifier>http://${deployment.client.proxy.host}:${deployment.client.proxy.port}${deployment.client.proxy.context}</cyk.parameter.proxy.uniform.resource.identifier>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>deployment.client.standalone</id>
+			<properties>
+				
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>deployment.client.standalone.thorntail</id>
+			<dependencyManagement>
+				<dependencies>
+					<dependency>
+      					<groupId>io.thorntail</groupId>
+      					<artifactId>bom</artifactId>
+      					<version>${io.thorntail.bom.version}</version>
+      					<scope>import</scope>
+      					<type>pom</type>
+    				</dependency>
+				</dependencies>
+			</dependencyManagement>
+			
+			<dependencies>
+				<dependency>
+					<groupId>io.thorntail</groupId>
+					<artifactId>cdi</artifactId>
+				</dependency>		
+				<dependency>
+					<groupId>io.thorntail</groupId>
+					<artifactId>jsf</artifactId>
+				</dependency>		
+				<dependency>
+					<groupId>io.thorntail</groupId>
+					<artifactId>jaxrs</artifactId>
+				</dependency>
+			</dependencies>
+		</profile>
+		
+		
+		<profile>
+			<id>deployment.server</id>
+				
+		</profile>
+		
+		<profile>
+			<id>deployment.server.standalone</id>
+				
+		</profile>
+		
+		<profile>
+			<id>deployment.standalone.thorntail</id>
+			<properties>
+				<packaging_profile_identifier>packaging/microprofile/jboss/wildfly/thorntail</packaging_profile_identifier>
+			</properties>
+			
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+  							<groupId>io.thorntail</groupId>
+  							<artifactId>thorntail-maven-plugin</artifactId>
+  							<version>${io.thorntail.thorntail-maven-plugin.version}</version>
+  							<executions>
+    							<execution>
+      								<goals>
+        								<goal>package</goal>
+      								</goals>
+    							</execution>
+  							</executions>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+				
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+						<filtering>true</filtering>
+						<includes>
+					        <include>**/project-defaults.yml</include>
+					    </includes>
+					</resource>
+					
+					<resource>
+					    <directory>src/main/resources</directory>
+					    <filtering>false</filtering>
+					    <includes>
+					        <include>**/*.*</include>
+					    </includes>
+					</resource>
+				</resources>
+				
+				<plugins>
+					<plugin>
+						<groupId>io.thorntail</groupId>
+  						<artifactId>thorntail-maven-plugin</artifactId>
+					</plugin>
+					
+					<plugin>
+				        <groupId>org.apache.maven.plugins</groupId>
+				        <artifactId>maven-war-plugin</artifactId>
+				        <version>2.0.2</version>
+				        <configuration>
+				            <webResources>
+				                <resource>
+				                    <directory>${basedir}/${packaging_profile_identifier}/WEB-INF</directory>
+				                    <filtering>true</filtering>
+				                    <targetPath>WEB-INF</targetPath>
+				                    <includes>
+				                        <include>**/*.*</include>
+				                     </includes>
+				                </resource>
+				            </webResources>
+				        </configuration>
+				    </plugin>
+				    
+				</plugins>
+				
+			</build>
+			
+			<dependencyManagement>
+				<dependencies>
+					<dependency>
+      					<groupId>io.thorntail</groupId>
+      					<artifactId>bom</artifactId>
+      					<version>${io.thorntail.bom.version}</version>
+      					<scope>import</scope>
+      					<type>pom</type>
+    				</dependency>
+				</dependencies>
+			</dependencyManagement>			
+		</profile>
+		
+		<profile>
+			<id>deployment.server.standalone.thorntail</id>
+			<dependencyManagement>
+				<dependencies>
+					<dependency>
+      					<groupId>io.thorntail</groupId>
+      					<artifactId>bom</artifactId>
+      					<version>${io.thorntail.bom.version}</version>
+      					<scope>import</scope>
+      					<type>pom</type>
+    				</dependency>
+				</dependencies>
+			</dependencyManagement>
+			
+			<dependencies>
+				<dependency>
+					<groupId>io.thorntail</groupId>
+					<artifactId>cdi</artifactId>
+				</dependency>		
+				<dependency>
+					<groupId>io.thorntail</groupId>
+					<artifactId>jaxrs</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>io.thorntail</groupId>
+					<artifactId>jpa</artifactId>
+				</dependency>		
+			</dependencies>
+		</profile>
+		
+		<!--
+		<profile>
+			<id>deployment.standalone.quarkus</id>
+			<properties>
+				<packaging_profile_identifier>packaging/microprofile/quarkus</packaging_profile_identifier>
+			</properties>
+			
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+  							<groupId>io.quarkus</groupId>
+  							<artifactId>quarkus-maven-plugin</artifactId>
+  							<version>${io.quarkus.quarkus-maven-plugin.version}</version>
+  							<executions>
+    							<execution>
+      								<goals>
+        								<goal>build</goal>
+      								</goals>
+    							</execution>
+  							</executions>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+				
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+						<filtering>true</filtering>
+						<includes>
+					        <include>**/project-defaults.yml</include>
+					    </includes>
+					</resource>
+					
+					<resource>
+					    <directory>src/main/resources</directory>
+					    <filtering>false</filtering>
+					    <includes>
+					        <include>**/*.*</include>
+					    </includes>
+					</resource>
+				</resources>
+				
+				<plugins>
+					<plugin>
+						<groupId>io.quarkus</groupId>
+  						<artifactId>quarkus-maven-plugin</artifactId>
+					</plugin>
+					
+					<plugin>
+				        <groupId>org.apache.maven.plugins</groupId>
+				        <artifactId>maven-war-plugin</artifactId>
+				        <version>2.0.2</version>
+				        <configuration>
+				            <webResources>
+				                <resource>
+				                    <directory>${basedir}/${packaging_profile_identifier}/WEB-INF</directory>
+				                    <filtering>true</filtering>
+				                    <targetPath>WEB-INF</targetPath>
+				                    <includes>
+				                        <include>**/*.*</include>
+				                     </includes>
+				                </resource>
+				            </webResources>
+				        </configuration>
+				    </plugin>
+				</plugins>				
+			</build>
+			
+			<dependencyManagement>
+				<dependencies>
+					<dependency>
+      					<groupId>io.quarkus</groupId>
+      					<artifactId>quarkus-bom</artifactId>
+      					<version>${io.quarkus.quarkus-bom.version}</version>
+      					<scope>import</scope>
+      					<type>pom</type>
+    				</dependency>
+				</dependencies>
+			</dependencyManagement>
+			
+			<dependencies>        
+		        <dependency>
+		            <groupId>io.quarkus</groupId>
+		            <artifactId>quarkus-resteasy</artifactId>
+		        </dependency>
+		    </dependencies>
+		</profile>
+		-->
+		
+		<!-- Microprofile -->		
 		<profile>
 			<id>microprofile.jboss.wildfly.swarm</id>
 			<properties>
-				<org.wildfly.swarm.bom-all.version>2017.2.0</org.wildfly.swarm.bom-all.version>
 				<packaging_profile_identifier>packaging/microprofile/jboss/wildfly/swarm</packaging_profile_identifier>
 				<microprofile.archive.name>${project.artifactId}</microprofile.archive.name>
 			</properties>
@@ -592,7 +958,7 @@
 						<plugin>
 							<groupId>org.wildfly.swarm</groupId>
 							<artifactId>wildfly-swarm-plugin</artifactId>
-							<version>1.0.0.Alpha4</version>
+							<version>${org.wildfly.swarm.wildfly-swarm-plugin.version}</version>
 							<executions>
 								<execution>
 									<goals>
@@ -668,7 +1034,6 @@
 		<profile>
 			<id>microprofile.jboss.wildfly.thorntail</id>
 			<properties>
-				<io.thorntail.thorntail-maven-plugin.version>2.4.0.Final</io.thorntail.thorntail-maven-plugin.version>
 				<packaging_profile_identifier>packaging/microprofile/jboss/wildfly/thorntail</packaging_profile_identifier>
 			</properties>
 			
@@ -678,7 +1043,7 @@
 						<plugin>
   							<groupId>io.thorntail</groupId>
   							<artifactId>thorntail-maven-plugin</artifactId>
-  							<version>2.4.0.Final</version>
+  							<version>${io.thorntail.thorntail-maven-plugin.version}</version>
   							<executions>
     							<execution>
       								<goals>
@@ -747,28 +1112,14 @@
     				</dependency>
 				</dependencies>
 			</dependencyManagement>
-			
-			<dependencies>
-				<dependency>
-  					<groupId>io.thorntail</groupId>
-  					<artifactId>jpa</artifactId>
-				</dependency>
-				
-				<dependency>
-  					<groupId>io.thorntail</groupId>
-  					<artifactId>jaxrs</artifactId>
-				</dependency>
-			</dependencies>
 		</profile>
-        
-
 	</profiles>
 	
 	<modules>
 		<!-- JEE -->
-		
+		<!--
 		<module>../pom-jee</module>
-		
+		-->
 		<!-- Spring -->
 		<!--
 		<module>../pom-spring</module>
