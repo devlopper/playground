@@ -16,7 +16,9 @@
 	<packaging>pom</packaging>
 	
 	<properties>
-		<resteasy-bom.version>3.5.1.Final</resteasy-bom.version>
+		<!--
+		<org.jboss.resteasy.resteasy-bom.version>4.3.0.Final</org.jboss.resteasy.resteasy-bom.version>
+		-->
 		<org.jboss.resteasy.resteasy-bom.version>3.5.1.Final</org.jboss.resteasy.resteasy-bom.version>
 	</properties>
 	

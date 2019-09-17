@@ -186,52 +186,6 @@
 			</build>
 		</profile>
 
-		<!--___________________________________________________Remote___________________________-->
-		<profile>
-			<id>org.wildfly.wildfly-arquillian-container-remote</id>
-			<dependencies>
-				<dependency>
-					<groupId>org.wildfly</groupId>
-					<artifactId>wildfly-arquillian-container-remote</artifactId>
-					<version>${org.wildfly.wildfly-arquillian-container-remote.version}</version>
-					<scope>test</scope>
-					<exclusions>
-						<exclusion>
-							<groupId>sun.jdk</groupId>
-							<artifactId>jconsole</artifactId>
-						</exclusion>
-					</exclusions>
-				</dependency>
-			</dependencies>
-		</profile>
-		
-		<!--___________________________________________________Microservices____________________-->
-		<!--
-		<profile>
-			<id>org.wildfly.swarm.arquillian</id>
-			<activation><activeByDefault>true</activeByDefault> </activation>
-			<dependencyManagement>
-				<dependencies>
-					<dependency>
-						<groupId>org.wildfly.swarm</groupId>
-						<artifactId>bom-all</artifactId>
-						<version>${org.wildfly.swarm.bom-all.version}</version>
-						<scope>import</scope>
-						<type>pom</type>
-					</dependency>
-				</dependencies>
-			</dependencyManagement>
-			
-			<dependencies>
-				<dependency>
-					<groupId>org.wildfly.swarm</groupId>
-					<artifactId>arquillian</artifactId>
-					<scope>test</scope>
-				</dependency>
-			</dependencies>
-		</profile>
-		-->
-		
 		<!--________________________________________REST________________________________________-->
 		
 		<!--____________________________________________Jboss RestEasy__________________________-->
@@ -355,11 +309,9 @@
 		
 	</profiles>
 	
-	<modules>
-		<!--		
+	<modules>		
 		<module>../pom-jee-server</module>
-		<module>../pom-jee-client</module>
-		-->
+		<module>../pom-jee-client</module>		
 		<module>../pom-jee-utility-__kernel__</module>
 	</modules>
 	
