@@ -18,6 +18,7 @@
 	<properties>
 		<org.wildfly.arquillian.wildfly-arquillian-container-managed.version>2.2.0.Final</org.wildfly.arquillian.wildfly-arquillian-container-managed.version>
 		<org.jboss.arquillian.arquillian-bom.version>1.4.1.Final</org.jboss.arquillian.arquillian-bom.version>
+		<org.glassfish.jaxb.jaxb-runtime.version>2.4.0-b180830.0438</org.glassfish.jaxb.jaxb-runtime.version>
 		<com.h2database.h2.version>1.4.197</com.h2database.h2.version>		
 	</properties>
 

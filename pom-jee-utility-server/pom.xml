@@ -39,15 +39,20 @@
 		    <artifactId>assertj-core</artifactId>
 		    <scope>compile</scope>
 		</dependency>
+		
+		<dependency>
+		    <groupId>org.glassfish.jaxb</groupId>
+		    <artifactId>jaxb-runtime</artifactId>
+		    <version>${org.glassfish.jaxb.jaxb-runtime.version}</version>
+		    <scope>test</scope>
+		</dependency>	
 	</dependencies>
 		
 	<modules>
 		<module>../pom-jee-utility-server-persistence</module> 
-		<!--
 		<module>../pom-jee-utility-server-business</module> 
 		<module>../pom-jee-utility-server-representation</module>
 		<module>../pom-jee-utility-server-deployment</module> 
-		-->
 	</modules> 
 	
 </project>
