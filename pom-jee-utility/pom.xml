@@ -66,9 +66,7 @@
 	
 	<modules>
 		<module>../pom-jee-utility-server</module> 
-		<!--
 		<module>../pom-jee-utility-client</module> 
-		-->
 	</modules> 
 	
 </project>
