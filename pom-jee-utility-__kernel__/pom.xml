@@ -15,7 +15,12 @@
 	<version>pom.jee.utility.__kernel__.0.1.0</version>
 	<packaging>pom</packaging>
 	
-	<dependencies>				
+	<dependencies>
+		<dependency> 
+		    <groupId>one.util</groupId> 
+		    <artifactId>streamex</artifactId> 
+		</dependency>
+						
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

@@ -15,4 +15,40 @@
 	<version>pom.jee.utility.server.representation.0.1.0</version>
 	<packaging>pom</packaging>
 	
+	<properties>
+		<org.jboss.resteasy.version>4.3.0.Final</org.jboss.resteasy.version>
+		<org.jboss.resteasy.resteasy-client.version>${org.jboss.resteasy.version}</org.jboss.resteasy.resteasy-client.version>
+		<org.jboss.resteasy.resteasy-json-binding-provider.version>${org.jboss.resteasy.version}</org.jboss.resteasy.resteasy-json-binding-provider.version>
+	</properties>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+			    <groupId>org.jboss.resteasy</groupId>
+			    <artifactId>resteasy-client</artifactId>
+			    <version>${org.jboss.resteasy.resteasy-client.version}</version>
+			    <scope>test</scope>
+			</dependency>
+			
+			<dependency>
+			    <groupId>org.jboss.resteasy</groupId>
+			    <artifactId>resteasy-json-binding-provider</artifactId>
+			    <version>${org.jboss.resteasy.resteasy-json-binding-provider.version}</version>
+			    <scope>test</scope>
+			</dependency>
+		</dependencies>	
+	</dependencyManagement>
+	
+	<dependencies>
+		<dependency>
+		    <groupId>org.jboss.resteasy</groupId>
+		    <artifactId>resteasy-client</artifactId>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.jboss.resteasy</groupId>
+		    <artifactId>resteasy-json-binding-provider</artifactId>
+		</dependency>
+	</dependencies>
+	
 </project>

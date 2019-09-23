@@ -72,7 +72,7 @@
 		<org.junit.vintage.junit-vintage-engine.version>${org.junit.5.version}</org.junit.vintage.junit-vintage-engine.version>
 		<org.mockito.mockito-all.version>2.0.2-beta</org.mockito.mockito-all.version>
 		<org.assertj.assertj-core.version>3.13.2</org.assertj.assertj-core.version>
-		<org.jboss.weld.se.weld-se.version>3.0.0.Alpha1</org.jboss.weld.se.weld-se.version>
+		<org.jboss.weld.se.weld-se.version>2.4.8.Final</org.jboss.weld.se.weld-se.version>
 		<org.jboss.weld.weld-junit5.version>2.0.0.Final</org.jboss.weld.weld-junit5.version>
 		
 		<!-- 	Logging -->

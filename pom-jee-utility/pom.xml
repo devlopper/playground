@@ -57,11 +57,6 @@
 		    <artifactId>assertj-core</artifactId>
 		    <scope>compile</scope>
 		</dependency>
-		
-		<dependency> 
-		    <groupId>one.util</groupId> 
-		    <artifactId>streamex</artifactId> 
-		</dependency>
 	</dependencies>
 	
 	<modules>
