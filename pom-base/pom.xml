@@ -88,8 +88,8 @@
 		<org.jboss.weld.se.weld-se-core.version>3.1.0.Final</org.jboss.weld.se.weld-se-core.version>	
 		
 		<org.wildfly.plugins.wildfly-maven-plugin>2.0.1.Final</org.wildfly.plugins.wildfly-maven-plugin>
-		<io.thorntail.thorntail-maven-plugin.version>2.4.0.Final</io.thorntail.thorntail-maven-plugin.version>	
-		<io.thorntail.bom.version>2.4.0.Final</io.thorntail.bom.version>
+		<io.thorntail.thorntail-maven-plugin.version>2.5.0.Final</io.thorntail.thorntail-maven-plugin.version>	
+		<io.thorntail.bom.version>2.5.0.Final</io.thorntail.bom.version>
 		<org.wildfly.swarm.wildfly-swarm-plugin.version>2017.2.0</org.wildfly.swarm.wildfly-swarm-plugin.version>
 		<!--org.wildfly.swarm.wildfly-swarm-plugin.version>2018.5.0</org.wildfly.swarm.wildfly-swarm-plugin.version-->
 		<!--org.wildfly.swarm.wildfly-swarm-plugin.version>1.0.0.Alpha4</org.wildfly.swarm.wildfly-swarm-plugin.version-->
@@ -729,7 +729,28 @@
 			</dependencies>
 		</profile>
 		
-		
+		<profile>
+			<id>deployment.client.standalone.thorntail.keycloak</id>
+			<dependencyManagement>
+				<dependencies>
+					<dependency>
+      					<groupId>io.thorntail</groupId>
+      					<artifactId>bom</artifactId>
+      					<version>${io.thorntail.bom.version}</version>
+      					<scope>import</scope>
+      					<type>pom</type>
+    				</dependency>
+				</dependencies>
+			</dependencyManagement>
+			
+			<dependencies>
+				<dependency>
+					<groupId>io.thorntail</groupId>
+					<artifactId>keycloak</artifactId>
+				</dependency>		
+			</dependencies>
+		</profile>
+				
 		<profile>
 			<id>deployment.server</id>
 				
