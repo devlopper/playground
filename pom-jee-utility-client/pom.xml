@@ -15,25 +15,6 @@
 	<version>pom.jee.utility.client.0.1.0</version>
 	<packaging>pom</packaging>
 	
-	<properties>
-		<!--
-		<org.jboss.resteasy.resteasy-bom.version>4.3.0.Final</org.jboss.resteasy.resteasy-bom.version>
-		-->
-		<org.jboss.resteasy.resteasy-bom.version>3.5.1.Final</org.jboss.resteasy.resteasy-bom.version>
-	</properties>
-	
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.jboss.resteasy</groupId>
-				<artifactId>resteasy-bom</artifactId>
-				<version>${org.jboss.resteasy.resteasy-bom.version}</version>
-				<scope>import</scope>
-				<type>pom</type>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -57,18 +38,6 @@
 		    <groupId>org.assertj</groupId>
 		    <artifactId>assertj-core</artifactId>
 		    <scope>compile</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.jboss.resteasy</groupId>
-			<artifactId>resteasy-client</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.jboss.resteasy</groupId>
-			<artifactId>resteasy-jaxb-provider</artifactId>
-			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 	
