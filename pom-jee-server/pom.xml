@@ -81,7 +81,7 @@
 							<replacements>
 								<replacement>
 									<token>https://petstore.swagger.io/v2/swagger.json</token>
-									<value>/${web.context}/documentation/swagger.json</value>
+									<value>/${web.context}/api/swagger.json</value>
 								</replacement>
 							</replacements>
 						</configuration>
