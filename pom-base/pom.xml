@@ -25,6 +25,7 @@
 		<project.build.sourceEncoding>${character.encoding}</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>${character.encoding}</project.reporting.outputEncoding>
 		<failOnMissingWebXml>false</failOnMissingWebXml>	
+		<project.build.file.name>${project.artifactId}-${project.version}</project.build.file.name>
 		<!--    Maven  -->
 		<org.apache.maven.plugins.maven-compiler-plugin.configuration.source>${java.standard.edition.version}</org.apache.maven.plugins.maven-compiler-plugin.configuration.source>
 		<org.apache.maven.plugins.maven-compiler-plugin.configuration.target>${java.standard.edition.version}</org.apache.maven.plugins.maven-compiler-plugin.configuration.target>
@@ -99,6 +100,12 @@
 		<io.quarkus.quarkus-bom.version>0.16.1</io.quarkus.quarkus-bom.version>
 		
 		<one.util.streamex.version>0.7.0</one.util.streamex.version>
+		
+		<io.swagger.swagger.version>1.5.24</io.swagger.swagger.version>
+		<io.swagger.swagger-annotations.version>${io.swagger.swagger.version}</io.swagger.swagger-annotations.version>
+		<io.swagger.swagger-jaxrs.version>${io.swagger.swagger.version}</io.swagger.swagger-jaxrs.version>
+		<com.googlecode.maven-download-plugin.download-maven-plugin.version>1.4.2</com.googlecode.maven-download-plugin.download-maven-plugin.version>
+		<com.google.code.maven-replacer-plugin.replacer.version>1.5.3</com.google.code.maven-replacer-plugin.replacer.version>
 	</properties>
 
 	<distributionManagement>
@@ -220,6 +227,17 @@
 			    <scope>test</scope>
 			</dependency>
 			
+			<dependency>
+				<groupId>io.swagger</groupId>
+				<artifactId>swagger-jaxrs</artifactId>
+				<version>${io.swagger.swagger-jaxrs.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>io.swagger</groupId>
+				<artifactId>swagger-annotations</artifactId>
+				<version>${io.swagger.swagger-annotations.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 

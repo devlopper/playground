@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<parent>
@@ -14,41 +15,46 @@
 	<artifactId>pom-jee-utility-server-representation</artifactId>
 	<version>pom.jee.utility.server.representation.0.1.0</version>
 	<packaging>pom</packaging>
-	
+
 	<properties>
 		<org.jboss.resteasy.version>4.3.0.Final</org.jboss.resteasy.version>
 		<org.jboss.resteasy.resteasy-client.version>${org.jboss.resteasy.version}</org.jboss.resteasy.resteasy-client.version>
 		<org.jboss.resteasy.resteasy-json-binding-provider.version>${org.jboss.resteasy.version}</org.jboss.resteasy.resteasy-json-binding-provider.version>
 	</properties>
-	
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-			    <groupId>org.jboss.resteasy</groupId>
-			    <artifactId>resteasy-client</artifactId>
-			    <version>${org.jboss.resteasy.resteasy-client.version}</version>
-			    <scope>test</scope>
+				<groupId>org.jboss.resteasy</groupId>
+				<artifactId>resteasy-client</artifactId>
+				<version>${org.jboss.resteasy.resteasy-client.version}</version>
+				<scope>test</scope>
 			</dependency>
-			
+
 			<dependency>
-			    <groupId>org.jboss.resteasy</groupId>
-			    <artifactId>resteasy-json-binding-provider</artifactId>
-			    <version>${org.jboss.resteasy.resteasy-json-binding-provider.version}</version>
-			    <scope>test</scope>
+				<groupId>org.jboss.resteasy</groupId>
+				<artifactId>resteasy-json-binding-provider</artifactId>
+				<version>${org.jboss.resteasy.resteasy-json-binding-provider.version}</version>
+				<scope>test</scope>
 			</dependency>
-		</dependencies>	
+		</dependencies>
 	</dependencyManagement>
-	
+
 	<dependencies>
 		<dependency>
-		    <groupId>org.jboss.resteasy</groupId>
-		    <artifactId>resteasy-client</artifactId>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-client</artifactId>
 		</dependency>
-		
+
 		<dependency>
-		    <groupId>org.jboss.resteasy</groupId>
-		    <artifactId>resteasy-json-binding-provider</artifactId>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-json-binding-provider</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>io.swagger</groupId>
+			<artifactId>swagger-annotations</artifactId>
 		</dependency>
 	</dependencies>
-	
+
 </project>
