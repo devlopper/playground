@@ -252,6 +252,42 @@
 		</profile>
 		
 		<profile>
+			<properties>
+				<wildfly.version>18.0.0.Final</wildfly.version>
+			</properties>
+			<id>build.plugin.unpack.wildfly.18.0.0.Final</id>
+			<build>
+				<plugins>
+		            <plugin>
+		                <groupId>org.apache.maven.plugins</groupId>
+		                <artifactId>maven-dependency-plugin</artifactId>
+		                <executions>
+		                    <execution>
+		                        <id>unpack</id>
+		                        <phase>process-test-classes</phase>
+		                        <goals>
+		                            <goal>unpack</goal>
+		                        </goals>
+		                        <configuration>
+		                            <artifactItems>
+		                                <artifactItem>
+		                                    <groupId>org.wildfly</groupId>
+		                                    <artifactId>wildfly-dist</artifactId>
+		                                    <version>${wildfly.version}</version>
+		                                    <type>zip</type>
+		                                    <overWrite>false</overWrite>
+		                                    <outputDirectory>${project.build.directory}</outputDirectory>
+		                                </artifactItem>
+		                            </artifactItems>
+		                        </configuration>
+		                    </execution>
+		                </executions>
+		            </plugin>				
+				</plugins>
+			</build>
+		</profile>
+		
+		<profile>
 			<id>build.plugin.copy.wildfly.keycloak.17.0.1.Final</id>
 			<build>
 				<plugins>
