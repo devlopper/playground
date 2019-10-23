@@ -277,6 +277,7 @@
 		                                    <type>zip</type>
 		                                    <overWrite>false</overWrite>
 		                                    <outputDirectory>${project.build.directory}</outputDirectory>
+		                                    <stripVersion>true</stripVersion>		                            		                          
 		                                </artifactItem>
 		                            </artifactItems>
 		                        </configuration>
