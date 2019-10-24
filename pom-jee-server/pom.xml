@@ -16,6 +16,10 @@
 	<version>pom.jee.server.0.1.0</version>
 	<packaging>pom</packaging>
 
+	<properties>
+		<swagger.json>${web.context}/api/swagger.json</swagger.json>
+	</properties>
+
 	<profiles>
 		<profile>
 			<id>swagger</id>
@@ -81,7 +85,7 @@
 							<replacements>
 								<replacement>
 									<token>https://petstore.swagger.io/v2/swagger.json</token>
-									<value>/${web.context}/api/swagger.json</value>
+									<value>${swagger.json}</value>
 								</replacement>
 							</replacements>
 						</configuration>
