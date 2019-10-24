@@ -261,6 +261,7 @@
 		            <plugin>
 		                <groupId>org.apache.maven.plugins</groupId>
 		                <artifactId>maven-dependency-plugin</artifactId>
+		                <version>3.1.1</version>
 		                <executions>
 		                    <execution>
 		                        <id>unpack</id>
@@ -276,8 +277,7 @@
 		                                    <version>${wildfly.version}</version>
 		                                    <type>zip</type>
 		                                    <overWrite>false</overWrite>
-		                                    <outputDirectory>${project.build.directory}</outputDirectory>
-		                                    <stripVersion>true</stripVersion>		                            		                          
+		                                    <outputDirectory>${project.build.directory}</outputDirectory>		                                                    		                          
 		                                </artifactItem>
 		                            </artifactItems>
 		                        </configuration>
