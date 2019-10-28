@@ -90,15 +90,6 @@
 			<artifactId>resteasy-jaxb-provider</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		
-		<dependency>
-			<groupId>org.mock-server</groupId>
-			<artifactId>mockserver-netty</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.mock-server</groupId>
-			<artifactId>mockserver-client-java</artifactId>
-		</dependency>
 	</dependencies>
 	
 	<modules>
