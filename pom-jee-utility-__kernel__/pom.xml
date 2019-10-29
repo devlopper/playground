@@ -93,7 +93,8 @@
 	</dependencies>
 	
 	<modules>
-		<module>../pom-jee-utility</module>  
+		<module>../pom-jee-utility</module>
+		<module>../pom-jee-utility-archetype</module>  
 	</modules> 
 	
 </project>
