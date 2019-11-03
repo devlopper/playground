@@ -1155,6 +1155,14 @@
 				</plugins>
 			</build>
 		</profile>
+		
+		<profile>
+			<id>keycloak</id>
+			<properties>
+				<web-app.security-constraint.web-resource-collection.all.url-pattern>/*</web-app.security-constraint.web-resource-collection.all.url-pattern>
+				<web-app.login-config.auth-method>KEYCLOAK</web-app.login-config.auth-method>
+			</properties>
+		</profile>
 	</profiles>
 
 	<modules>
