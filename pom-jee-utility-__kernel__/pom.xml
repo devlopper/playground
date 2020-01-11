@@ -18,7 +18,7 @@
 	<properties>
 		<org.jboss.resteasy.resteasy-bom.version>3.5.1.Final</org.jboss.resteasy.resteasy-bom.version>
 	</properties>
-	
+	<!--
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -30,7 +30,7 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
+	-->
 	<dependencies>
 		<dependency> 
 		    <groupId>one.util</groupId> 
@@ -78,7 +78,7 @@
 		    <artifactId>assertj-core</artifactId>
 		    <scope>compile</scope>
 		</dependency>
-		
+		<!--
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-client</artifactId>
@@ -90,6 +90,7 @@
 			<artifactId>resteasy-jaxb-provider</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		-->
 	</dependencies>
 	
 	<modules>

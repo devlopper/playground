@@ -113,6 +113,7 @@
 		<org.mock-server.mockserver-client-java.version>${mock-server.version}</org.mock-server.mockserver-client-java.version>
 		<org.mock-server.mockserver-maven-plugin.version>${mock-server.version}</org.mock-server.mockserver-maven-plugin.version>
 		<org.mock-server.mockserver-maven-plugin.configuration.port>10000</org.mock-server.mockserver-maven-plugin.configuration.port>
+		<com.github.fge.jackson-coreutils.version>1.8</com.github.fge.jackson-coreutils.version>
 	</properties>
 
 	<distributionManagement>
@@ -258,6 +259,15 @@
 				<version>${org.mock-server.mockserver-client-java.version}</version>
 				<scope>test</scope>
 			</dependency>
+			
+			<!-- Needed for mock server -->
+			<dependency>
+			    <groupId>com.github.fge</groupId>
+			    <artifactId>jackson-coreutils</artifactId>
+			    <version>${com.github.fge.jackson-coreutils.version}</version>
+			    <scope>test</scope>
+			</dependency>
+			
 		</dependencies>
 	</dependencyManagement>
 
