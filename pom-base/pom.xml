@@ -114,6 +114,8 @@
 		<org.mock-server.mockserver-maven-plugin.version>${mock-server.version}</org.mock-server.mockserver-maven-plugin.version>
 		<org.mock-server.mockserver-maven-plugin.configuration.port>10000</org.mock-server.mockserver-maven-plugin.configuration.port>
 		<com.github.fge.jackson-coreutils.version>1.8</com.github.fge.jackson-coreutils.version>
+		
+		<com.icegreen.greenmail.version>1.5.11</com.icegreen.greenmail.version>
 	</properties>
 
 	<distributionManagement>
@@ -265,6 +267,13 @@
 			    <groupId>com.github.fge</groupId>
 			    <artifactId>jackson-coreutils</artifactId>
 			    <version>${com.github.fge.jackson-coreutils.version}</version>
+			    <scope>test</scope>
+			</dependency>
+			
+			<dependency>
+			    <groupId>com.icegreen</groupId>
+			    <artifactId>greenmail</artifactId>
+			    <version>${com.icegreen.greenmail.version}</version>
 			    <scope>test</scope>
 			</dependency>
 			
@@ -525,6 +534,11 @@
 		<dependency>
 			<groupId>org.mock-server</groupId>
 			<artifactId>mockserver-client-java</artifactId>
+		</dependency>
+		
+		<dependency>
+		    <groupId>com.icegreen</groupId>
+		    <artifactId>greenmail</artifactId>
 		</dependency>
 	</dependencies>
 
