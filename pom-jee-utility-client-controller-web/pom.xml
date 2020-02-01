@@ -16,8 +16,22 @@
 	<packaging>pom</packaging>
 	
 	<properties>
-		<!--version.prettyfaces>3.0.0.Alpha4</version.prettyfaces-->
+		<org.ocpsoft.version>3.4.4.Final</org.ocpsoft.version>
+		<org.ocpsoft.rewrite.rewrite-servlet.version>${org.ocpsoft.version}</org.ocpsoft.rewrite.rewrite-servlet.version>
 	</properties>
+	
+	<dependencies>
+		<dependency>
+		    <groupId>org.ocpsoft.rewrite</groupId>
+		    <artifactId>rewrite-servlet</artifactId>
+		    <version>${org.ocpsoft.rewrite.rewrite-servlet.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.ocpsoft.rewrite</groupId>
+		    <artifactId>rewrite-config-prettyfaces</artifactId>
+		    <version>${org.ocpsoft.rewrite.rewrite-servlet.version}</version>
+		</dependency>
+	</dependencies>
 	
 	<modules>
 		<module>../pom-jee-utility-client-controller-web-jsf</module> 
