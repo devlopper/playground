@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<parent>
@@ -14,37 +15,44 @@
 	<artifactId>pom-jee-utility-client-controller-web-jsf-primefaces</artifactId>
 	<version>pom.jee.utility.client.controller.web.jsf.primefaces.0.1.0</version>
 	<packaging>pom</packaging>
-	
+
 	<properties>
 		<primefaces.version>7.0</primefaces.version>
-		<org.primefaces.primefaces.version>${primefaces.version}</org.primefaces.primefaces.version>
-		<org.primefaces.themes.all-themes.version>1.0.10</org.primefaces.themes.all-themes.version> 
+		<!-- <org.primefaces.primefaces.version>${primefaces.version}</org.primefaces.primefaces.version> -->
+		<org.primefaces.primefaces.version>7.0.11</org.primefaces.primefaces.version>
+		<org.primefaces.themes.all-themes.version>1.0.10</org.primefaces.themes.all-themes.version>
 		<org.primefaces.extensions.primefaces-extensions.version>${primefaces.version}</org.primefaces.extensions.primefaces-extensions.version>
 	</properties>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
 			<version>${org.primefaces.primefaces.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.primefaces.themes</groupId>
 			<artifactId>all-themes</artifactId>
 			<version>${org.primefaces.themes.all-themes.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.primefaces.extensions</groupId>
 			<artifactId>primefaces-extensions</artifactId>
 			<version>${org.primefaces.extensions.primefaces-extensions.version}</version>
-		</dependency>		
-		
+			<exclusions>
+				<exclusion>
+					<groupId>org.primefaces</groupId>
+					<artifactId>primefaces</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
 	</dependencies>
-	
+
 	<modules>
-		<module>../pom-jee-utility-client-deployment</module> 
-	</modules> 
-	
+		<module>../pom-jee-utility-client-deployment</module>
+	</modules>
+
 </project>

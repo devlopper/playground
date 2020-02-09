@@ -116,6 +116,7 @@
 		<com.github.fge.jackson-coreutils.version>1.8</com.github.fge.jackson-coreutils.version>
 		
 		<com.icegreen.greenmail.version>1.5.11</com.icegreen.greenmail.version>
+		<org.liquibase.liquibase-maven-plugin.version>3.8.5</org.liquibase.liquibase-maven-plugin.version>
 	</properties>
 
 	<distributionManagement>
@@ -560,6 +561,13 @@
 			<id>data.base.management.system</id>
 			<properties>
 				<data.base.management.system.host>localhost</data.base.management.system.host>
+				<data.base.management.system.host.development>${data.base.management.system.host}</data.base.management.system.host.development>
+				<data.base.management.system.host.test>${data.base.management.system.host}</data.base.management.system.host.test>
+				<data.base.management.system.host.production>${data.base.management.system.host}</data.base.management.system.host.production>
+				
+				<data.base.management.system.port.development>${data.base.management.system.port}</data.base.management.system.port.development>
+				<data.base.management.system.port.test>${data.base.management.system.port}</data.base.management.system.port.test>
+				<data.base.management.system.port.production>${data.base.management.system.port}</data.base.management.system.port.production>
 			</properties>
 		</profile>
 
@@ -567,6 +575,9 @@
 			<id>data.base.management.system.mysql</id>
 			<properties>
 				<data.base.management.system.port>3306</data.base.management.system.port>
+				<data.base.management.system.port.development>${data.base.management.system.port}</data.base.management.system.port.development>
+				<data.base.management.system.port.test>${data.base.management.system.port}</data.base.management.system.port.test>
+				<data.base.management.system.port.production>${data.base.management.system.port}</data.base.management.system.port.production>
 			</properties>
 		</profile>
 
@@ -616,10 +627,17 @@
 			<id>data.source</id>
 			<properties>
 				<data.source.user>development</data.source.user>
+				<data.source.user.development>${data.source.user}</data.source.user.development>
+				<data.source.user.test>${data.source.user}</data.source.user.test>
+				<data.source.user.production>${data.source.user}</data.source.user.production>
+				
 				<data.source.password>development</data.source.password>
+				<data.source.password.development>${data.source.password}</data.source.password.development>
+				<data.source.password.test>${data.source.password}</data.source.password.test>
+				<data.source.password.production>${data.source.password}</data.source.password.production>
 			</properties>
 		</profile>
-
+		
 		<profile>
 			<id>data.source.oracle</id>
 			<properties>
@@ -628,6 +646,9 @@
 				<data.base.management.system.port>1521</data.base.management.system.port>
 				<data.base.management.system.sid>xe</data.base.management.system.sid>
 				<data.source.url>jdbc:oracle:thin:@${data.base.management.system.host}:${data.base.management.system.port}:${data.base.management.system.sid}</data.source.url>
+				<data.source.url.development>jdbc:oracle:thin:@${data.base.management.system.host}:${data.base.management.system.port}:${data.base.management.system.sid}</data.source.url.development>
+				<data.source.url.test>jdbc:oracle:thin:@${data.base.management.system.host}:${data.base.management.system.port}:${data.base.management.system.sid}</data.source.url.test>
+				<data.source.url.production>jdbc:oracle:thin:@${data.base.management.system.host}:${data.base.management.system.port}:${data.base.management.system.sid}</data.source.url.production>
 			</properties>
 		</profile>
 
@@ -645,9 +666,13 @@
 		<profile>
 			<id>data.source.mysql</id>
 			<properties>
+				<data.source.driver>com.mysql.jdbc.Driver</data.source.driver>
 				<data.source.driver.name>mysql</data.source.driver.name>
 				<data.source.className>com.mysql.jdbc.jdbc2.optional.MysqlXADataSource</data.source.className>
-				<data.source.url>jdbc:mysql://${data.base.management.system.host}:${data.base.management.system.port}/${data.source.schema.name}</data.source.url>
+				<data.source.url>jdbc:mysql://${data.base.management.system.host}:${data.base.management.system.port}/${data.source.schema.name}?useSSL=false&amp;allowPublicKeyRetrieval=true</data.source.url>
+				<data.source.url.development>jdbc:mysql://${data.base.management.system.host.development}:${data.base.management.system.port.development}/${data.source.schema.name.development}?useSSL=false&amp;allowPublicKeyRetrieval=true</data.source.url.development>
+				<data.source.url.test>jdbc:mysql://${data.base.management.system.host.test}:${data.base.management.system.port.test}/${data.source.schema.name.test}?useSSL=false&amp;allowPublicKeyRetrieval=true</data.source.url.test>
+				<data.source.url.production>jdbc:mysql://${data.base.management.system.host.production}:${data.base.management.system.port.production}/${data.source.schema.name.production}?useSSL=false&amp;allowPublicKeyRetrieval=true</data.source.url.production>
 			</properties>
 		</profile>
 
@@ -954,114 +979,7 @@
 			</dependencies>
 		</profile>
 
-		<!-- <profile> <id>deployment.standalone.quarkus</id> <properties> <packaging_profile_identifier>packaging/microprofile/quarkus</packaging_profile_identifier> 
-			</properties> <build> <pluginManagement> <plugins> <plugin> <groupId>io.quarkus</groupId> 
-			<artifactId>quarkus-maven-plugin</artifactId> <version>${io.quarkus.quarkus-maven-plugin.version}</version> 
-			<executions> <execution> <goals> <goal>build</goal> </goals> </execution> 
-			</executions> </plugin> </plugins> </pluginManagement> <resources> <resource> 
-			<directory>src/main/resources</directory> <filtering>true</filtering> <includes> 
-			<include>**/project-defaults.yml</include> </includes> </resource> <resource> 
-			<directory>src/main/resources</directory> <filtering>false</filtering> <includes> 
-			<include>**/*.*</include> </includes> </resource> </resources> <plugins> 
-			<plugin> <groupId>io.quarkus</groupId> <artifactId>quarkus-maven-plugin</artifactId> 
-			</plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-war-plugin</artifactId> 
-			<version>2.0.2</version> <configuration> <webResources> <resource> <directory>${basedir}/${packaging_profile_identifier}/WEB-INF</directory> 
-			<filtering>true</filtering> <targetPath>WEB-INF</targetPath> <includes> <include>**/*.*</include> 
-			</includes> </resource> </webResources> </configuration> </plugin> </plugins> 
-			</build> <dependencyManagement> <dependencies> <dependency> <groupId>io.quarkus</groupId> 
-			<artifactId>quarkus-bom</artifactId> <version>${io.quarkus.quarkus-bom.version}</version> 
-			<scope>import</scope> <type>pom</type> </dependency> </dependencies> </dependencyManagement> 
-			<dependencies> <dependency> <groupId>io.quarkus</groupId> <artifactId>quarkus-resteasy</artifactId> 
-			</dependency> </dependencies> </profile> -->
-
 		<!-- Microprofile -->
-		<profile>
-			<id>microprofile.jboss.wildfly.swarm</id>
-			<properties>
-				<packaging_profile_identifier>packaging/microprofile/jboss/wildfly/swarm</packaging_profile_identifier>
-				<microprofile.archive.name>${project.artifactId}</microprofile.archive.name>
-			</properties>
-
-			<build>
-
-				<pluginManagement>
-					<plugins>
-						<plugin>
-							<groupId>org.wildfly.swarm</groupId>
-							<artifactId>wildfly-swarm-plugin</artifactId>
-							<version>${org.wildfly.swarm.wildfly-swarm-plugin.version}</version>
-							<executions>
-								<execution>
-									<goals>
-										<goal>package</goal>
-									</goals>
-								</execution>
-							</executions>
-						</plugin>
-					</plugins>
-				</pluginManagement>
-
-				<resources>
-					<resource>
-						<directory>src/main/resources</directory>
-						<filtering>true</filtering>
-						<includes>
-							<include>**/project-defaults.yml</include>
-						</includes>
-					</resource>
-
-					<resource>
-						<directory>src/main/resources</directory>
-						<filtering>false</filtering>
-						<includes>
-							<include>**/*.*</include>
-						</includes>
-					</resource>
-				</resources>
-
-				<plugins>
-					<plugin>
-						<groupId>org.wildfly.swarm</groupId>
-						<artifactId>wildfly-swarm-plugin</artifactId>
-					</plugin>
-
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-war-plugin</artifactId>
-						<version>2.0.2</version>
-						<configuration>
-							<webResources>
-								<resource>
-									<directory>${basedir}/${packaging_profile_identifier}/WEB-INF</directory>
-									<filtering>true</filtering>
-									<targetPath>WEB-INF</targetPath>
-									<includes>
-										<include>**/*.*</include>
-									</includes>
-								</resource>
-							</webResources>
-						</configuration>
-					</plugin>
-
-				</plugins>
-
-				<finalName>${microprofile.archive.name}</finalName>
-			</build>
-
-			<dependencyManagement>
-				<dependencies>
-					<dependency>
-						<groupId>org.wildfly.swarm</groupId>
-						<artifactId>bom-all</artifactId>
-						<version>${org.wildfly.swarm.bom-all.version}</version>
-						<scope>import</scope>
-						<type>pom</type>
-					</dependency>
-				</dependencies>
-			</dependencyManagement>
-
-		</profile>
-
 		<profile>
 			<id>microprofile.jboss.wildfly.thorntail</id>
 			<properties>
@@ -1180,6 +1098,8 @@
 			</build>
 		</profile>
 		
+		<!-- keycloak -->
+		
 		<profile>
 			<id>keycloak</id>
 			<properties>
@@ -1188,6 +1108,8 @@
 			</properties>
 		</profile>
 		
+		<!-- web security -->
+		
 		<profile>
 			<id>web.security.disabled</id>
 			<properties>
@@ -1195,6 +1117,91 @@
 				<web-app.login-config.auth-method>BASIC</web-app.login-config.auth-method>
 			</properties>
 		</profile>
+		
+		<!-- liquibase -->
+		
+		<profile>
+			<id>org.liquibase.liquibase-maven-plugin</id>
+			<properties>
+				<org.liquibase.liquibase-maven-plugin.configuration.propertyFile>src/main/resources/liquibase/liquibase.properties</org.liquibase.liquibase-maven-plugin.configuration.propertyFile>
+				<org.liquibase.liquibase-maven-plugin.configuration.outputChangeLogFile>src/main/resources/liquibase/output_change_log.xml</org.liquibase.liquibase-maven-plugin.configuration.outputChangeLogFile>
+				<org.liquibase.liquibase-maven-plugin.configuration.changeLogFile>src/main/resources/liquibase/change_log.xml</org.liquibase.liquibase-maven-plugin.configuration.changeLogFile>
+				<org.liquibase.liquibase-maven-plugin.configuration.diffChangeLogFile>src/main/resources/liquibase/diff_change_log.xml</org.liquibase.liquibase-maven-plugin.configuration.diffChangeLogFile>
+				
+				<org.liquibase.liquibase-maven-plugin.configuration.referenceUrl>${data.source.url.development}</org.liquibase.liquibase-maven-plugin.configuration.referenceUrl>				
+				<org.liquibase.liquibase-maven-plugin.configuration.referenceDriver>${data.source.driver}</org.liquibase.liquibase-maven-plugin.configuration.referenceDriver>
+				<org.liquibase.liquibase-maven-plugin.configuration.referenceUsername>${data.source.user.development}</org.liquibase.liquibase-maven-plugin.configuration.referenceUsername>
+				<org.liquibase.liquibase-maven-plugin.configuration.referencePassword>${data.source.password.development}</org.liquibase.liquibase-maven-plugin.configuration.referencePassword>
+				
+				<org.liquibase.liquibase-maven-plugin.configuration.url>${data.source.url.production}</org.liquibase.liquibase-maven-plugin.configuration.url>
+				<org.liquibase.liquibase-maven-plugin.configuration.driver>${data.source.driver}</org.liquibase.liquibase-maven-plugin.configuration.driver>				
+				<org.liquibase.liquibase-maven-plugin.configuration.username>${data.source.user.production}</org.liquibase.liquibase-maven-plugin.configuration.username>
+				<org.liquibase.liquibase-maven-plugin.configuration.password>${data.source.user.production}</org.liquibase.liquibase-maven-plugin.configuration.password>				
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.liquibase</groupId>
+						<artifactId>liquibase-maven-plugin</artifactId>
+						<version>${org.liquibase.liquibase-maven-plugin.version}</version>
+						<configuration>
+							<propertyFile>${org.liquibase.liquibase-maven-plugin.configuration.propertyFile}</propertyFile>
+							
+							<referenceUrl>${org.liquibase.liquibase-maven-plugin.configuration.referenceUrl}</referenceUrl>
+							<referenceUsername>${org.liquibase.liquibase-maven-plugin.configuration.referenceUsername}</referenceUsername>
+							<referencePassword>${org.liquibase.liquibase-maven-plugin.configuration.referencePassword}</referencePassword>
+							<referenceDriver>${org.liquibase.liquibase-maven-plugin.configuration.referenceDriver}</referenceDriver>
+							
+							<url>${org.liquibase.liquibase-maven-plugin.configuration.url}</url>
+							<username>${org.liquibase.liquibase-maven-plugin.configuration.username}</username>
+							<password>${org.liquibase.liquibase-maven-plugin.configuration.password}</password>
+							<driver>${org.liquibase.liquibase-maven-plugin.configuration.driver}</driver>
+							
+							<outputChangeLogFile>${org.liquibase.liquibase-maven-plugin.configuration.outputChangeLogFile}</outputChangeLogFile>
+							<changeLogFile>${org.liquibase.liquibase-maven-plugin.configuration.changeLogFile}</changeLogFile>
+							<diffChangeLogFile>${org.liquibase.liquibase-maven-plugin.configuration.diffChangeLogFile}</diffChangeLogFile>
+							
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		
+		<!-- Environment -->
+		
+		<profile>
+			<id>environment</id>
+			<properties>
+				<!-- data source -->
+				<data.source.url>${environment.data.source.url}</data.source.url>
+				
+				<!-- liquibase -->
+				<environment.org.liquibase.liquibase-maven-plugin.configuration.driver>${org.liquibase.liquibase-maven-plugin.configuration.driver}</environment.org.liquibase.liquibase-maven-plugin.configuration.driver>
+				<environment.org.liquibase.liquibase-maven-plugin.configuration.referenceDriver>${org.liquibase.liquibase-maven-plugin.configuration.driver}</environment.org.liquibase.liquibase-maven-plugin.configuration.referenceDriver>
+				<environment.org.liquibase.liquibase-maven-plugin.configuration.username>${org.liquibase.liquibase-maven-plugin.configuration.username}</environment.org.liquibase.liquibase-maven-plugin.configuration.username>
+				<environment.org.liquibase.liquibase-maven-plugin.configuration.password>${org.liquibase.liquibase-maven-plugin.configuration.password}</environment.org.liquibase.liquibase-maven-plugin.configuration.password>
+				<environment.org.liquibase.liquibase-maven-plugin.configuration.referenceUsername>${org.liquibase.liquibase-maven-plugin.configuration.referenceUsername}</environment.org.liquibase.liquibase-maven-plugin.configuration.referenceUsername>
+				<environment.org.liquibase.liquibase-maven-plugin.configuration.referencePassword>${org.liquibase.liquibase-maven-plugin.configuration.referencePassword}</environment.org.liquibase.liquibase-maven-plugin.configuration.referencePassword>
+				
+				<!-- 	Current -->
+				<org.liquibase.liquibase-maven-plugin.configuration.url>${environment.org.liquibase.liquibase-maven-plugin.configuration.url}</org.liquibase.liquibase-maven-plugin.configuration.url>
+				<org.liquibase.liquibase-maven-plugin.configuration.username>${environment.org.liquibase.liquibase-maven-plugin.configuration.username}</org.liquibase.liquibase-maven-plugin.configuration.username>
+				<org.liquibase.liquibase-maven-plugin.configuration.password>${environment.org.liquibase.liquibase-maven-plugin.configuration.password}</org.liquibase.liquibase-maven-plugin.configuration.password>
+				<org.liquibase.liquibase-maven-plugin.configuration.driver>${environment.org.liquibase.liquibase-maven-plugin.configuration.driver}</org.liquibase.liquibase-maven-plugin.configuration.driver>
+				<!-- 	Reference -->
+				<org.liquibase.liquibase-maven-plugin.configuration.referenceUrl>${environment.org.liquibase.liquibase-maven-plugin.configuration.referenceUrl}</org.liquibase.liquibase-maven-plugin.configuration.referenceUrl>
+				<org.liquibase.liquibase-maven-plugin.configuration.referenceUsername>${environment.org.liquibase.liquibase-maven-plugin.configuration.referenceUsername}</org.liquibase.liquibase-maven-plugin.configuration.referenceUsername>
+				<org.liquibase.liquibase-maven-plugin.configuration.referencePassword>${environment.org.liquibase.liquibase-maven-plugin.configuration.referencePassword}</org.liquibase.liquibase-maven-plugin.configuration.referencePassword>
+				<org.liquibase.liquibase-maven-plugin.configuration.referenceDriver>${environment.org.liquibase.liquibase-maven-plugin.configuration.referenceDriver}</org.liquibase.liquibase-maven-plugin.configuration.referenceDriver>
+				
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>environment.development</id>
+			
+		</profile>
+		
 	</profiles>
 
 	<modules>
