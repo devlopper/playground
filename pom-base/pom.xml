@@ -1124,9 +1124,9 @@
 			<id>org.liquibase.liquibase-maven-plugin</id>
 			<properties>
 				<org.liquibase.liquibase-maven-plugin.configuration.propertyFile>src/main/resources/liquibase/liquibase.properties</org.liquibase.liquibase-maven-plugin.configuration.propertyFile>
-				<org.liquibase.liquibase-maven-plugin.configuration.outputChangeLogFile>src/main/resources/liquibase/output_change_log.xml</org.liquibase.liquibase-maven-plugin.configuration.outputChangeLogFile>
-				<org.liquibase.liquibase-maven-plugin.configuration.changeLogFile>src/main/resources/liquibase/change_log.xml</org.liquibase.liquibase-maven-plugin.configuration.changeLogFile>
-				<org.liquibase.liquibase-maven-plugin.configuration.diffChangeLogFile>src/main/resources/liquibase/diff_change_log.xml</org.liquibase.liquibase-maven-plugin.configuration.diffChangeLogFile>
+				<org.liquibase.liquibase-maven-plugin.configuration.changeLogFile>src/main/resources/liquibase/change_log_master.xml</org.liquibase.liquibase-maven-plugin.configuration.changeLogFile>
+				<org.liquibase.liquibase-maven-plugin.configuration.outputChangeLogFile>target/liquibase_change_log.xml</org.liquibase.liquibase-maven-plugin.configuration.outputChangeLogFile>				
+				<org.liquibase.liquibase-maven-plugin.configuration.diffChangeLogFile>target/liquibase_change_log.xml</org.liquibase.liquibase-maven-plugin.configuration.diffChangeLogFile>
 				
 				<org.liquibase.liquibase-maven-plugin.configuration.referenceUrl>${data.source.url.development}</org.liquibase.liquibase-maven-plugin.configuration.referenceUrl>				
 				<org.liquibase.liquibase-maven-plugin.configuration.referenceDriver>${data.source.driver}</org.liquibase.liquibase-maven-plugin.configuration.referenceDriver>
