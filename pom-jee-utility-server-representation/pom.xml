@@ -50,11 +50,12 @@
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-json-binding-provider</artifactId>
 		</dependency>
-
+		<!--
 		<dependency>
 			<groupId>io.swagger</groupId>
 			<artifactId>swagger-annotations</artifactId>
 		</dependency>
+		-->
 	</dependencies>
 
 </project>

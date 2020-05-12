@@ -90,8 +90,8 @@
 		<org.jboss.weld.se.weld-se-core.version>3.1.0.Final</org.jboss.weld.se.weld-se-core.version>
 
 		<org.wildfly.plugins.wildfly-maven-plugin>2.0.1.Final</org.wildfly.plugins.wildfly-maven-plugin>
-		<io.thorntail.thorntail-maven-plugin.version>2.5.0.Final</io.thorntail.thorntail-maven-plugin.version>
-		<io.thorntail.bom.version>2.5.0.Final</io.thorntail.bom.version>
+		<io.thorntail.thorntail-maven-plugin.version>2.6.0.Final</io.thorntail.thorntail-maven-plugin.version>
+		<io.thorntail.bom.version>2.6.0.Final</io.thorntail.bom.version>
 		<org.wildfly.swarm.wildfly-swarm-plugin.version>2017.2.0</org.wildfly.swarm.wildfly-swarm-plugin.version>
 		<!--org.wildfly.swarm.wildfly-swarm-plugin.version>2018.5.0</org.wildfly.swarm.wildfly-swarm-plugin.version -->
 		<!--org.wildfly.swarm.wildfly-swarm-plugin.version>1.0.0.Alpha4</org.wildfly.swarm.wildfly-swarm-plugin.version -->
@@ -338,9 +338,13 @@
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>${org.apache.maven.plugins.maven-surefire-plugin.version}</version>
 					<configuration>
-						<argLine>
-							--illegal-access=permit
-						</argLine>
+						<parallel>all</parallel>
+						<threadCount>10</threadCount>
+						<perCoreThreadCount>true</perCoreThreadCount>
+						
+						<forkCount>5C</forkCount>
+						<reuseForks>true</reuseForks>
+						<argLine>--illegal-access=permit -Xmx1024m -XX:MaxPermSize=256m</argLine>
 					</configuration>
 				</plugin>
 
@@ -349,9 +353,7 @@
 					<artifactId>maven-failsafe-plugin</artifactId>
 					<version>${org.apache.maven.plugins.maven-failsafe-plugin.version}</version>
 					<configuration>
-						<argLine>
-							--illegal-access=permit
-						</argLine>
+						<argLine>--illegal-access=permit</argLine>
 					</configuration>
 				</plugin>
 
@@ -541,6 +543,18 @@
 		    <groupId>com.icegreen</groupId>
 		    <artifactId>greenmail</artifactId>
 		</dependency>
+		
+		<dependency>
+			<groupId>io.swagger</groupId>
+			<artifactId>swagger-annotations</artifactId>
+		</dependency>
+		<!--
+		<dependency>
+		    <groupId>org.eclipse.microprofile.openapi</groupId>
+		    <artifactId>microprofile-openapi-api</artifactId>
+		    <version>1.1.2</version>
+		</dependency>
+		-->
 	</dependencies>
 
 	<profiles>
@@ -798,6 +812,9 @@
 
 		<profile>
 			<id>deployment.client.standalone.thorntail</id>
+			<properties>
+				<cyk.variable.system.proxy.uniform.resource.identifier>http://${deployment.client.proxy.host}:${deployment.client.proxy.port}/api</cyk.variable.system.proxy.uniform.resource.identifier>
+			</properties>
 			<dependencyManagement>
 				<dependencies>
 					<dependency>
@@ -829,7 +846,23 @@
 				</dependency>
 			</dependencies>
 		</profile>
-
+		
+		<profile>
+			<id>deployment.client.standalone.thorntail.dev</id>
+			<properties>
+				<deployment.client.proxy.port>8081</deployment.client.proxy.port>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>deployment.client.standalone.thorntail.prod</id>
+			<properties>
+				<deployment.standalone.port.offset>0</deployment.standalone.port.offset>
+				<deployment.client.proxy.host>${cyk.variable.system.identifier}</deployment.client.proxy.host>
+				<deployment.client.proxy.port>80</deployment.client.proxy.port>
+			</properties>
+		</profile>
+		
 		<profile>
 			<id>deployment.client.standalone.thorntail.keycloak</id>
 			<dependencyManagement>
@@ -866,6 +899,7 @@
 			<id>deployment.standalone.thorntail</id>
 			<properties>
 				<packaging_profile_identifier>packaging/microprofile/jboss/wildfly/thorntail</packaging_profile_identifier>
+				<swarm.port.offset>${deployment.standalone.port.offset}</swarm.port.offset>
 			</properties>
 
 			<build>
@@ -947,6 +981,11 @@
 
 		<profile>
 			<id>deployment.server.standalone.thorntail</id>
+			<properties>
+				<jboss-web.context-root></jboss-web.context-root>
+				<swagger.json>/api/swagger.json</swagger.json>
+			</properties>
+			
 			<dependencyManagement>
 				<dependencies>
 					<dependency>
@@ -978,7 +1017,23 @@
 				</dependency>
 			</dependencies>
 		</profile>
-
+		
+		<profile>
+			<id>deployment.server.standalone.thorntail.dev</id>
+			<properties>
+				<deployment.standalone.port.offset>1</deployment.standalone.port.offset>
+				<cyk.variable.system.port>8081</cyk.variable.system.port>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>deployment.server.standalone.thorntail.prod</id>
+			<properties>
+				<deployment.standalone.port.offset>0</deployment.standalone.port.offset>
+				<cyk.variable.system.port>80</cyk.variable.system.port>
+			</properties>
+		</profile>
+		
 		<!-- Microprofile -->
 		<profile>
 			<id>microprofile.jboss.wildfly.thorntail</id>
