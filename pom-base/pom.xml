@@ -746,7 +746,8 @@
 		<profile>
 			<id>server.application.jboss.wildfly</id>
 			<properties>
-				<packaging_profile_identifier>packaging/server/application/jboss/wildfly</packaging_profile_identifier>				
+				<packaging_profile_identifier>packaging/server/application/jboss/wildfly</packaging_profile_identifier>
+				<cyk.variable.system.port>8080</cyk.variable.system.port>
 			</properties>
 			<build>
 				<plugins>
@@ -804,6 +805,7 @@
 			<properties>
 				<server.application.jboss.wildfly.dev.hostname>localhost</server.application.jboss.wildfly.dev.hostname>
 				<wildfly.hostname>${server.application.jboss.wildfly.dev.hostname}</wildfly.hostname>
+				<cyk.variable.system.host>${server.application.jboss.wildfly.dev.hostname}</cyk.variable.system.host>
 			</properties>
 		</profile>
 		
@@ -878,9 +880,9 @@
 		<profile>
 			<id>deployment.client</id>
 			<properties>
-				<deployment.client.proxy.host>localhost</deployment.client.proxy.host>
-				<deployment.client.proxy.port>8080</deployment.client.proxy.port>
-				<deployment.client.proxy.context>/server/api</deployment.client.proxy.context>
+				<deployment.client.proxy.host>${cyk.variable.system.host}</deployment.client.proxy.host>
+				<deployment.client.proxy.port>${cyk.variable.system.port}</deployment.client.proxy.port>
+				<deployment.client.proxy.context>/${cyk.variable.system.identifier}/server/api</deployment.client.proxy.context>
 				<!--
 				<cyk.parameter.proxy.uniform.resource.identifier>http://${deployment.client.proxy.host}:${deployment.client.proxy.port}${deployment.client.proxy.context}</cyk.parameter.proxy.uniform.resource.identifier>
 				-->
@@ -899,7 +901,10 @@
 		<profile>
 			<id>deployment.client.standalone.thorntail</id>
 			<properties>
+				<deployment.client.proxy.context>/api</deployment.client.proxy.context>
+				<!--
 				<cyk.variable.system.proxy.uniform.resource.identifier>http://${deployment.client.proxy.host}:${deployment.client.proxy.port}/api</cyk.variable.system.proxy.uniform.resource.identifier>
+				-->
 			</properties>
 			<dependencyManagement>
 				<dependencies>
@@ -974,9 +979,6 @@
 		<profile>
 			<id>deployment.server</id>
 			<properties>
-				<!--
-				<microprofile.archive.name>collectif-server</microprofile.archive.name>
-				-->
 				<jboss-web.context-root>${cyk.variable.system.identifier}/server</jboss-web.context-root>
 				<web.context>/${jboss-web.context-root}</web.context>
 			</properties>
