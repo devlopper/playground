@@ -595,10 +595,36 @@
 			</properties>
 		</profile>
 
+		<!-- Oracle -->
+
 		<profile>
 			<id>data.base.management.system.oracle</id>
 			<properties>
 				<data.base.management.system.port>1521</data.base.management.system.port>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>data.base.management.system.oracle.dev</id>
+			<properties>
+				<data.base.management.system.oracle.dev.sid>xe</data.base.management.system.oracle.dev.sid>
+				<data.base.management.system.sid>${data.base.management.system.oracle.dev.sid}</data.base.management.system.sid>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>data.base.management.system.oracle.test</id>
+			<properties>
+				<data.base.management.system.host>${data.base.management.system.oracle.test.hostname}</data.base.management.system.host>
+				<data.base.management.system.sid>${data.base.management.system.oracle.test.sid}</data.base.management.system.sid>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>data.base.management.system.oracle.prod</id>
+			<properties>
+				<data.base.management.system.host>${data.base.management.system.oracle.prod.hostname}</data.base.management.system.host>
+				<data.base.management.system.sid>${data.base.management.system.oracle.prod.sid}</data.base.management.system.sid>
 			</properties>
 		</profile>
 
@@ -657,15 +683,41 @@
 			<properties>
 				<data.source.driver.name>oracle</data.source.driver.name>
 				<data.source.className>oracle.jdbc.pool.OracleDataSource</data.source.className>
-				<data.base.management.system.port>1521</data.base.management.system.port>
-				<data.base.management.system.sid>xe</data.base.management.system.sid>
+				<data.base.management.system.port>1521</data.base.management.system.port>				
 				<data.source.url>jdbc:oracle:thin:@${data.base.management.system.host}:${data.base.management.system.port}:${data.base.management.system.sid}</data.source.url>
 				<data.source.url.development>jdbc:oracle:thin:@${data.base.management.system.host}:${data.base.management.system.port}:${data.base.management.system.sid}</data.source.url.development>
 				<data.source.url.test>jdbc:oracle:thin:@${data.base.management.system.host}:${data.base.management.system.port}:${data.base.management.system.sid}</data.source.url.test>
 				<data.source.url.production>jdbc:oracle:thin:@${data.base.management.system.host}:${data.base.management.system.port}:${data.base.management.system.sid}</data.source.url.production>
 			</properties>
 		</profile>
-
+		
+		<profile>
+			<id>data.source.oracle.dev</id>
+			<properties>
+				<data.source.oracle.dev.password>${data.source.oracle.dev.user}</data.source.oracle.dev.password>
+				<data.source.user>${data.source.oracle.dev.user}</data.source.user>
+				<data.source.password>${data.source.oracle.dev.password}</data.source.password>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>data.source.oracle.test</id>
+			<properties>
+				<data.source.oracle.test.password>${data.source.oracle.test.user}</data.source.oracle.test.password>
+				<data.source.user>${data.source.oracle.test.user}</data.source.user>
+				<data.source.password>${data.source.oracle.test.password}</data.source.password>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>data.source.oracle.prod</id>
+			<properties>
+				<data.source.oracle.prod.password>${data.source.oracle.prod.user}</data.source.oracle.prod.password>
+				<data.source.user>${data.source.oracle.prod.user}</data.source.user>
+				<data.source.password>${data.source.oracle.prod.password}</data.source.password>
+			</properties>
+		</profile>
+			
 		<profile>
 			<id>data.source.h2</id>
 			<properties>
@@ -694,7 +746,7 @@
 		<profile>
 			<id>server.application.jboss.wildfly</id>
 			<properties>
-				<packaging_profile_identifier>packaging/server/application/jboss/wildfly</packaging_profile_identifier>
+				<packaging_profile_identifier>packaging/server/application/jboss/wildfly</packaging_profile_identifier>				
 			</properties>
 			<build>
 				<plugins>
@@ -746,7 +798,37 @@
 
 			</build>
 		</profile>
-
+		
+		<profile>
+			<id>server.application.jboss.wildfly.dev</id>
+			<properties>
+				<server.application.jboss.wildfly.dev.hostname>localhost</server.application.jboss.wildfly.dev.hostname>
+				<wildfly.hostname>${server.application.jboss.wildfly.dev.hostname}</wildfly.hostname>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>server.application.jboss.wildfly.test</id>
+			<properties>
+				<server.application.jboss.wildfly.test.password>${server.application.jboss.wildfly.test.username}</server.application.jboss.wildfly.test.password>
+				<wildfly.hostname>${server.application.jboss.wildfly.test.hostname}</wildfly.hostname>
+				<wildfly.username>${server.application.jboss.wildfly.test.username}</wildfly.username>
+				<wildfly.password>${server.application.jboss.wildfly.test.password}</wildfly.password>
+				<cyk.variable.system.host>${server.application.jboss.wildfly.test.hostname}</cyk.variable.system.host>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>server.application.jboss.wildfly.prod</id>
+			<properties>
+				<server.application.jboss.wildfly.prod.password>${server.application.jboss.wildfly.prod.username}</server.application.jboss.wildfly.prod.password>
+				<wildfly.hostname>${server.application.jboss.wildfly.prod.hostname}</wildfly.hostname>
+				<wildfly.username>${server.application.jboss.wildfly.prod.username}</wildfly.username>
+				<wildfly.password>${server.application.jboss.wildfly.prod.password}</wildfly.password>
+				<cyk.variable.system.host>${server.application.jboss.wildfly.prod.hostname}</cyk.variable.system.host>
+			</properties>
+		</profile>
+		
 		<!-- Hibernate -->
 		<profile>
 			<id>hibernate.hbm2ddl.auto.create</id>
@@ -768,7 +850,7 @@
 				<hibernate.hbm2ddl.auto>validate</hibernate.hbm2ddl.auto>
 			</properties>
 		</profile>
-
+		
 		<!-- Deployment -->
 		<profile>
 			<id>deployment</id>
@@ -798,8 +880,12 @@
 			<properties>
 				<deployment.client.proxy.host>localhost</deployment.client.proxy.host>
 				<deployment.client.proxy.port>8080</deployment.client.proxy.port>
-				<deployment.client.proxy.context>/</deployment.client.proxy.context>
+				<deployment.client.proxy.context>/server/api</deployment.client.proxy.context>
+				<!--
 				<cyk.parameter.proxy.uniform.resource.identifier>http://${deployment.client.proxy.host}:${deployment.client.proxy.port}${deployment.client.proxy.context}</cyk.parameter.proxy.uniform.resource.identifier>
+				-->
+				<cyk.variable.system.proxy.uniform.resource.identifier>http://${deployment.client.proxy.host}:${deployment.client.proxy.port}${deployment.client.proxy.context}</cyk.variable.system.proxy.uniform.resource.identifier>
+				<jboss-web.context-root>${cyk.variable.system.identifier}/client</jboss-web.context-root>
 			</properties>
 		</profile>
 
@@ -887,7 +973,13 @@
 
 		<profile>
 			<id>deployment.server</id>
-
+			<properties>
+				<!--
+				<microprofile.archive.name>collectif-server</microprofile.archive.name>
+				-->
+				<jboss-web.context-root>${cyk.variable.system.identifier}/server</jboss-web.context-root>
+				<web.context>/${jboss-web.context-root}</web.context>
+			</properties>
 		</profile>
 
 		<profile>
@@ -1022,6 +1114,8 @@
 			<id>deployment.server.standalone.thorntail.dev</id>
 			<properties>
 				<deployment.standalone.port.offset>1</deployment.standalone.port.offset>
+				<deployment.server.standalone.thorntail.dev.host>localhost</deployment.server.standalone.thorntail.dev.host>
+				<cyk.variable.system.host>${deployment.server.standalone.thorntail.dev.host}</cyk.variable.system.host>
 				<cyk.variable.system.port>8081</cyk.variable.system.port>
 			</properties>
 		</profile>
@@ -1030,6 +1124,8 @@
 			<id>deployment.server.standalone.thorntail.prod</id>
 			<properties>
 				<deployment.standalone.port.offset>0</deployment.standalone.port.offset>
+				
+				<cyk.variable.system.host>${deployment.server.standalone.thorntail.prod.host}</cyk.variable.system.host>
 				<cyk.variable.system.port>80</cyk.variable.system.port>
 			</properties>
 		</profile>
