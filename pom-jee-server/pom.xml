@@ -96,11 +96,90 @@
 			<dependencies>
 				<dependency>
 					<groupId>io.swagger</groupId>
+					<artifactId>swagger-annotations</artifactId>
+					<version>${io.swagger.swagger-annotations.version}</version>
+					<scope>compile</scope>
+				</dependency>
+				<dependency>
+					<groupId>io.swagger</groupId>
 					<artifactId>swagger-jaxrs</artifactId>
 					<version>${io.swagger.swagger-jaxrs.version}</version>
+					<scope>compile</scope>					
 				</dependency>
 			</dependencies>
 		</profile>
+		
+		<profile>
+			<id>swagger-build</id>
+			<build>
+				<finalName>${project.build.file.name}</finalName>
+				<plugins>
+					<plugin>
+						<groupId>com.googlecode.maven-download-plugin</groupId>
+						<artifactId>download-maven-plugin</artifactId>
+						<version>${com.googlecode.maven-download-plugin.download-maven-plugin.version}</version>
+						<executions>
+							<execution>
+								<id>swagger-ui</id>
+								<phase>prepare-package</phase>
+								<goals>
+									<goal>wget</goal>
+								</goals>
+								<configuration>
+									<skipCache>false</skipCache>
+									<url>https://github.com/swagger-api/swagger-ui/archive/master.tar.gz</url>
+									<unpack>true</unpack>
+									<outputDirectory>${project.build.directory}</outputDirectory>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<artifactId>maven-resources-plugin</artifactId>
+						<version>${org.apache.maven.plugins.maven-resources-plugin.version}</version>
+						<executions>
+							<execution>
+								<id>copy-resources</id>
+								<phase>prepare-package</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>target/${project.build.file.name}/swagger</outputDirectory>
+									<resources>
+										<resource>
+											<directory>${project.build.directory}/swagger-ui-master/dist</directory>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>com.google.code.maven-replacer-plugin</groupId>
+						<artifactId>replacer</artifactId>
+						<version>${com.google.code.maven-replacer-plugin.replacer.version}</version>
+						<executions>
+							<execution>
+								<id>replace-swagger-json-location</id>
+								<phase>prepare-package</phase>
+								<goals>
+									<goal>replace</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<file>${project.build.directory}/${project.build.file.name}/swagger/index.html</file>
+							<replacements>
+								<replacement>
+									<token>https://petstore.swagger.io/v2/swagger.json</token>
+									<value>${swagger.json}</value>
+								</replacement>
+							</replacements>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 	</profiles>
-
 </project>

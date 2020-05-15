@@ -242,12 +242,14 @@
 				<groupId>io.swagger</groupId>
 				<artifactId>swagger-jaxrs</artifactId>
 				<version>${io.swagger.swagger-jaxrs.version}</version>
+				<scope>provided</scope>
 			</dependency>
 
 			<dependency>
 				<groupId>io.swagger</groupId>
 				<artifactId>swagger-annotations</artifactId>
 				<version>${io.swagger.swagger-annotations.version}</version>
+				<scope>provided</scope>
 			</dependency>
 			
 			<dependency>
@@ -1008,6 +1010,11 @@
 									<goals>
 										<goal>package</goal>
 									</goals>
+									<!--
+									<configuration>
+										<hollow>true</hollow>
+									</configuration>
+									-->
 								</execution>
 							</executions>
 						</plugin>
@@ -1077,7 +1084,9 @@
 			<id>deployment.server.standalone.thorntail</id>
 			<properties>
 				<jboss-web.context-root></jboss-web.context-root>
+				<!--
 				<swagger.json>/api/swagger.json</swagger.json>
+				-->
 			</properties>
 			
 			<dependencyManagement>
@@ -1109,6 +1118,18 @@
 					<groupId>io.thorntail</groupId>
 					<artifactId>jsonb</artifactId>
 				</dependency>
+				<!--
+				<dependency>
+				   <groupId>io.thorntail</groupId>
+				   <artifactId>swagger</artifactId>
+				   <version>2.6.0.Final</version>
+				</dependency>				
+				<dependency>
+				   <groupId>io.thorntail</groupId>
+				   <artifactId>swagger-webapp</artifactId>
+				   <version>2.6.0.Final</version>
+				</dependency>
+				-->
 			</dependencies>
 		</profile>
 		
