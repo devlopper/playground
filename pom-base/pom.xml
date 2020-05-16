@@ -862,6 +862,8 @@
 				<deployment.host>localhost</deployment.host>
 				<deployment.port>8080</deployment.port>
 				<deployment.context>/</deployment.context>
+				<cyk.variable.system.timestamp.as.string>${maven.build.timestamp}</cyk.variable.system.timestamp.as.string>
+				<maven.build.timestamp.format>EEEE dd LLLL yyyy 'at' HH:mm:ss</maven.build.timestamp.format>
 			</properties>
 		</profile>
 
@@ -989,6 +991,28 @@
 		<profile>
 			<id>deployment.server.standalone</id>
 
+		</profile>
+
+		<profile>
+			<id>deployment.standalone.thorntail.build.hollow</id>
+			<build>				
+				<plugins>
+					<plugin>
+						<groupId>io.thorntail</groupId>
+						<artifactId>thorntail-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<goals>
+									<goal>package</goal>
+								</goals>									
+								<configuration>
+									<hollow>true</hollow>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 
 		<profile>
