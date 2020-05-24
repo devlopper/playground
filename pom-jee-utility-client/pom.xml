@@ -43,6 +43,7 @@
 	
 	<modules>
 		<module>../pom-jee-utility-client-controller</module> 
+		<module>../pom-jee-utility-client-deployment</module> 
 	</modules> 
 	
 </project>

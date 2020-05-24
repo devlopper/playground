@@ -50,9 +50,4 @@
 		</dependency>
 
 	</dependencies>
-
-	<modules>
-		<module>../pom-jee-utility-client-deployment</module>
-	</modules>
-
 </project>
