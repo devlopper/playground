@@ -11,6 +11,10 @@
 	<packaging>pom</packaging>
 
 	<properties>
+		<!--
+		<distributionManagement.repository.cyk.url>https://repo.repsy.io/mvn/kycdev/default</distributionManagement.repository.cyk.url>
+		<repositories.repository.cyk.url>https://repo.repsy.io/mvn/kycdev/default</repositories.repository.cyk.url>
+		-->
 		<!-- Custom -->
 		<character.encoding>UTF-8</character.encoding>
 		<java.standard.edition.version>11</java.standard.edition.version>
@@ -118,13 +122,6 @@
 		<com.icegreen.greenmail.version>1.5.11</com.icegreen.greenmail.version>
 		<org.liquibase.liquibase-maven-plugin.version>3.8.5</org.liquibase.liquibase-maven-plugin.version>
 	</properties>
-
-	<distributionManagement>
-		<repository>
-			<id>distribution.management.url</id>
-			<url>${distribution.management.url}</url>
-		</repository>
-	</distributionManagement>
 
 	<dependencyManagement>
 		<dependencies>
@@ -1400,6 +1397,16 @@
 			
 		</profile>
 		
+		<profile>
+			<id>cyk.repo.repsy.io</id>
+			<distributionManagement>
+				<repository>
+					<id>cyk.repo.repsy.io</id>
+					<url>https://repo.repsy.io/mvn/kycdev/default</url>
+				</repository>
+			</distributionManagement>
+		</profile>
+		
 	</profiles>
 
 	<modules>
@@ -1412,11 +1419,18 @@
 		<!-- Others -->
 		<!-- <module>../pom-maven-archetype</module> -->
 	</modules>
-
-	<repositories>
+	<!--
+	<distributionManagement>
 		<repository>
 			<id>cyk</id>
-			<url>https://rawgit.com/devlopper/artifact.maven/master</url>
+			<url>${distributionManagement.repository.cyk.url}</url>
+		</repository>
+	</distributionManagement>
+	-->
+	<repositories>
+		<repository>
+			<id>cyk.repo.repsy.io</id>
+			<url>https://repo.repsy.io/mvn/kycdev/default</url>
 		</repository>
 	</repositories>
 
