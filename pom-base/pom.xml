@@ -583,7 +583,7 @@
 				<data.base.management.system.port.production>${data.base.management.system.port}</data.base.management.system.port.production>
 			</properties>
 		</profile>
-
+		<!--
 		<profile>
 			<id>data.base.management.system.mysql</id>
 			<properties>
@@ -593,7 +593,7 @@
 				<data.base.management.system.port.production>${data.base.management.system.port}</data.base.management.system.port.production>
 			</properties>
 		</profile>
-
+		-->
 		<!-- Oracle -->
 
 		<profile>
@@ -624,6 +624,39 @@
 			<properties>
 				<data.base.management.system.host>${data.base.management.system.oracle.prod.hostname}</data.base.management.system.host>
 				<data.base.management.system.sid>${data.base.management.system.oracle.prod.sid}</data.base.management.system.sid>
+			</properties>
+		</profile>
+		
+		<!-- MySql -->
+
+		<profile>
+			<id>data.base.management.system.mysql</id>
+			<properties>
+				<data.base.management.system.port>3306</data.base.management.system.port>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>data.base.management.system.mysql.dev</id>
+			<properties>
+				<data.base.management.system.mysql.dev.sid>xe</data.base.management.system.mysql.dev.sid>
+				<data.base.management.system.sid>${data.base.management.system.mysql.dev.sid}</data.base.management.system.sid>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>data.base.management.system.mysql.test</id>
+			<properties>
+				<data.base.management.system.host>${data.base.management.system.mysql.test.hostname}</data.base.management.system.host>
+				<data.base.management.system.sid>${data.base.management.system.mysql.test.sid}</data.base.management.system.sid>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>data.base.management.system.mysql.prod</id>
+			<properties>
+				<data.base.management.system.host>${data.base.management.system.mysql.prod.hostname}</data.base.management.system.host>
+				<data.base.management.system.sid>${data.base.management.system.mysql.prod.sid}</data.base.management.system.sid>
 			</properties>
 		</profile>
 
@@ -676,7 +709,7 @@
 				<data.source.password.production>${data.source.password}</data.source.password.production>
 			</properties>
 		</profile>
-		
+		<!-- Oracle -->
 		<profile>
 			<id>data.source.oracle</id>
 			<properties>
@@ -716,7 +749,7 @@
 				<data.source.password>${data.source.oracle.prod.password}</data.source.password>
 			</properties>
 		</profile>
-			
+		<!-- H2 -->	
 		<profile>
 			<id>data.source.h2</id>
 			<properties>
@@ -727,7 +760,7 @@
 				<data.source.password>sa</data.source.password>
 			</properties>
 		</profile>
-
+		<!-- MySql -->
 		<profile>
 			<id>data.source.mysql</id>
 			<properties>
@@ -738,6 +771,33 @@
 				<data.source.url.development>jdbc:mysql://${data.base.management.system.host.development}:${data.base.management.system.port.development}/${data.source.schema.name.development}?useSSL=false&amp;allowPublicKeyRetrieval=true</data.source.url.development>
 				<data.source.url.test>jdbc:mysql://${data.base.management.system.host.test}:${data.base.management.system.port.test}/${data.source.schema.name.test}?useSSL=false&amp;allowPublicKeyRetrieval=true</data.source.url.test>
 				<data.source.url.production>jdbc:mysql://${data.base.management.system.host.production}:${data.base.management.system.port.production}/${data.source.schema.name.production}?useSSL=false&amp;allowPublicKeyRetrieval=true</data.source.url.production>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>data.source.mysql.dev</id>
+			<properties>
+				<data.source.mysql.dev.password>${data.source.mysql.dev.user}</data.source.mysql.dev.password>
+				<data.source.user>${data.source.mysql.dev.user}</data.source.user>
+				<data.source.password>${data.source.mysql.dev.password}</data.source.password>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>data.source.mysql.test</id>
+			<properties>
+				<data.source.mysql.test.password>${data.source.mysql.test.user}</data.source.mysql.test.password>
+				<data.source.user>${data.source.mysql.test.user}</data.source.user>
+				<data.source.password>${data.source.mysql.test.password}</data.source.password>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>data.source.mysql.prod</id>
+			<properties>
+				<data.source.mysql.prod.password>${data.source.mysql.prod.user}</data.source.mysql.prod.password>
+				<data.source.user>${data.source.mysql.prod.user}</data.source.user>
+				<data.source.password>${data.source.mysql.prod.password}</data.source.password>
 			</properties>
 		</profile>
 
@@ -942,6 +1002,7 @@
 		<profile>
 			<id>deployment.client.standalone.thorntail.dev</id>
 			<properties>
+				<deployment.client.proxy.host>localhost</deployment.client.proxy.host>
 				<deployment.client.proxy.port>8081</deployment.client.proxy.port>
 			</properties>
 		</profile>
