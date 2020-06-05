@@ -11,10 +11,10 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<!--
+		
 		<distributionManagement.repository.cyk.url>https://repo.repsy.io/mvn/kycdev/default</distributionManagement.repository.cyk.url>
 		<repositories.repository.cyk.url>https://repo.repsy.io/mvn/kycdev/default</repositories.repository.cyk.url>
-		-->
+		
 		<!-- Custom -->
 		<character.encoding>UTF-8</character.encoding>
 		<java.standard.edition.version>11</java.standard.edition.version>
@@ -483,6 +483,14 @@
 				</executions>
 			</plugin>
 		</plugins>
+	
+		<extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-ftp</artifactId>
+                <version>3.2.0</version>
+            </extension>
+        </extensions>
 	</build>
 
 	<dependencies>
@@ -1480,20 +1488,31 @@
 		<!-- Others -->
 		<!-- <module>../pom-maven-archetype</module> -->
 	</modules>
-	<!--
+	
 	<distributionManagement>
 		<repository>
-			<id>cyk</id>
-			<url>${distributionManagement.repository.cyk.url}</url>
+			<id>repository.devkoms.com</id>
+			<url>ftp://devkoms.com/repository/</url>
 		</repository>
-	</distributionManagement>
-	-->
-	
-	<repositories>
+		<!--
 		<repository>
 			<id>cyk.repo.repsy.io</id>
 			<url>https://repo.repsy.io/mvn/kycdev/default</url>
 		</repository>
+		-->
+	</distributionManagement>
+	
+	<repositories>
+		<repository>
+			<id>repository.devkoms.com</id>
+			<url>ftp://devkoms.com/repository/</url>
+		</repository>
+		<!--
+		<repository>
+			<id>cyk.repo.repsy.io</id>
+			<url>https://repo.repsy.io/mvn/kycdev/default</url>
+		</repository>
+		-->
 	</repositories>
 	
 </project>
