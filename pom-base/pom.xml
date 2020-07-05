@@ -125,6 +125,9 @@
 		<!-- Reporting -->
 		<com.jaspersoft.jrs-rest-java-client.version>7.2.0</com.jaspersoft.jrs-rest-java-client.version>
 		
+		<!-- Keycloak -->
+		<org.keycloak.keycloak-admin-client.version>4.8.3.Final</org.keycloak.keycloak-admin-client.version>
+		
 	</properties>
 
 	<dependencyManagement>
@@ -194,6 +197,13 @@
 				<artifactId>jrs-rest-java-client</artifactId>
 				<version>${com.jaspersoft.jrs-rest-java-client.version}</version>
 				<scope>provided</scope>
+			</dependency>
+			
+			<!-- Keycloack -->
+			<dependency>
+				<groupId>org.keycloak</groupId>
+				<artifactId>keycloak-admin-client</artifactId>
+				<version>${org.keycloak.keycloak-admin-client.version}</version>
 			</dependency>
 			<!-- Test -->
 
@@ -287,7 +297,6 @@
 			    <version>${com.icegreen.greenmail.version}</version>
 			    <scope>test</scope>
 			</dependency>
-			
 		</dependencies>
 	</dependencyManagement>
 
@@ -592,7 +601,45 @@
 				</dependency>
 			</dependencies>
 		</profile>
-
+		
+		<!-- Security Single Sign On Server -->
+		<!-- 	Keycloak -->
+		<profile>
+			<id>security.single.sign.on.system.keycloak.dev</id>
+			<properties>
+				<cyk.variable.keycloak.server.url>${security.single.sign.on.system.keycloak.dev.url}</cyk.variable.keycloak.server.url>				
+				<cyk.variable.keycloak.realm.name>${security.single.sign.on.system.keycloak.dev.realm.name}</cyk.variable.keycloak.realm.name>
+				<cyk.variable.keycloak.client.identifier>${security.single.sign.on.system.keycloak.dev.client.identifier}</cyk.variable.keycloak.client.identifier>
+				<cyk.variable.keycloak.client.secret>${security.single.sign.on.system.keycloak.dev.client.secret}</cyk.variable.keycloak.client.secret>
+				<cyk.variable.keycloak.credential.username>${security.single.sign.on.system.keycloak.dev.credential.username}</cyk.variable.keycloak.credential.username>
+				<cyk.variable.keycloak.credential.password>${security.single.sign.on.system.keycloak.dev.credential.password}</cyk.variable.keycloak.credential.password>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>security.single.sign.on.system.keycloak.test</id>
+			<properties>
+				<cyk.variable.keycloak.server.url>${security.single.sign.on.system.keycloak.test.url}</cyk.variable.keycloak.server.url>				
+				<cyk.variable.keycloak.realm.name>${security.single.sign.on.system.keycloak.test.realm.name}</cyk.variable.keycloak.realm.name>
+				<cyk.variable.keycloak.client.identifier>${security.single.sign.on.system.keycloak.test.client.identifier}</cyk.variable.keycloak.client.identifier>
+				<cyk.variable.keycloak.client.secret>${security.single.sign.on.system.keycloak.test.client.secret}</cyk.variable.keycloak.client.secret>
+				<cyk.variable.keycloak.credential.username>${security.single.sign.on.system.keycloak.test.credential.username}</cyk.variable.keycloak.credential.username>
+				<cyk.variable.keycloak.credential.password>${security.single.sign.on.system.keycloak.test.credential.password}</cyk.variable.keycloak.credential.password>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>security.single.sign.on.system.keycloak.prod</id>
+			<properties>
+				<cyk.variable.keycloak.server.url>${security.single.sign.on.system.keycloak.prod.url}</cyk.variable.keycloak.server.url>				
+				<cyk.variable.keycloak.realm.name>${security.single.sign.on.system.keycloak.prod.realm.name}</cyk.variable.keycloak.realm.name>
+				<cyk.variable.keycloak.client.identifier>${security.single.sign.on.system.keycloak.prod.client.identifier}</cyk.variable.keycloak.client.identifier>
+				<cyk.variable.keycloak.client.secret>${security.single.sign.on.system.keycloak.prod.client.secret}</cyk.variable.keycloak.client.secret>
+				<cyk.variable.keycloak.credential.username>${security.single.sign.on.system.keycloak.prod.credential.username}</cyk.variable.keycloak.credential.username>
+				<cyk.variable.keycloak.credential.password>${security.single.sign.on.system.keycloak.prod.credential.password}</cyk.variable.keycloak.credential.password>
+			</properties>
+		</profile>
+		
 		<!-- Database management system -->
 		<profile>
 			<id>data.base.management.system</id>
