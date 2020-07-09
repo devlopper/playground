@@ -1452,6 +1452,14 @@
 			</properties>
 		</profile>
 		
+		<profile>
+			<id>web.security.keycloak.private</id>
+			<properties>
+				<web-app.security-constraint.web-resource-collection.all.url-pattern>/private/*</web-app.security-constraint.web-resource-collection.all.url-pattern>
+				<web-app.login-config.auth-method>KEYCLOAK</web-app.login-config.auth-method>
+			</properties>
+		</profile>
+		
 		<!-- liquibase -->
 		
 		<profile>
