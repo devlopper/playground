@@ -127,8 +127,9 @@
 		
 		<!-- Keycloak -->
 		
-		<org.keycloak.keycloak-admin-client.version>4.8.3.Final</org.keycloak.keycloak-admin-client.version>
-		
+		<org.keycloak.version>4.8.3.Final</org.keycloak.version>
+		<org.keycloak.keycloak-admin-client.version>${org.keycloak.version}</org.keycloak.keycloak-admin-client.version>
+		<org.keycloak.keycloak-servlet-filter-adapter.version>${org.keycloak.version}</org.keycloak.keycloak-servlet-filter-adapter.version>
 		<!--
 		<org.keycloak.keycloak-admin-client.version>8.0.1</org.keycloak.keycloak-admin-client.version>
 		-->
@@ -211,6 +212,12 @@
 				<groupId>org.keycloak</groupId>
 				<artifactId>keycloak-admin-client</artifactId>
 				<version>${org.keycloak.keycloak-admin-client.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.keycloak</groupId>
+				<artifactId>keycloak-servlet-filter-adapter</artifactId>
+				<version>${org.keycloak.keycloak-servlet-filter-adapter.version}</version>
 			</dependency>
 			<!-- Test -->
 
@@ -685,7 +692,8 @@
 			<id>data.base.management.system.oracle.dev</id>
 			<properties>
 				<data.base.management.system.oracle.dev.sid>xe</data.base.management.system.oracle.dev.sid>
-				<data.base.management.system.sid>${data.base.management.system.oracle.dev.sid}</data.base.management.system.sid>
+				<data.base.management.system.host>${data.base.management.system.oracle.dev.hostname}</data.base.management.system.host>
+				<data.base.management.system.sid>${data.base.management.system.oracle.dev.sid}</data.base.management.system.sid>				
 			</properties>
 		</profile>
 		
