@@ -136,6 +136,8 @@
 		<!--
 		<org.keycloak.keycloak-admin-client.version>8.0.2</org.keycloak.keycloak-admin-client.version>
 		-->
+		
+		<org.freemarker.freemarker.version>2.3.29</org.freemarker.freemarker.version>
 	</properties>
 
 	<dependencyManagement>
@@ -218,6 +220,13 @@
 				<groupId>org.keycloak</groupId>
 				<artifactId>keycloak-servlet-filter-adapter</artifactId>
 				<version>${org.keycloak.keycloak-servlet-filter-adapter.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.freemarker</groupId>
+				<artifactId>freemarker</artifactId>
+				<version>${org.freemarker.freemarker.version}</version>
+				<scope>provided</scope>
 			</dependency>
 			<!-- Test -->
 
@@ -691,6 +700,7 @@
 		<profile>
 			<id>data.base.management.system.oracle.dev</id>
 			<properties>
+				<data.base.management.system.oracle.dev.hostname>localhost</data.base.management.system.oracle.dev.hostname>
 				<data.base.management.system.oracle.dev.sid>xe</data.base.management.system.oracle.dev.sid>
 				<data.base.management.system.host>${data.base.management.system.oracle.dev.hostname}</data.base.management.system.host>
 				<data.base.management.system.sid>${data.base.management.system.oracle.dev.sid}</data.base.management.system.sid>				
