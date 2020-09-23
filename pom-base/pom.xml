@@ -128,8 +128,13 @@
 		<!-- Keycloak -->
 		
 		<org.keycloak.version>4.8.3.Final</org.keycloak.version>
+	
+		<!--
+		<org.keycloak.version>8.0.2</org.keycloak.version>
+		-->
 		<org.keycloak.keycloak-admin-client.version>${org.keycloak.version}</org.keycloak.keycloak-admin-client.version>
 		<org.keycloak.keycloak-servlet-filter-adapter.version>${org.keycloak.version}</org.keycloak.keycloak-servlet-filter-adapter.version>
+		<org.keycloak.keycloak-authz-client.version>${org.keycloak.version}</org.keycloak.keycloak-authz-client.version>
 		<!--
 		<org.keycloak.keycloak-admin-client.version>8.0.1</org.keycloak.keycloak-admin-client.version>
 		-->
@@ -138,6 +143,8 @@
 		-->
 		
 		<org.freemarker.freemarker.version>2.3.29</org.freemarker.freemarker.version>
+		
+		<org.hibernate.hibernate-envers.version>5.4.21.Final</org.hibernate.hibernate-envers.version>
 	</properties>
 
 	<dependencyManagement>
@@ -223,11 +230,24 @@
 			</dependency>
 			
 			<dependency>
+				<groupId>org.keycloak</groupId>
+				<artifactId>keycloak-authz-client</artifactId>
+				<version>${org.keycloak.keycloak-authz-client.version}</version>
+			</dependency>
+			
+			<dependency>
 				<groupId>org.freemarker</groupId>
 				<artifactId>freemarker</artifactId>
 				<version>${org.freemarker.freemarker.version}</version>
 				<scope>provided</scope>
 			</dependency>
+			
+			<dependency>
+			    <groupId>org.hibernate</groupId>
+			    <artifactId>hibernate-envers</artifactId>
+			    <version>${org.hibernate.hibernate-envers.version}</version>
+			</dependency>
+			
 			<!-- Test -->
 
 			<dependency>
@@ -1467,6 +1487,13 @@
 			<properties>
 				<web-app.security-constraint.web-resource-collection.all.url-pattern>/_d_i_s_a_b_l_e_d_/*</web-app.security-constraint.web-resource-collection.all.url-pattern>
 				<web-app.login-config.auth-method>BASIC</web-app.login-config.auth-method>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>web.security.enabled</id>
+			<properties>
+				<cyk.variable.system.security.authentication.enable>true</cyk.variable.system.security.authentication.enable>
 			</properties>
 		</profile>
 		
