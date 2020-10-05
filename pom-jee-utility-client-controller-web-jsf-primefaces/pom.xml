@@ -55,8 +55,10 @@
 	
 	<repositories>
 		<repository>
-			<id>cyk.repo.repsy.io</id>
-			<url>https://repo.repsy.io/mvn/kycdev/default</url>
+			<id>prime-repo</id>
+			<name>PrimeFaces Maven Repository</name>
+			<url>http://repository.primefaces.org</url>
+			<layout>default</layout>
 		</repository>
 	</repositories>
 </project>
