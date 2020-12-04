@@ -18,11 +18,28 @@
 
 	<properties>
 		<swagger.json>${web.context}/api/swagger.json</swagger.json>
+		<org.microprofile-ext.openapi-ext.openapi-ui.version>1.1.4</org.microprofile-ext.openapi-ext.openapi-ui.version>
 	</properties>
-
+	
 	<profiles>
 		<profile>
+			<id>openapi</id>
+			<dependencies>
+				<dependency>
+					<groupId>org.microprofile-ext.openapi-ext</groupId>
+				    <artifactId>openapi-ui</artifactId>
+				    <version>${org.microprofile-ext.openapi-ext.openapi-ui.version}</version>
+				</dependency>
+			</dependencies>
+		</profile>
+		
+		<profile>
 			<id>swagger</id>
+			<activation>
+				<property>
+					<name>swaggerable</name>
+				</property>
+			</activation>
 			<build>
 				<finalName>${project.build.file.name}</finalName>
 				<plugins>

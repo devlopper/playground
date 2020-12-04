@@ -14,12 +14,12 @@
 	<artifactId>pom-jee-utility-server-deployment</artifactId>
 	<version>pom.jee.utility.server.deployment.0.1.0</version>
 	<packaging>pom</packaging>
-	
+	<!--
 	<dependencies>
 		<dependency>
 			<groupId>io.swagger</groupId>
 			<artifactId>swagger-jaxrs</artifactId>
 		</dependency>
 	</dependencies>
-	
+	-->
 </project>
