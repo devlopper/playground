@@ -23,7 +23,7 @@
 	
 	<profiles>
 		<profile>
-			<id>openapi</id>
+			<id>openapi.ui</id>
 			<dependencies>
 				<dependency>
 					<groupId>org.microprofile-ext.openapi-ext</groupId>

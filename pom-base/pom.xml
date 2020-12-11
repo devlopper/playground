@@ -955,6 +955,22 @@
 
 		<!-- Application Server -->
 		<profile>
+			<id>server.wildfly</id>
+			<properties>
+				<cyk.variable.system.port>8080</cyk.variable.system.port>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.wildfly.plugins</groupId>
+						<artifactId>wildfly-maven-plugin</artifactId>
+						<version>${org.wildfly.plugins.wildfly-maven-plugin}</version>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
 			<id>server.application.jboss.wildfly</id>
 			<properties>
 				<packaging_profile_identifier>packaging/server/application/jboss/wildfly</packaging_profile_identifier>
@@ -1317,10 +1333,8 @@
 		<profile>
 			<id>deployment.server.standalone.thorntail</id>
 			<properties>
-				<jboss-web.context-root></jboss-web.context-root>
-				<!--
+				<jboss-web.context-root></jboss-web.context-root>				
 				<swagger.json>/api/swagger.json</swagger.json>
-				-->
 			</properties>
 			
 			<dependencyManagement>
@@ -1336,6 +1350,12 @@
 			</dependencyManagement>
 
 			<dependencies>
+				<!--
+				<dependency>
+				    <groupId>io.thorntail</groupId>
+				    <artifactId>microprofile</artifactId>
+				</dependency>
+				-->
 				<dependency>
 					<groupId>io.thorntail</groupId>
 					<artifactId>cdi</artifactId>
@@ -1483,7 +1503,6 @@
 		                			<location>wildfly@maven(org.jboss.universe:community-universe)</location>
 		                		</feature-pack>
 		                	</feature-packs>
-		                	<hollow-jar>true</hollow-jar>
 		                	<layers>
 		                        <layer>jaxrs</layer>
 		                    </layers>
@@ -1529,7 +1548,6 @@
 		                            <version>${org.wildfly.wildfly-datasources-galleon-pack.version}</version>
 		                        </feature-pack>
 		                	</feature-packs>
-		                	<hollow-jar>true</hollow-jar>
 		                	<layers>
 		                    	<layer>cloud-server</layer>
 		                    	<layer>microprofile-openapi</layer>
@@ -1567,7 +1585,6 @@
 		                			<location>wildfly@maven(org.jboss.universe:community-universe)</location>
 		                		</feature-pack>
 		                	</feature-packs>
-		                	<hollow-jar>true</hollow-jar>
 		                	<layers>
 		                        <layer>jsf</layer>
 		                    </layers>
@@ -1779,6 +1796,13 @@
 						</configuration>
 					</plugin>
 				</plugins>
+				
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+						<filtering>true</filtering>						
+					</resource>
+				</resources>
 			</build>
 		</profile>
 		
@@ -1794,6 +1818,8 @@
 				<project.build.file.name>ROOT</project.build.file.name>				
 				<deployment.standalone.port.offset>0</deployment.standalone.port.offset>
 				<jboss-web.context-root></jboss-web.context-root>
+				<propertiesFile>script/wildfly/bootablejar/properties.txt</propertiesFile>
+				<scriptsFile>script/wildfly/bootablejar/cli.txt</scriptsFile>
 			</properties>
 			<build>
 				<finalName>${project.build.file.name}</finalName>
@@ -1813,7 +1839,6 @@
 		                            <version>${org.wildfly.wildfly-datasources-galleon-pack.version}</version>
 		                        </feature-pack>
 		                	</feature-packs>
-		                	<hollow-jar>true</hollow-jar>
 		                	<layers>
 		                    	<layer>cloud-server</layer>
 		                    	<layer>microprofile-openapi</layer>
@@ -1825,6 +1850,86 @@
 		                    <plugin-options>
 		                    	<jboss-fork-embedded>true</jboss-fork-embedded>
 		                    </plugin-options>
+		                    <cloud>
+		                    	<type>kubernetes</type>
+		                    </cloud>
+		                    <cli-sessions>
+		                    	<cli-session>
+		                    		<propertiesFile>${propertiesFile}</propertiesFile>
+		                    		<scriptFiles>
+		                    			<scriptFile>${scriptsFile}</scriptFile>
+		                    		</scriptFiles>
+		                    	</cli-session>
+		                    </cli-sessions>
+		                </configuration>
+		                <executions>
+		                    <execution>
+		                        <goals>
+		                            <goal>package</goal>
+		                        </goals>
+		                    </execution>
+		                </executions>
+		            </plugin>
+		        </plugins>
+			</build>
+			<dependencies>
+				<dependency>
+					<groupId>org.microprofile-ext.openapi-ext</groupId>
+				    <artifactId>openapi-ui</artifactId>
+				    <version>${org.microprofile-ext.openapi-ext.openapi-ui.version}</version>
+				</dependency>
+			</dependencies>
+		</profile>
+		
+		<profile>
+			<id>package.wildfly.bootable.jsf</id>
+			<properties>
+				<project.build.file.name>ROOT</project.build.file.name>
+				<deployment.standalone.port.offset>0</deployment.standalone.port.offset>
+				<jboss-web.context-root></jboss-web.context-root>
+				<propertiesFile>script/wildfly/bootablejar/properties.txt</propertiesFile>
+				<scriptsFile>script/wildfly/bootablejar/cli.txt</scriptsFile>
+			</properties>
+			<build>
+				<finalName>${project.build.file.name}</finalName>
+				<plugins>
+		            <plugin>
+		                <groupId>org.wildfly.plugins</groupId>
+		                <artifactId>wildfly-jar-maven-plugin</artifactId>
+		                <version>${org.wildfly.plugins.wildfly-jar-maven-plugin.version}</version>
+		                <configuration>
+		                	<feature-packs>
+		                		<feature-pack>
+		                			<location>wildfly@maven(org.jboss.universe:community-universe)</location>
+		                		</feature-pack>
+		                		<feature-pack>
+		                            <groupId>org.wildfly</groupId>
+		                            <artifactId>wildfly-datasources-galleon-pack</artifactId>
+		                            <version>${org.wildfly.wildfly-datasources-galleon-pack.version}</version>
+		                        </feature-pack>
+		                	</feature-packs>
+		                	<layers>
+		                		<layer>jaxrs</layer>
+		                    	<layer>jsf</layer>
+		                    	<layer>management</layer>
+		                    </layers>
+		                    <excluded-layers>
+		                        <layer>deployment-scanner</layer>
+		                    </excluded-layers>
+		                    <plugin-options>
+		                    	<jboss-fork-embedded>true</jboss-fork-embedded>
+		                    </plugin-options>
+		                    <cloud>
+		                    	<type>kubernetes</type>
+		                    </cloud>
+		                    <cli-sessions>
+		                    	<cli-session>
+		                    		<propertiesFile>${propertiesFile}</propertiesFile>
+		                    		<scriptFiles>
+		                    			<scriptFile>${scriptsFile}</scriptFile>
+		                    		</scriptFiles>
+		                    	</cli-session>
+		                    </cli-sessions>
 		                </configuration>
 		                <executions>
 		                    <execution>
@@ -1839,52 +1944,79 @@
 		</profile>
 		
 		<profile>
-			<id>package.wildfly.bootable.jsf</id>
+			<id>package.thorntail</id>
 			<properties>
-				<project.build.file.name>ROOT</project.build.file.name>				
-				<deployment.standalone.port.offset>0</deployment.standalone.port.offset>
+				<swarm.port.offset>${deployment.standalone.port.offset}</swarm.port.offset>
 				<jboss-web.context-root></jboss-web.context-root>
-			</properties>
+			</properties>	
+		</profile>
+		
+		<profile>
+			<id>package.thorntail.jaxrs</id>
+						
 			<build>
-				<finalName>${project.build.file.name}</finalName>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>io.thorntail</groupId>
+							<artifactId>thorntail-maven-plugin</artifactId>
+							<version>${io.thorntail.thorntail-maven-plugin.version}</version>
+							<executions>
+								<execution>
+									<goals>
+										<goal>package</goal>
+									</goals>									
+									<configuration>
+										<hollow>true</hollow>
+									</configuration>
+								</execution>
+							</executions>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+
 				<plugins>
-		            <plugin>
-		                <groupId>org.wildfly.plugins</groupId>
-		                <artifactId>wildfly-jar-maven-plugin</artifactId>
-		                <version>${org.wildfly.plugins.wildfly-jar-maven-plugin.version}</version>
-		                <configuration>
-		                	<feature-packs>
-		                		<feature-pack>
-		                			<location>wildfly@maven(org.jboss.universe:community-universe)</location>
-		                		</feature-pack>
-		                		<feature-pack>
-		                            <groupId>org.wildfly</groupId>
-		                            <artifactId>wildfly-datasources-galleon-pack</artifactId>
-		                            <version>${org.wildfly.wildfly-datasources-galleon-pack.version}</version>
-		                        </feature-pack>
-		                	</feature-packs>
-		                	<hollow-jar>true</hollow-jar>
-		                	<layers>
-		                		<layer>jaxrs</layer>
-		                    	<layer>jsf</layer>
-		                    </layers>
-		                    <excluded-layers>
-		                        <layer>deployment-scanner</layer>
-		                    </excluded-layers>
-		                    <plugin-options>
-		                    	<jboss-fork-embedded>true</jboss-fork-embedded>
-		                    </plugin-options>
-		                </configuration>
-		                <executions>
-		                    <execution>
-		                        <goals>
-		                            <goal>package</goal>
-		                        </goals>
-		                    </execution>
-		                </executions>
-		            </plugin>
-		        </plugins>
+					<plugin>
+						<groupId>io.thorntail</groupId>
+						<artifactId>thorntail-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
 			</build>
+						
+			<dependencyManagement>
+				<dependencies>
+					<dependency>
+						<groupId>io.thorntail</groupId>
+						<artifactId>bom</artifactId>
+						<version>${io.thorntail.bom.version}</version>
+						<scope>import</scope>
+						<type>pom</type>
+					</dependency>
+				</dependencies>
+			</dependencyManagement>
+
+			<dependencies>
+				<dependency>
+					<groupId>io.thorntail</groupId>
+					<artifactId>cdi</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>io.thorntail</groupId>
+					<artifactId>jaxrs</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>io.thorntail</groupId>
+					<artifactId>jpa</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>io.thorntail</groupId>
+					<artifactId>jsonb</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>io.thorntail</groupId>
+					<artifactId>microprofile-openapi</artifactId>
+				</dependency>
+			</dependencies>
 		</profile>
 		
 		<profile>
