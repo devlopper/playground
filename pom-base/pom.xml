@@ -134,9 +134,6 @@
 		<com.icegreen.greenmail.version>1.5.11</com.icegreen.greenmail.version>
 		<org.liquibase.liquibase-maven-plugin.version>3.8.5</org.liquibase.liquibase-maven-plugin.version>
 		
-		<!-- Reporting -->
-		<com.jaspersoft.jrs-rest-java-client.version>7.2.0</com.jaspersoft.jrs-rest-java-client.version>
-		
 		<!-- Keycloak -->
 		
 		<org.keycloak.version>4.8.3.Final</org.keycloak.version>
@@ -241,15 +238,8 @@
 				<version>${one.util.streamex.version}</version>
 			</dependency>
 
-			<!-- Reporting  -->
-			<dependency>
-				<groupId>com.jaspersoft</groupId>
-				<artifactId>jrs-rest-java-client</artifactId>
-				<version>${com.jaspersoft.jrs-rest-java-client.version}</version>
-				<scope>provided</scope>
-			</dependency>
-			
 			<!-- Keycloack -->
+			<!--
 			<dependency>
 				<groupId>org.keycloak</groupId>
 				<artifactId>keycloak-admin-client</artifactId>
@@ -267,7 +257,7 @@
 				<artifactId>keycloak-authz-client</artifactId>
 				<version>${org.keycloak.keycloak-authz-client.version}</version>
 			</dependency>
-			
+			-->
 			<dependency>
 				<groupId>org.freemarker</groupId>
 				<artifactId>freemarker</artifactId>
@@ -659,13 +649,7 @@
 		    <artifactId>microprofile-openapi-api</artifactId>
 		    <version>1.1.2</version>
 		</dependency>
-		-->
-		
-		<dependency>
-			<groupId>com.jaspersoft</groupId>
-			<artifactId>jrs-rest-java-client</artifactId>
-		</dependency>
-	
+		-->	
 	</dependencies>
 
 	<profiles>
@@ -2029,6 +2013,14 @@
 			</distributionManagement>
 		</profile>
 		
+		<profile>
+			<id>keycloak.enabled</id>
+			<properties>
+				<cyk.variable.keycloak.enabled>true</cyk.variable.keycloak.enabled>
+				<cyk.variable.system.security.authentication.enable>true</cyk.variable.system.security.authentication.enable>
+			</properties>
+		</profile>
+		
 	</profiles>
 
 	<modules>
@@ -2054,7 +2046,7 @@
 		</repository>
 		-->
 	</distributionManagement>
-	
+	<!--
 	<repositories>
 		
 		<repository>
@@ -2067,13 +2059,6 @@
 			<id>repository.devkoms.com</id>
 			<url>ftp://devkoms.com/repository/</url>
 		</repository>
-		
-		<!--
-		<repository>
-			<id>cyk.repo.repsy.io</id>
-			<url>https://repo.repsy.io/mvn/kycdev/default</url>
-		</repository>
-		-->
 	</repositories>
-	
+	-->
 </project>

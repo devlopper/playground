@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<groupId>org.cyk.pom.jee.utility.security</groupId>
+		<artifactId>pom-jee-utility-security</artifactId>
+		<version>pom.jee.utility.security.0.1.0</version>
+	</parent>
+
+	<name>JEE utility keycloak security project object model</name>
+	<url>http://www.cykcorp.org</url>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.cyk.pom.jee.utility.security.keycloak</groupId>
+	<artifactId>pom-jee-utility-security-keycloak</artifactId>
+	<version>pom.jee.utility.security.keycloak.0.1.0</version>
+	<packaging>pom</packaging>
+	
+	<properties>
+		
+	</properties>
+	
+	<dependencyManagement>
+		
+	</dependencyManagement>
+	
+	<dependencies>
+		
+	</dependencies>
+</project>

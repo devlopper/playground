@@ -7,12 +7,12 @@
 		<version>pom.jee.0.1.0</version>
 	</parent>
 
-	<name>JEE utility report project object model</name>
+	<name>JEE utility security project object model</name>
 	<url>http://www.cykcorp.org</url>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.cyk.pom.jee.utility.report</groupId>
-	<artifactId>pom-jee-utility-report</artifactId>
-	<version>pom.jee.utility.report.0.1.0</version>
+	<groupId>org.cyk.pom.jee.utility.security</groupId>
+	<artifactId>pom-jee-utility-security</artifactId>
+	<version>pom.jee.utility.security.0.1.0</version>
 	<packaging>pom</packaging>
 	
 	<dependencies>
@@ -20,6 +20,7 @@
 	</dependencies>
 	
 	<modules>
-		<module>../pom-jee-utility-report-jasper</module>
+		<module>../pom-jee-utility-security-keycloak</module>
 	</modules>
+	
 </project>
