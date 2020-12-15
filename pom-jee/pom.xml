@@ -681,6 +681,7 @@
 		<module>../pom-jee-utility-__kernel__</module>
 		<module>../pom-jee-utility-report</module>
 		<module>../pom-jee-utility-security</module>
+		<module>../pom-jee-utility-template</module>
 	</modules>
 	
 </project>

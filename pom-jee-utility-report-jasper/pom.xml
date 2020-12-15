@@ -8,67 +8,17 @@
 		<version>pom.jee.utility.report.0.1.0</version>
 	</parent>
 
-	<name>JEE utility jasper report project object model</name>
+	<name>JEE utility jasper project object model</name>
 	<url>http://www.cykcorp.org</url>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.cyk.pom.jee.utility.report.jasper</groupId>
 	<artifactId>pom-jee-utility-report-jasper</artifactId>
 	<version>pom.jee.utility.report.jasper.0.1.0</version>
 	<packaging>pom</packaging>
-	
-	<properties>
-		<net.sf.jasper.report.version>6.11.0</net.sf.jasper.report.version>
-		<net.sf.jasperreports.jasperreports.version>${net.sf.jasper.report.version}</net.sf.jasperreports.jasperreports.version>
-		<net.sf.jasperreports.jasperreports-fonts.version>${net.sf.jasper.report.version}</net.sf.jasperreports.jasperreports-fonts.version>
 		
-		<com.jaspersoft.jrs-rest-java-client.version>7.2.0</com.jaspersoft.jrs-rest-java-client.version>
-	</properties>
+	<modules>
+		<module>../pom-jee-utility-report-jasper-server</module>
+		<module>../pom-jee-utility-report-jasper-client</module>
+	</modules>
 	
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>net.sf.jasperreports</groupId>
-				<artifactId>jasperreports</artifactId>
-				<version>${net.sf.jasperreports.jasperreports.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>net.sf.jasperreports</groupId>
-				<artifactId>jasperreports-fonts</artifactId>
-				<version>${net.sf.jasperreports.jasperreports-fonts.version}</version>
-			</dependency>
-			
-			<dependency>
-				<groupId>com.jaspersoft</groupId>
-				<artifactId>jrs-rest-java-client</artifactId>
-				<version>${com.jaspersoft.jrs-rest-java-client.version}</version>
-				<scope>provided</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-	
-	<dependencies>
-		<dependency>
-			<groupId>net.sf.jasperreports</groupId>
-			<artifactId>jasperreports</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>net.sf.jasperreports</groupId>
-			<artifactId>jasperreports-fonts</artifactId>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.jaspersoft</groupId>
-			<artifactId>jrs-rest-java-client</artifactId>
-		</dependency>
-	</dependencies>
-	
-	<repositories>	
-		<repository>
-			<id>jaspersoft-clients-snapshots</id>
-			<name>Jaspersoft clients snapshots</name>
-			<url>https://jaspersoft.jfrog.io/jaspersoft/jaspersoft-clients-releases</url>
-		</repository>
-	</repositories>
 </project>

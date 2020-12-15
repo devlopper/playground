@@ -151,8 +151,6 @@
 		<org.keycloak.keycloak-admin-client.version>8.0.2</org.keycloak.keycloak-admin-client.version>
 		-->
 		
-		<org.freemarker.freemarker.version>2.3.29</org.freemarker.freemarker.version>
-		
 		<org.hibernate.hibernate-envers.version>5.4.21.Final</org.hibernate.hibernate-envers.version>
 	</properties>
 
@@ -258,12 +256,6 @@
 				<version>${org.keycloak.keycloak-authz-client.version}</version>
 			</dependency>
 			-->
-			<dependency>
-				<groupId>org.freemarker</groupId>
-				<artifactId>freemarker</artifactId>
-				<version>${org.freemarker.freemarker.version}</version>
-				<scope>provided</scope>
-			</dependency>
 			
 			<dependency>
 			    <groupId>org.hibernate</groupId>
@@ -2048,12 +2040,6 @@
 	</distributionManagement>
 	<!--
 	<repositories>
-		
-		<repository>
-			<id>jaspersoft-clients-snapshots</id>
-			<name>Jaspersoft clients snapshots</name>
-			<url>https://jaspersoft.jfrog.io/jaspersoft/jaspersoft-clients-releases</url>
-		</repository>
 		
 		<repository>
 			<id>repository.devkoms.com</id>
