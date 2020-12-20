@@ -256,13 +256,13 @@
 				<version>${org.keycloak.keycloak-authz-client.version}</version>
 			</dependency>
 			-->
-			
+			<!--
 			<dependency>
 			    <groupId>org.hibernate</groupId>
 			    <artifactId>hibernate-envers</artifactId>
 			    <version>${org.hibernate.hibernate-envers.version}</version>
 			</dependency>
-			
+			-->
 			<!-- Test -->
 
 			<dependency>
@@ -1807,7 +1807,7 @@
 		                <configuration>
 		                	<feature-packs>
 		                		<feature-pack>
-		                			<location>wildfly@maven(org.jboss.universe:community-universe)</location>
+		                			<location>wildfly@maven(org.jboss.universe:community-universe)#${wildfly.version}</location>
 		                		</feature-pack>
 		                		<feature-pack>
 		                            <groupId>org.wildfly</groupId>
@@ -1876,7 +1876,7 @@
 		                <configuration>
 		                	<feature-packs>
 		                		<feature-pack>
-		                			<location>wildfly@maven(org.jboss.universe:community-universe)</location>
+		                			<location>wildfly@maven(org.jboss.universe:community-universe)#${wildfly.version}</location>
 		                		</feature-pack>
 		                		<feature-pack>
 		                            <groupId>org.wildfly</groupId>
