@@ -151,7 +151,7 @@
 		<org.keycloak.keycloak-admin-client.version>8.0.2</org.keycloak.keycloak-admin-client.version>
 		-->
 		
-		<org.hibernate.hibernate-envers.version>5.4.21.Final</org.hibernate.hibernate-envers.version>
+		<org.hibernate.version>5.4.12.Final</org.hibernate.version>
 	</properties>
 
 	<dependencyManagement>
@@ -236,33 +236,6 @@
 				<version>${one.util.streamex.version}</version>
 			</dependency>
 
-			<!-- Keycloack -->
-			<!--
-			<dependency>
-				<groupId>org.keycloak</groupId>
-				<artifactId>keycloak-admin-client</artifactId>
-				<version>${org.keycloak.keycloak-admin-client.version}</version>
-			</dependency>
-			
-			<dependency>
-				<groupId>org.keycloak</groupId>
-				<artifactId>keycloak-servlet-filter-adapter</artifactId>
-				<version>${org.keycloak.keycloak-servlet-filter-adapter.version}</version>
-			</dependency>
-			
-			<dependency>
-				<groupId>org.keycloak</groupId>
-				<artifactId>keycloak-authz-client</artifactId>
-				<version>${org.keycloak.keycloak-authz-client.version}</version>
-			</dependency>
-			-->
-			<!--
-			<dependency>
-			    <groupId>org.hibernate</groupId>
-			    <artifactId>hibernate-envers</artifactId>
-			    <version>${org.hibernate.hibernate-envers.version}</version>
-			</dependency>
-			-->
 			<!-- Test -->
 
 			<dependency>

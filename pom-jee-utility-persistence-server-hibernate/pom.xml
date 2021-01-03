@@ -11,12 +11,13 @@
 	<url>http://www.cykcorp.org</url>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.cyk.pom.jee.utility.persistence.server.hibernate</groupId>
-	<artifactId>pom-jee-utility-persistence-server.hibernate</artifactId>
+	<artifactId>pom-jee-utility-persistence-server-hibernate</artifactId>
 	<version>pom.jee.utility.persistence.server.hibernate.0.1.0</version>
 	<packaging>pom</packaging>
 	
 	<properties>
-		<org.hibernate.hibernate-core.version>5.4.12.Final</org.hibernate.hibernate-core.version>
+		<org.hibernate.hibernate-core.version>${org.hibernate.version}</org.hibernate.hibernate-core.version>
+		<org.hibernate.hibernate-envers.version>${org.hibernate.version}</org.hibernate.hibernate-envers.version>
 	</properties>
 
 	<dependencies>				
@@ -25,6 +26,13 @@
 		    <artifactId>hibernate-core</artifactId>
 		    <version>${org.hibernate.hibernate-core.version}</version>
 		    <scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-envers</artifactId>
+			<version>${org.hibernate.hibernate-envers.version}</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 </project>
