@@ -96,6 +96,11 @@
 	<modules>
 		<module>../pom-jee-utility</module>
 		<module>../pom-jee-utility-archetype</module>  
+		<module>../pom-jee-utility-javascript</module>
+		<module>../pom-jee-utility-report</module>
+		<module>../pom-jee-utility-security</module>
+		<module>../pom-jee-utility-template</module>
+		<module>../pom-jee-utility-persistence</module>
 	</modules> 
 	
 </project>

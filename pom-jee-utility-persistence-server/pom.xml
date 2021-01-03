@@ -15,4 +15,7 @@
 	<version>pom.jee.utility.persistence.server.0.1.0</version>
 	<packaging>pom</packaging>
 	
+	<modules>
+		<module>../pom-jee-utility-persistence-server-hibernate</module>
+	</modules>
 </project>
