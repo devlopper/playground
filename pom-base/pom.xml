@@ -1792,6 +1792,7 @@
 		                    	<layer>cloud-server</layer>
 		                    	<layer>microprofile-openapi</layer>
 		                    	<layer>oracle-datasource</layer>
+		                    	<layer>management</layer>
 		                    </layers>
 		                    <excluded-layers>
 		                        <layer>deployment-scanner</layer>

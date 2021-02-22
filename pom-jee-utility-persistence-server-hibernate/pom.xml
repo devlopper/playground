@@ -18,6 +18,7 @@
 	<properties>
 		<org.hibernate.hibernate-core.version>${org.hibernate.version}</org.hibernate.hibernate-core.version>
 		<org.hibernate.hibernate-envers.version>${org.hibernate.version}</org.hibernate.hibernate-envers.version>
+		<org.hibernate.hibernate-ehcache.version>${org.hibernate.version}</org.hibernate.hibernate-ehcache.version>
 	</properties>
 
 	<dependencies>				
@@ -34,5 +35,12 @@
 			<version>${org.hibernate.hibernate-envers.version}</version>
 			<scope>provided</scope>
 		</dependency>
+		
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-ehcache</artifactId>
+		    <version>${org.hibernate.hibernate-ehcache.version}</version>
+		    <scope>provided</scope>
+		</dependency>		
 	</dependencies>
 </project>
