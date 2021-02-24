@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<parent>
@@ -14,33 +15,41 @@
 	<artifactId>pom-jee-utility-persistence-server-hibernate</artifactId>
 	<version>pom.jee.utility.persistence.server.hibernate.0.1.0</version>
 	<packaging>pom</packaging>
-	
+
 	<properties>
 		<org.hibernate.hibernate-core.version>${org.hibernate.version}</org.hibernate.hibernate-core.version>
 		<org.hibernate.hibernate-envers.version>${org.hibernate.version}</org.hibernate.hibernate-envers.version>
 		<org.hibernate.hibernate-ehcache.version>${org.hibernate.version}</org.hibernate.hibernate-ehcache.version>
+		<org.hibernate.hibernate-jcache.version>${org.hibernate.version}</org.hibernate.hibernate-jcache.version>
 	</properties>
 
-	<dependencies>				
+	<dependencies>
 		<dependency>
-		    <groupId>org.hibernate</groupId>
-		    <artifactId>hibernate-core</artifactId>
-		    <version>${org.hibernate.hibernate-core.version}</version>
-		    <scope>provided</scope>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${org.hibernate.hibernate-core.version}</version>
+			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-envers</artifactId>
 			<version>${org.hibernate.hibernate-envers.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
-		    <groupId>org.hibernate</groupId>
-		    <artifactId>hibernate-ehcache</artifactId>
-		    <version>${org.hibernate.hibernate-ehcache.version}</version>
-		    <scope>provided</scope>
-		</dependency>		
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-ehcache</artifactId>
+			<version>${org.hibernate.hibernate-ehcache.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-jcache</artifactId>
+			<version>${org.hibernate.hibernate-jcache.version}</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 </project>

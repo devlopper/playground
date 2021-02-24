@@ -150,8 +150,10 @@
 		<!--
 		<org.keycloak.keycloak-admin-client.version>8.0.2</org.keycloak.keycloak-admin-client.version>
 		-->
-		
+		<!--
 		<org.hibernate.version>5.4.12.Final</org.hibernate.version>
+		-->
+		<org.hibernate.version>5.4.28.Final</org.hibernate.version>
 	</properties>
 
 	<dependencyManagement>
