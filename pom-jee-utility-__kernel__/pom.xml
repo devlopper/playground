@@ -102,6 +102,7 @@
 		<module>../pom-jee-utility-security</module>
 		<module>../pom-jee-utility-template</module>
 		<module>../pom-jee-utility-persistence</module>
+		<module>../pom-jee-utility-business</module>
 	</modules> 
 	
 </project>

@@ -1,0 +1,18 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<groupId>org.cyk.pom.jee.utility.business</groupId>
+		<artifactId>pom-jee-utility-business</artifactId>
+		<version>pom.jee.utility.business.0.1.0</version>
+	</parent>
+
+	<name>JEE utility business client project object model</name>
+	<url>http://www.cykcorp.org</url>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.cyk.pom.jee.utility.business.client</groupId>
+	<artifactId>pom-jee-utility-business-client</artifactId>
+	<version>pom.jee.utility.business.client.0.1.0</version>
+	<packaging>pom</packaging>
+	
+</project>
