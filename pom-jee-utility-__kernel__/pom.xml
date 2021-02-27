@@ -103,6 +103,8 @@
 		<module>../pom-jee-utility-template</module>
 		<module>../pom-jee-utility-persistence</module>
 		<module>../pom-jee-utility-business</module>
+		<module>../pom-jee-utility-representation</module>
+		<module>../pom-jee-utility-controller</module>
 	</modules> 
 	
 </project>
