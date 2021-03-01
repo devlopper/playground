@@ -27,13 +27,15 @@
 	<dependencyManagement>
 		<dependencies>
 			<!-- Arquillian BOMs (Bill Of Materials). -->
+			<!--
 			<dependency>
 				<groupId>org.jboss.arquillian</groupId>
 				<artifactId>arquillian-bom</artifactId>
 				<version>${org.jboss.arquillian.arquillian-bom.version}</version>
 				<scope>import</scope>
 				<type>pom</type>
-			</dependency>			
+			</dependency>
+			-->
 			<dependency>
 			    <groupId>org.glassfish.jaxb</groupId>
 			    <artifactId>jaxb-runtime</artifactId>
@@ -89,13 +91,13 @@
 		    <groupId>javax.xml.bind</groupId>
 		    <artifactId>jaxb-api</artifactId>
 		</dependency>
-		
+		<!--
 		<dependency>
 			<groupId>org.jboss.arquillian.junit</groupId>
 			<artifactId>arquillian-junit-container</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+		-->
 		<dependency>
 		    <groupId>org.glassfish.jaxb</groupId>
 		    <artifactId>jaxb-runtime</artifactId>

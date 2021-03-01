@@ -36,7 +36,7 @@
 		    <groupId>one.util</groupId> 
 		    <artifactId>streamex</artifactId> 
 		</dependency>
-						
+		<!--				
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -72,12 +72,14 @@
 			<artifactId>shrinkwrap-resolver-impl-maven</artifactId>
 			<scope>compile</scope>
 		</dependency>
-		
+		-->
+		<!--
 		<dependency>
 		    <groupId>org.assertj</groupId>
 		    <artifactId>assertj-core</artifactId>
 		    <scope>compile</scope>
 		</dependency>
+		-->
 		<!--
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
@@ -105,6 +107,9 @@
 		<module>../pom-jee-utility-business</module>
 		<module>../pom-jee-utility-representation</module>
 		<module>../pom-jee-utility-controller</module>
+		
+		<module>../pom-jee-utility-test</module>
+		<module>../pom-jee-utility-test-persistence-server</module>
 	</modules> 
 	
 </project>
