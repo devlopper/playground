@@ -109,7 +109,6 @@
 		<module>../pom-jee-utility-controller</module>
 		
 		<module>../pom-jee-utility-test</module>
-		<module>../pom-jee-utility-test-persistence-server</module>
 	</modules> 
 	
 </project>

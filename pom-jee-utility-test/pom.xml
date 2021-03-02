@@ -14,5 +14,12 @@
 	<artifactId>pom-jee-utility-test</artifactId>
 	<version>pom.jee.utility.test.0.1.0</version>
 	<packaging>pom</packaging>
-
+	
+	<modules>
+		<module>../pom-jee-utility-test-persistence-server</module>
+		<module>../pom-jee-utility-test-business-server</module>
+		<module>../pom-jee-utility-test-representation-server</module>
+		<module>../pom-jee-utility-test-controller</module>
+	</modules> 
+	
 </project>
