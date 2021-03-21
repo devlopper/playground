@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<groupId>org.cyk.pom.jee</groupId>
+		<artifactId>pom-jee</artifactId>
+		<version>pom.jee.0.1.0</version>
+	</parent>
+
+	<name>JEE utility test arquillian jboss-bootablejar project object model</name>
+	<url>http://www.cykcorp.org</url>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.cyk.pom.jee.utility.test.arquillian.jboss.bootablejar</groupId>
+	<artifactId>pom-jee-utility-test-arquillian-jboss-bootablejar</artifactId>
+	<version>pom.jee.utility.test.arquillian.jboss.bootablejar.0.1.0</version>
+	<packaging>pom</packaging>
+
+	<!-- Deployment Builder -->
+
+	<dependencies>
+		<dependency>
+			<groupId>org.wildfly.arquillian</groupId>
+			<artifactId>wildfly-arquillian-container-bootable</artifactId>
+			<version>3.0.1.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.arquillian.junit</groupId>
+			<artifactId>arquillian-junit-container</artifactId>
+			<version>1.6.0.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.shrinkwrap</groupId>
+			<artifactId>shrinkwrap-api</artifactId>
+			<version>1.2.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.shrinkwrap</groupId>
+			<artifactId>shrinkwrap-impl-base</artifactId>
+			<version>1.2.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.shrinkwrap.resolver</groupId>
+			<artifactId>shrinkwrap-resolver-impl-maven</artifactId>
+			<version>3.1.4</version>
+		</dependency>
+	</dependencies>
+</project>
