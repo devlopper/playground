@@ -8,12 +8,12 @@
 		<version>pom.jee.0.1.0</version>
 	</parent>
 
-	<name>JEE utility test arquillian jboss-bootablejar project object model</name>
+	<name>JEE utility test arquillian bootablejar project object model</name>
 	<url>http://www.cykcorp.org</url>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.cyk.pom.jee.utility.test.arquillian.jboss.bootablejar</groupId>
-	<artifactId>pom-jee-utility-test-arquillian-jboss-bootablejar</artifactId>
-	<version>pom.jee.utility.test.arquillian.jboss.bootablejar.0.1.0</version>
+	<groupId>org.cyk.pom.jee.utility.test.arquillian.bootablejar</groupId>
+	<artifactId>pom-jee-utility-test-arquillian-bootablejar</artifactId>
+	<version>pom.jee.utility.test.arquillian.bootablejar.0.1.0</version>
 	<packaging>pom</packaging>
 
 	<!-- Deployment Builder -->

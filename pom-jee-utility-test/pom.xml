@@ -20,7 +20,7 @@
 		<module>../pom-jee-utility-test-business-server</module>
 		<module>../pom-jee-utility-test-representation-server</module>
 		<module>../pom-jee-utility-test-controller</module>
-		<module>../pom-jee-utility-test-arquillian-jboss-bootablejar</module>
+		<module>../pom-jee-utility-test-arquillian-bootablejar</module>
 	</modules> 
 	
 </project>
