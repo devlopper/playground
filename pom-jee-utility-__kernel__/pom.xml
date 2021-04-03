@@ -99,6 +99,7 @@
 		<module>../pom-jee-utility</module>
 		<module>../pom-jee-utility-archetype</module>  
 		<module>../pom-jee-utility-javascript</module>
+		<module>../pom-jee-utility-rest</module>
 		<module>../pom-jee-utility-mail</module>
 		<module>../pom-jee-utility-report</module>
 		<module>../pom-jee-utility-security</module>
