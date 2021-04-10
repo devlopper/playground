@@ -859,7 +859,7 @@
 			<id>data.source.h2</id>
 			<properties>
 				<data.source.driver.name>h2</data.source.driver.name>
-				<data.source.className>org.h2.jdbcx.JdbcDataSource</data.source.className>
+				<data.source.className>org.h2.jdbc.JdbcDataSource</data.source.className>
 				<data.source.url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</data.source.url>
 				<data.source.user>sa</data.source.user>
 				<data.source.password>sa</data.source.password>
@@ -946,9 +946,6 @@
 									</includes>
 								</resource>
 							</webResources>
-							<commands>
-								<command>/subsystem=logging/logger=org.cyk:write-attribute(name=level,value=DEBUG)</command>
-							</commands>
 						</configuration>
 					</plugin>
 
@@ -1286,7 +1283,7 @@
 		<profile>
 			<id>deployment.server.standalone.thorntail</id>
 			<properties>
-				<jboss-web.context-root></jboss-web.context-root>				
+				<jboss-web.context-root/>
 				<swagger.json>/api/swagger.json</swagger.json>
 			</properties>
 			
@@ -1770,7 +1767,7 @@
 			<properties>
 				<project.build.file.name>ROOT</project.build.file.name>				
 				<deployment.standalone.port.offset>0</deployment.standalone.port.offset>
-				<jboss-web.context-root></jboss-web.context-root>
+				<jboss-web.context-root/>
 				<propertiesFile>script/wildfly/bootablejar/properties.txt</propertiesFile>
 				<scriptsFile>script/wildfly/bootablejar/cli.txt</scriptsFile>
 			</properties>
@@ -1842,7 +1839,7 @@
 			<properties>
 				<project.build.file.name>ROOT</project.build.file.name>				
 				<deployment.standalone.port.offset>0</deployment.standalone.port.offset>
-				<jboss-web.context-root></jboss-web.context-root>
+				<jboss-web.context-root/>
 				<scriptsFile>script/wildfly/bootablejar/test/cli.txt</scriptsFile>
 				<propertiesFile>script/wildfly/bootablejar/test/properties.txt</propertiesFile>
 			</properties>
@@ -1949,7 +1946,7 @@
 			<properties>
 				<project.build.file.name>ROOT</project.build.file.name>				
 				<deployment.standalone.port.offset>0</deployment.standalone.port.offset>
-				<jboss-web.context-root></jboss-web.context-root>
+				<jboss-web.context-root/>
 				<scriptsFile>script/wildfly/bootablejar/test/cli.txt</scriptsFile>
 				<propertiesFile>script/wildfly/bootablejar/test/properties.txt</propertiesFile>
 			</properties>
@@ -2042,7 +2039,7 @@
 			<properties>
 				<project.build.file.name>ROOT</project.build.file.name>
 				<deployment.standalone.port.offset>0</deployment.standalone.port.offset>
-				<jboss-web.context-root></jboss-web.context-root>
+				<jboss-web.context-root/>
 				<propertiesFile>script/wildfly/bootablejar/properties.txt</propertiesFile>
 				<scriptsFile>script/wildfly/bootablejar/cli.txt</scriptsFile>
 			</properties>
@@ -2119,7 +2116,7 @@
 			<id>package.thorntail</id>
 			<properties>
 				<swarm.port.offset>${deployment.standalone.port.offset}</swarm.port.offset>
-				<jboss-web.context-root></jboss-web.context-root>
+				<jboss-web.context-root/>
 			</properties>	
 		</profile>
 		
@@ -2190,17 +2187,7 @@
 				</dependency>
 			</dependencies>
 		</profile>
-		
-		<profile>
-			<id>cyk.repo.repsy.io</id>
-			<distributionManagement>
-				<repository>
-					<id>cyk.repo.repsy.io</id>
-					<url>https://repo.repsy.io/mvn/kycdev/default</url>
-				</repository>
-			</distributionManagement>
-		</profile>
-		
+
 		<profile>
 			<id>keycloak.enabled</id>
 			<properties>
@@ -2227,12 +2214,6 @@
 			<id>repository.devkoms.com</id>
 			<url>ftp://devkoms.com/repository/</url>
 		</repository>
-		<!--
-		<repository>
-			<id>cyk.repo.repsy.io</id>
-			<url>https://repo.repsy.io/mvn/kycdev/default</url>
-		</repository>
-		-->
 	</distributionManagement>
 	<!--
 	<repositories>
