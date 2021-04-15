@@ -1834,6 +1834,83 @@
 		</profile>
 		
 		<profile>
+			<id>package.wildfly.bootable.jaxrs.mysql</id>
+			<activation>
+				<property>
+					<name>wildfly_bootable_jaxrs_mysql</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<properties>
+				<project.build.file.name>ROOT</project.build.file.name>				
+				<deployment.standalone.port.offset>0</deployment.standalone.port.offset>
+				<jboss-web.context-root/>
+				<propertiesFile>script/wildfly/bootablejar/properties.txt</propertiesFile>
+				<scriptsFile>script/wildfly/bootablejar/cli.txt</scriptsFile>
+			</properties>
+			<build>
+				<finalName>${project.build.file.name}</finalName>
+				<plugins>
+		            <plugin>
+		                <groupId>org.wildfly.plugins</groupId>
+		                <artifactId>wildfly-jar-maven-plugin</artifactId>
+		                <version>${org.wildfly.plugins.wildfly-jar-maven-plugin.version}</version>
+		                <configuration>
+		                	<feature-packs>
+		                		<feature-pack>
+		                			<location>wildfly@maven(org.jboss.universe:community-universe)#${wildfly.version}</location>
+		                		</feature-pack>
+		                		<feature-pack>
+		                            <groupId>org.wildfly</groupId>
+		                            <artifactId>wildfly-datasources-galleon-pack</artifactId>
+		                            <version>${org.wildfly.wildfly-datasources-galleon-pack.version}</version>
+		                        </feature-pack>
+		                	</feature-packs>
+		                	<layers>
+		                		<layer>logging</layer>
+		                    	<layer>cloud-server</layer>
+		                    	<layer>microprofile-openapi</layer>
+		                    	<layer>mysql-datasource</layer>
+		                    	<layer>management</layer>
+		                    </layers>
+		                    <excluded-layers>
+		                        <layer>deployment-scanner</layer>
+		                    </excluded-layers>
+		                    <plugin-options>
+		                    	<jboss-fork-embedded>true</jboss-fork-embedded>
+		                    </plugin-options>
+		                    <cloud>
+		                    	<type>kubernetes</type>
+		                    </cloud>
+		                    <cli-sessions>
+		                    	<cli-session>
+		                    		<propertiesFile>${propertiesFile}</propertiesFile>
+		                    		<scriptFiles>
+		                    			<scriptFile>${scriptsFile}</scriptFile>
+		                    		</scriptFiles>
+		                    	</cli-session>
+		                    </cli-sessions>
+		                </configuration>
+		                <executions>
+		                    <execution>
+		                        <goals>
+		                            <goal>package</goal>
+		                        </goals>
+		                    </execution>
+		                </executions>
+		            </plugin>
+		        </plugins>
+			</build>
+			<dependencies>
+				<dependency>
+					<groupId>org.microprofile-ext.openapi-ext</groupId>
+				    <artifactId>openapi-ui</artifactId>
+				    <version>${org.microprofile-ext.openapi-ext.openapi-ui.version}</version>
+				</dependency>
+			</dependencies>
+		</profile>
+		
+		<profile>
 			<id>package.wildfly.bootable.jaxrs.test</id>
 			<!-- This will be used for in memory testing -->
 			<properties>
